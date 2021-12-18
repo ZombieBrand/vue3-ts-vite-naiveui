@@ -1,14 +1,21 @@
 <script setup lang="ts">
 import { ref } from "vue";
-
 defineProps<{ msg: string }>();
-
+const value = ref("");
 const count = ref(0);
+console.log(process.env.NODE_ENV);
 </script>
 
 <template>
+  <n-space vertical>
+    <n-input v-model:value="value" type="text" placeholder="基本的 Input" />
+    <n-input
+      v-model:value="value"
+      type="textarea"
+      placeholder="基本的 Textarea"
+    />
+  </n-space>
   <h1>{{ msg }}</h1>
-
   <p>
     Recommended IDE setup:
     <a href="https://code.visualstudio.com/" target="_blank">VSCode</a>
@@ -16,12 +23,15 @@ const count = ref(0);
     <a href="https://github.com/johnsoncodehk/volar" target="_blank">Volar</a>
   </p>
 
-  <p>See <code>README.md</code> for more information.</p>
+  <p>
+    See
+    <code>README.md</code> for more information.
+  </p>
 
   <p>
-    <a href="https://vitejs.dev/guide/features.html" target="_blank">
-      Vite Docs
-    </a>
+    <a href="https://vitejs.dev/guide/features.html" target="_blank"
+      >Vite Docs</a
+    >
     |
     <a href="https://v3.vuejs.org/" target="_blank">Vue 3 Docs</a>
   </p>
@@ -33,9 +43,9 @@ const count = ref(0);
   </p>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 a {
-  color: #42b983;
+  color: $test-color;
 }
 
 label {
