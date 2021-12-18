@@ -13,6 +13,7 @@ specifiers:
   eslint-plugin-vue: ^8.2.0
   naive-ui: ^2.22.0
   pinia: ^2.0.6
+  pinia-plugin-persistedstate: ^1.0.2
   postcss: ^8.4.5
   prettier: ^2.5.1
   sass: ^1.45.0
@@ -31,6 +32,7 @@ dependencies:
   '@vueuse/core': registry.npmmirror.com/@vueuse/core/7.3.0_vue@3.2.26
   axios: registry.npmmirror.com/axios/0.24.0
   pinia: registry.npmmirror.com/pinia/2.0.6_typescript@4.5.4+vue@3.2.26
+  pinia-plugin-persistedstate: registry.npmmirror.com/pinia-plugin-persistedstate/1.0.2_pinia@2.0.6
   vue: registry.npmmirror.com/vue/3.2.26
   vue-request: registry.npmmirror.com/vue-request/1.2.3_vue@3.2.26
   vue-router: registry.npmmirror.com/vue-router/4.0.12_vue@3.2.26
@@ -2916,6 +2918,18 @@ packages:
     name: picocolors
     version: 1.0.0
 
+  registry.npmmirror.com/pinia-plugin-persistedstate/1.0.2_pinia@2.0.6:
+    resolution: {integrity: sha1-6f1oMyGDFFMPuVTCPV2BboMNKuM=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/pinia-plugin-persistedstate/download/pinia-plugin-persistedstate-1.0.2.tgz}
+    id: registry.npmmirror.com/pinia-plugin-persistedstate/1.0.2
+    name: pinia-plugin-persistedstate
+    version: 1.0.2
+    peerDependencies:
+      pinia: ^2.0.2
+    dependencies:
+      pinia: registry.npmmirror.com/pinia/2.0.6_typescript@4.5.4+vue@3.2.26
+      shvl: registry.npmmirror.com/shvl/2.0.3
+    dev: false
+
   registry.npmmirror.com/pinia/2.0.6_typescript@4.5.4+vue@3.2.26:
     resolution: {integrity: sha512-01mP4+KapIcTNSYLhQESy6GW0N8vY5wX3UqOwkC87e7DPjEusNJ8bENrKqdvZaRHbB2rDMOONeAbwMa3+n1/rw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/pinia/download/pinia-2.0.6.tgz}
     id: registry.npmmirror.com/pinia/2.0.6
@@ -3086,6 +3100,12 @@ packages:
     dependencies:
       '@types/jest': registry.npmmirror.com/@types/jest/27.0.3
     dev: true
+
+  registry.npmmirror.com/shvl/2.0.3:
+    resolution: {integrity: sha1-60vTdkT1aEu6H8UsMBDJb7Xmr9E=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/shvl/download/shvl-2.0.3.tgz}
+    name: shvl
+    version: 2.0.3
+    dev: false
 
   registry.npmmirror.com/source-map-js/1.0.1:
     resolution: {integrity: sha512-4+TN2b3tqOCd/kaGRJ/sTYA0tR0mdXx26ipdolxcwtJVqEnqNYvlCAt1q3ypy4QMlYus+Zh34RNtYLoq2oQ4IA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/source-map-js/download/source-map-js-1.0.1.tgz}

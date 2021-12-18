@@ -14,6 +14,7 @@
     "@vueuse/core": "^7.3.0",
     "axios": "^0.24.0",
     "pinia": "^2.0.6",
+    "pinia-plugin-persistedstate": "^1.0.2",
     "vue": "^3.2.25",
     "vue-request": "^1.2.3",
     "vue-router": "4"
