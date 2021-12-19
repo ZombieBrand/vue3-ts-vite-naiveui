@@ -3,6 +3,7 @@ lockfileVersion: 5.3
 specifiers:
   '@typescript-eslint/eslint-plugin': ^5.7.0
   '@typescript-eslint/parser': ^5.7.0
+  '@vicons/ionicons5': ^0.11.0
   '@vitejs/plugin-vue': ^2.0.0
   '@vueuse/core': ^7.3.0
   autoprefixer: ^10.4.0
@@ -29,6 +30,7 @@ specifiers:
   vue-tsc: ^0.29.8
 
 dependencies:
+  '@vicons/ionicons5': registry.npmmirror.com/@vicons/ionicons5/0.11.0
   '@vueuse/core': registry.npmmirror.com/@vueuse/core/7.3.0_vue@3.2.26
   axios: registry.npmmirror.com/axios/0.24.0
   pinia: registry.npmmirror.com/pinia/2.0.6_typescript@4.5.4+vue@3.2.26
@@ -1743,6 +1745,12 @@ packages:
       '@typescript-eslint/types': registry.npmmirror.com/@typescript-eslint/types/5.7.0
       eslint-visitor-keys: registry.npmmirror.com/eslint-visitor-keys/3.1.0
     dev: true
+
+  registry.npmmirror.com/@vicons/ionicons5/0.11.0:
+    resolution: {integrity: sha1-VBhb+lcqCd9wCU2xlU8ov78TY+0=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vicons/ionicons5/download/@vicons/ionicons5-0.11.0.tgz}
+    name: '@vicons/ionicons5'
+    version: 0.11.0
+    dev: false
 
   registry.npmmirror.com/@vitejs/plugin-vue/2.0.1_vite@2.7.3+vue@3.2.26:
     resolution: {integrity: sha512-wtdMnGVvys9K8tg+DxowU1ytTrdVveXr3LzdhaKakysgGXyrsfaeds2cDywtvujEASjWOwWL/OgWM+qoeM8Plg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vitejs/plugin-vue/download/@vitejs/plugin-vue-2.0.1.tgz}
