@@ -1,18 +1,30 @@
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
-import { darkTheme, zhCN, dateZhCN } from "naive-ui";
-const { t } =useI18n()
-console.log(t)
+import {computed} from "vue";
+import { useI18n } from "vue-i18n";
+import { darkTheme, zhCN, dateZhCN, enUS, dateEnUS } from "naive-ui";
+const { locale } = useI18n();
+const language = computed(()=>{
+  return locale.value === 'zh' ? zhCN : enUS
+})
+const dataLanguage = computed(()=>{
+  return locale.value  === 'zh' ? dateZhCN : dateEnUS
+})
 </script>
-
+<script lang="ts">
+export default {
+  name:'App'
+}
+</script>
 <template>
   <n-config-provider
     :theme="darkTheme ? undefined : darkTheme"
-    :locale="zhCN"
-    :date-locale="dateZhCN"
+    :locale="language"
+    :date-locale="dataLanguage"
     :theme-overrides="{ common: { fontWeightStrong: '600' } }"
   >
-    <router-view />
+    <n-message-provider>
+      <router-view />
+    </n-message-provider>
   </n-config-provider>
 </template>
 

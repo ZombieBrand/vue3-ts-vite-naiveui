@@ -14,6 +14,7 @@
     "@vicons/ionicons5": "^0.11.0",
     "@vueuse/core": "^7.4.1",
     "axios": "^0.24.0",
+    "mockjs": "^1.1.0",
     "pinia": "^2.0.9",
     "pinia-plugin-persistedstate": "^1.0.3",
     "vue": "^3.2.26",
@@ -41,6 +42,7 @@
     "vfonts": "^0.1.0",
     "vite": "^2.7.6",
     "vite-plugin-compression": "^0.3.6",
+    "vite-plugin-mock": "^2.9.6",
     "vue-tsc": "^0.29.8"
   }
 }

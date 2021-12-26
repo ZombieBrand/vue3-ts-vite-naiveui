@@ -12,7 +12,8 @@
     "password": "Password"
   },
   "placeholder":{
-    "userName": "@:global.pleaseEnter @:user.userName",
-    "password": "@:global.pleaseEnter @:user.password"
+    "userName": "@:global.pleaseEnter@:user.userName",
+    "password": "@:global.pleaseEnter@:user.password",
+    "minLength": "least {len} place @:user.password"
   }
 }

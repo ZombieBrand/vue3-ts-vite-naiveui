@@ -31,19 +31,10 @@
               >
                 <n-input
                   v-model:value="loginData.password"
-                  :type="showPwd ? 'text' : 'password'"
+                  type="password"
                   :placeholder="$t('placeholder.password')"
                   @keydown.enter.prevent
                 />
-                <span
-                  class="show-pwd absolute right-0 h-8 cursor-pointer"
-                  @click="switchShowPwd"
-                >
-                  <n-icon size="32" color="#4B5563">
-                    <eye-off-outline v-show="!showPwd" />
-                    <eye-outline v-show="showPwd" />
-                  </n-icon>
-                </span>
               </n-form-item>
               <n-form-item>
                 <n-button
@@ -66,37 +57,54 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, ref } from "vue";
-import { EyeOutline, EyeOffOutline } from "@vicons/ionicons5";
+import { reactive, ref,computed } from "vue";
 import { useMessage } from "naive-ui";
 import { useI18n } from "vue-i18n";
 import SwitchLanguage from "@/components/SwitchLanguage.vue";
+import {getUserInfo} from "@/api/user";
+
+getUserInfo({test:1}).then(res=>{
+  console.log(res)
+}).catch(error=>{
+  console.log(error)
+})
 
 const { t } = useI18n();
-const formRef = ref(null);
+const formRef = ref();
+const message = useMessage();
 const loginData = reactive({
   userName: "",
   password: "",
 });
-
-const rules = {
+const rules = ref({
   userName: {
     required: true,
-    message: t("placeholder.userName"),
+    message: computed(()=>t("placeholder.userName")),
     trigger: "blur",
   },
-  password: {
-    required: true,
-    message: t("placeholder.password"),
-    trigger: ["input", "blur"],
-  },
-};
+  password: [
+    {
+      required: true,
+      message: computed(()=>t("placeholder.password")),
+      trigger: ["input", "blur"],
+    },
+    {
+      min: 6,
+      message: computed(()=>t("placeholder.minLength",{len:6})),
+      trigger: ["input", "blur"],
+    },
+  ],
+})
+
 const loginSubmit = () => {
-  console.log(1);
-};
-const showPwd = ref(false);
-const switchShowPwd = () => {
-  showPwd.value = !showPwd.value;
+  formRef.value.validate((errors: any) => {
+    if (!errors) {
+      message.success("Valid");
+    } else {
+      console.log(errors);
+      message.error("Invalid");
+    }
+  });
 };
 </script>
 <script lang="ts">

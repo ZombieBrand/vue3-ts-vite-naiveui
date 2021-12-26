@@ -12,7 +12,8 @@
     "password": "密码"
   },
   "placeholder": {
-    "userName": "@:global.pleaseEnter @:user.userName",
-    "password": "@:global.pleaseEnter @:user.password"
+    "userName": "@:global.pleaseEnter@:user.userName",
+    "password": "@:global.pleaseEnter@:user.password",
+    "minLength": "最少 {len} 位 @:user.password"
   }
 }
