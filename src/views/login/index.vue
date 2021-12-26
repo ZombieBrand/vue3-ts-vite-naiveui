@@ -6,23 +6,33 @@
       <h2
         class="tracking-widest text-xl text-center font-semibold text-white sm:text-2xl sm:leading-7 sm:text-black md:text-3xl"
       >
-        管理平台
+        {{ $t("login.title") }}
       </h2>
       <div class="relative flex flex-wrap">
         <div class="w-full relative">
           <div class="mt-6">
-            <n-form class="mt-8" :model="loginData" size="large" ref="formRef">
-              <n-form-item label="用户名" path="userName">
+            <n-form
+              class="mt-8"
+              :model="loginData"
+              size="large"
+              ref="formRef"
+              :rules="rules"
+            >
+              <n-form-item :label="$t('user.userName')" path="userName">
                 <n-input
                   v-model:value="loginData.userName"
-                  placeholder="请输入用户名"
+                  :placeholder="$t('placeholder.userName')"
                 />
               </n-form-item>
-              <n-form-item label="密码" path="password" class="relative">
+              <n-form-item
+                :label="$t('user.password')"
+                path="password"
+                class="relative"
+              >
                 <n-input
                   v-model:value="loginData.password"
                   :type="showPwd ? 'text' : 'password'"
-                  placeholder="请输入密码"
+                  :placeholder="$t('placeholder.password')"
                   @keydown.enter.prevent
                 />
                 <span
@@ -43,10 +53,11 @@
                   strong
                   secondary
                   class="w-full"
-                  >登录</n-button
+                  >{{ $t("login.logIn") }}</n-button
                 >
               </n-form-item>
             </n-form>
+            <switch-language />
           </div>
         </div>
       </div>
@@ -55,13 +66,31 @@
 </template>
 
 <script setup lang="ts">
-import { EyeOutline, EyeOffOutline } from "@vicons/ionicons5";
 import { reactive, ref } from "vue";
+import { EyeOutline, EyeOffOutline } from "@vicons/ionicons5";
+import { useMessage } from "naive-ui";
+import { useI18n } from "vue-i18n";
+import SwitchLanguage from "@/components/SwitchLanguage.vue";
+
+const { t } = useI18n();
+const formRef = ref(null);
 const loginData = reactive({
   userName: "",
   password: "",
 });
 
+const rules = {
+  userName: {
+    required: true,
+    message: t("placeholder.userName"),
+    trigger: "blur",
+  },
+  password: {
+    required: true,
+    message: t("placeholder.password"),
+    trigger: ["input", "blur"],
+  },
+};
 const loginSubmit = () => {
   console.log(1);
 };

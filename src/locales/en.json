@@ -1,0 +1,18 @@
+{
+  "global": {
+    "pleaseEnter": "Please Enter",
+    "pleaseSelect": "Please Select"
+  },
+  "login": {
+    "title": "Management platform",
+    "logIn": "log in"
+  },
+  "user":{
+    "userName": "User Name",
+    "password": "Password"
+  },
+  "placeholder":{
+    "userName": "@:global.pleaseEnter @:user.userName",
+    "password": "@:global.pleaseEnter @:user.password"
+  }
+}

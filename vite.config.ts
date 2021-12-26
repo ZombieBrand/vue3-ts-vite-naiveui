@@ -1,7 +1,7 @@
 import { defineConfig, loadEnv } from "vite";
 import vue from "@vitejs/plugin-vue";
+import vueI18n from '@intlify/vite-plugin-vue-i18n'
 import path from "path";
-//@ts-ignore
 import viteCompression from "vite-plugin-compression";
 import Components from "unplugin-vue-components/vite";
 import { NaiveUiResolver } from "unplugin-vue-components/resolvers";
@@ -15,6 +15,9 @@ export default defineConfig(({ mode }) => {
     base: "./", //打包路径
     plugins: [
       vue(),
+      vueI18n({
+        include: path.resolve(__dirname, './src/locales/**')
+      }),
       Components({
         dts: true,
         resolvers: [NaiveUiResolver()],

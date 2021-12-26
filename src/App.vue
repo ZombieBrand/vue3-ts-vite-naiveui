@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { darkTheme } from "naive-ui";
-import { zhCN, dateZhCN } from "naive-ui";
+import { useI18n } from 'vue-i18n'
+import { darkTheme, zhCN, dateZhCN } from "naive-ui";
+const { t } =useI18n()
+console.log(t)
 </script>
 
 <template>

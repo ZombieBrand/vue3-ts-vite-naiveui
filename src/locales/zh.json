@@ -1,0 +1,18 @@
+{
+  "global": {
+    "pleaseEnter": "请输入",
+    "pleaseSelect": "请选择"
+  },
+  "login": {
+    "title": "管理平台",
+    "logIn": "登录"
+  },
+  "user": {
+    "userName": "用户名",
+    "password": "密码"
+  },
+  "placeholder": {
+    "userName": "@:global.pleaseEnter @:user.userName",
+    "password": "@:global.pleaseEnter @:user.password"
+  }
+}
