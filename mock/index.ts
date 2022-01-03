@@ -1,5 +1,16 @@
 import { MockMethod } from "vite-plugin-mock";
+import Mock from 'mockjs'
+import {resultSuccess} from './utils'
+const Random = Mock.Random;
+const token = Random.string('upper', 32, 32);
 export default [
+  {
+    url: "/api/login",
+    method: "post",
+    response: () => {
+      return resultSuccess({ token });
+    },
+  },
   {
     url: "/api/getUserInfo",
     method: "post",

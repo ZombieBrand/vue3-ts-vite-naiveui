@@ -2,6 +2,10 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import router from "@/router";
 import { createPinia } from "pinia";
+import { setGlobalOptions } from 'vue-request';
+setGlobalOptions({
+    manual: true,
+});
 import piniaPluginPersistedstate from "pinia-plugin-persistedstate";
 import i18n from './plugins/i18n'
 import "./index.css";

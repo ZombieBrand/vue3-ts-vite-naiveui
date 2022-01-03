@@ -8,12 +8,18 @@
     "logIn": "log in"
   },
   "user":{
-    "userName": "User Name",
+    "username": "User Name",
     "password": "Password"
   },
   "placeholder":{
-    "userName": "@:global.pleaseEnter@:user.userName",
+    "username": "@:global.pleaseEnter@:user.username",
     "password": "@:global.pleaseEnter@:user.password",
     "minLength": "least {len} place @:user.password"
+  },
+  "message": {
+    "user": {
+      "successLogin": "Login successful!",
+      "errorLogin": "Login failed!"
+    }
   }
 }

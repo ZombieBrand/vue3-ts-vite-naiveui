@@ -8,12 +8,18 @@
     "logIn": "登录"
   },
   "user": {
-    "userName": "用户名",
+    "username": "用户名",
     "password": "密码"
   },
   "placeholder": {
-    "userName": "@:global.pleaseEnter@:user.userName",
+    "username": "@:global.pleaseEnter@:user.username",
     "password": "@:global.pleaseEnter@:user.password",
     "minLength": "最少 {len} 位 @:user.password"
+  },
+  "message": {
+    "user": {
+      "successLogin": "登录成功!",
+      "errorLogin": "登录失败!"
+    }
   }
 }

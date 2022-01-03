@@ -1,19 +1,20 @@
 <script setup lang="ts">
-import {computed} from "vue";
+import { computed } from "vue";
 import { useI18n } from "vue-i18n";
+import AppProvider from "@/components/Application";
 import { darkTheme, zhCN, dateZhCN, enUS, dateEnUS } from "naive-ui";
 const { locale } = useI18n();
-const language = computed(()=>{
-  return locale.value === 'zh' ? zhCN : enUS
-})
-const dataLanguage = computed(()=>{
-  return locale.value  === 'zh' ? dateZhCN : dateEnUS
-})
+const language = computed(() => {
+  return locale.value === "zh" ? zhCN : enUS;
+});
+const dataLanguage = computed(() => {
+  return locale.value === "zh" ? dateZhCN : dateEnUS;
+});
 </script>
 <script lang="ts">
 export default {
-  name:'App'
-}
+  name: "App",
+};
 </script>
 <template>
   <n-config-provider
@@ -22,9 +23,9 @@ export default {
     :date-locale="dataLanguage"
     :theme-overrides="{ common: { fontWeightStrong: '600' } }"
   >
-    <n-message-provider>
+    <AppProvider>
       <router-view />
-    </n-message-provider>
+    </AppProvider>
   </n-config-provider>
 </template>
 

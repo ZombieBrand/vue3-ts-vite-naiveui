@@ -18,10 +18,10 @@
               ref="formRef"
               :rules="rules"
             >
-              <n-form-item :label="$t('user.userName')" path="userName">
+              <n-form-item :label="$t('user.username')" path="username">
                 <n-input
-                  v-model:value="loginData.userName"
-                  :placeholder="$t('placeholder.userName')"
+                  v-model:value="loginData.username"
+                  :placeholder="$t('placeholder.username')"
                 />
               </n-form-item>
               <n-form-item
@@ -57,52 +57,52 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, ref,computed } from "vue";
+import { reactive, ref, computed } from "vue";
 import { useMessage } from "naive-ui";
 import { useI18n } from "vue-i18n";
 import SwitchLanguage from "@/components/SwitchLanguage.vue";
-import {getUserInfo} from "@/api/user";
-
-getUserInfo({test:1}).then(res=>{
-  console.log(res)
-}).catch(error=>{
-  console.log(error)
-})
+import { useUserStore } from "@/store/modules/user";
+const userStore = useUserStore();
 
 const { t } = useI18n();
 const formRef = ref();
-const message = useMessage();
+const $message = useMessage();
 const loginData = reactive({
-  userName: "",
+  username: "",
   password: "",
 });
 const rules = ref({
-  userName: {
+  username: {
     required: true,
-    message: computed(()=>t("placeholder.userName")),
+    message: computed(() => t("placeholder.username")),
     trigger: "blur",
   },
   password: [
     {
       required: true,
-      message: computed(()=>t("placeholder.password")),
+      message: computed(() => t("placeholder.password")),
       trigger: ["input", "blur"],
     },
     {
       min: 6,
-      message: computed(()=>t("placeholder.minLength",{len:6})),
+      message: computed(() => t("placeholder.minLength", { len: 6 })),
       trigger: ["input", "blur"],
     },
   ],
-})
+});
 
 const loginSubmit = () => {
-  formRef.value.validate((errors: any) => {
+  formRef.value.validate(async (errors: any) => {
     if (!errors) {
-      message.success("Valid");
+      try {
+        await userStore.login(loginData)
+        $message.success(`${t("message.user.successLogin")}`);
+      }catch (e) {
+        console.log(e)
+        $message.error(`${t("message.user.errorLogin")}`);
+      }
     } else {
       console.log(errors);
-      message.error("Invalid");
     }
   });
 };
