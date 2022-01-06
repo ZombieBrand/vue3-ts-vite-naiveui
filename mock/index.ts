@@ -1,14 +1,20 @@
 import { MockMethod } from "vite-plugin-mock";
-import Mock from 'mockjs'
-import {resultSuccess} from './utils'
-const Random = Mock.Random;
-const token = Random.string('upper', 32, 32);
+import Mock from "mockjs";
+import { resultSuccess } from "./utils";
+const token = Mock.Random.string("upper", 32, 32);
+interface loginData {
+  body: {
+    username: string;
+    password: string;
+  };
+  [propName: string]: any;
+}
 export default [
   {
     url: "/api/login",
     method: "post",
-    response: () => {
-      return resultSuccess({ token });
+    response: ({ body }: loginData) => {
+      return resultSuccess({ username: body.username, token });
     },
   },
   {
