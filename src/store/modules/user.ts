@@ -4,7 +4,7 @@ import * as T from "@/types/api/user";
 import md5 from "md5";
 import { getItem, setItem } from "@/utils/storage";
 import { TOKEN } from "@/constant";
-import {useActiveElement} from "@vueuse/core";
+import router from '@/router/index'
 export interface IUserState {
   token: string;
   username: string;
@@ -15,7 +15,7 @@ export interface IUserState {
 }
 export const useUserStore = defineStore("user", {
   state: (): IUserState => ({
-    token: getItem(TOKEN),
+    token: getItem(TOKEN) || '',
     username: "",
     welcome: "",
     avatar: "",
@@ -35,12 +35,13 @@ export const useUserStore = defineStore("user", {
             resolve(res);
             const {
               code,
-              result: { token,username },
+              result: { token, username },
               type,
             } = data.value;
             setItem(TOKEN, token);
-            this.token = token
-            this.username = username
+            this.token = token;
+            this.username = username;
+            router.push({name:'Layout'})
           })
           .catch((error) => {
             reject(error);

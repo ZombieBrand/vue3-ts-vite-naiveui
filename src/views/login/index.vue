@@ -92,13 +92,13 @@ const rules = ref({
 });
 // 登录动作
 const loginSubmit = () => {
-  formRef.value.validate(async (errors: any) => {
+  formRef.value.validate(async (errors: boolean) => {
     if (!errors) {
       try {
-        await userStore.login(loginData)
+        await userStore.login(loginData);
         $message.success(`${t("message.user.successLogin")}`);
-      }catch (e) {
-        console.log(e)
+      } catch (e) {
+        console.log(e);
         $message.error(`${t("message.user.errorLogin")}`);
       }
     } else {
