@@ -8,11 +8,11 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, getCurrentInstance,nextTick } from "vue";
+import { computed, ref, getCurrentInstance, nextTick } from "vue";
 import { useLocalStorage } from "@vueuse/core";
 import { useI18n } from "vue-i18n";
 const { availableLocales, locale } = useI18n();
-const { ctx }:any = getCurrentInstance();
+const { ctx }: any = getCurrentInstance();
 const currentLanguage = ref(locale.value);
 const localesOptions = computed(() => {
   return availableLocales.map((item) => ({
@@ -23,9 +23,9 @@ const localesOptions = computed(() => {
 const toggleLocales = () => {
   locale.value = currentLanguage.value;
   switchLanguage(locale.value);
-  nextTick(()=>{
-    ctx.$forceUpdate()
-  })
+  nextTick(() => {
+    ctx.$forceUpdate();
+  });
 };
 const switchLanguage = (lang: string) => {
   const storage = useLocalStorage("language", "en");

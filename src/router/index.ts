@@ -11,7 +11,7 @@ export type AppRouteRecordRaw = RouteRecordRaw & {
 const publicRoutes = [
   {
     path: "/login",
-    name:'Login',
+    name: "Login",
     component: () => import("@/views/login/index.vue"),
     meta: {
       // meta里是模糊类型所以任意增加自定义属性无需基于RouteRecordRaw扩展
@@ -21,14 +21,14 @@ const publicRoutes = [
     },
   },
   {
-    path:'/',
-    name:'Layout',
-    component:()=>import("@/layout/index.vue"),
+    path: "/",
+    name: "Layout",
+    component: () => import("@/layout/index.vue"),
     meta: {
       title: "首页",
       roles: ["admin"],
     },
-  }
+  },
 ];
 
 export default createRouter({

@@ -15,7 +15,7 @@ function myAxios(axiosConfig: AxiosRequestConfig, customOptions?: any) {
   });
 
   // 自定义配置
-  let custom_options: TCustomOptions = Object.assign(
+  const custom_options: TCustomOptions = Object.assign(
     {
       repeat_request_cancel: true, // 是否开启取消重复请求, 默认为 true
       loading: false, // 是否开启loading层效果, 默认为false
@@ -196,7 +196,8 @@ function removePending(config: AxiosRequestConfig) {
  * @returns
  */
 function getPendingKey(config: AxiosRequestConfig) {
-  let { url, method, params, data } = config;
+  const { url, method, params } = config;
+  let { data } = config;
   if (typeof data === "string") data = JSON.parse(data); // response里面返回的config.data是个字符串对象
   return [url, method, JSON.stringify(params), JSON.stringify(data)].join("&");
 }

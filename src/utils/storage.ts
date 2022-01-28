@@ -24,17 +24,16 @@ export const getItem = (key: string) => {
 /**
  * @description 删除指定数据
  */
-export const removeItem = (key:string)=>{
-    localStorage.removeItem(key)
-}
+export const removeItem = (key: string) => {
+  localStorage.removeItem(key);
+};
 
 /**
  * @description 清空缓存
  */
-export const removeAllItem = ()=>{
-    localStorage.clear()
-}
-
+export const removeAllItem = () => {
+  localStorage.clear();
+};
 
 /**
  * @description 判断载荷是否为json

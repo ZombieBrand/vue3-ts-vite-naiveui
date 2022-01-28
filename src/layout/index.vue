@@ -4,10 +4,8 @@
 
 <script>
 export default {
-  name: "Layout"
-}
+  name: "Layout",
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

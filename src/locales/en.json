@@ -7,11 +7,11 @@
     "title": "Management platform",
     "logIn": "log in"
   },
-  "user":{
+  "user": {
     "username": "User Name",
     "password": "Password"
   },
-  "placeholder":{
+  "placeholder": {
     "username": "@:global.pleaseEnter@:user.username",
     "password": "@:global.pleaseEnter@:user.password",
     "minLength": "least {len} place @:user.password"
