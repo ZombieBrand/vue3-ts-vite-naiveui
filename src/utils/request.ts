@@ -62,10 +62,7 @@ function myAxios(axiosConfig: AxiosRequestConfig, customOptions?: any) {
         response.data &&
         response.data.code !== 200
       ) {
-        window.$message({
-          type: "error",
-          content: response.data.message,
-        });
+        window.$message('error',response.data.message)
         return Promise.reject(response.data); // code不等于200, 页面具体逻辑就不执行了
       }
 
@@ -142,11 +139,7 @@ function httpErrorStatusHandle(error: any) {
   if (error.message.includes("timeout")) message = "网络请求超时！";
   if (error.message.includes("Network"))
     message = window.navigator.onLine ? "服务端异常！" : "您断网了！";
-
-  window.$message({
-    type: "error",
-    content: message,
-  });
+  window.$message('error',message)
 }
 
 /**

@@ -10,6 +10,7 @@ const language = computed(() => {
 const dataLanguage = computed(() => {
   return locale.value === "zh" ? dateZhCN : dateEnUS;
 });
+
 </script>
 <script lang="ts">
 export default {
