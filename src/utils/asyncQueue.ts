@@ -21,7 +21,7 @@ export default class AsyncQueue {
             reject(e)
           }
           this.running = false
-          // 上一个完成后,去除队列中的第一个任务
+          // 上一个完成后,去除队列中的第一个任务, shift取出队列第一个?.()如果是function则执行
           this.queue.shift()?.()
         })
       } else {
@@ -42,7 +42,7 @@ export default class AsyncQueue {
       // 当前是否有任务在执行,没有则取出队列中第一个任务执行
       if (!this.running) {
         console.log(this.queue.length);
-        this.queue.shift()()
+        this.queue.shift()?.()
       }
     })
   }

@@ -38,6 +38,44 @@ Vue 3 + Typescript + Vite + Naive UI + VueRouter + pinia + axios
 
 https://github.com/vitejs/awesome-vite#plugins
 
+## vite 中 scss 导出变量如何 js 中使用
+
+首先创建一个`export.module.scss`这个文件只导出 scss 变量，并且不能在其他`<style/>`中引入使用也就是只能在 js/ts 环境中引入使用，否则 vite 报错`[plugin:vite:css] This file is already being loaded.` 提示这个文件已经存在。
+
+注意文件名必须使用`*.module.scss`
+
+```scss
+// https://www.bluematador.com/blog/how-to-share-variables-between-js-and-sass
+// JS 与 scss 共享变量，在 scss 中通过 :export 进行导出，在 js 中可通过 ESM 进行导入
+// export.module.scss
+:export {
+  menuText: $menuText;
+}
+```
+
+```vue
+<script lang="ts" setup>
+import exportScss from "./src/styles/export.module.scss";
+console.log(exportScss); // 对应的变量值
+</script>
+```
+
+还有一个小技巧，如果`vite.config.js`中配置了全局注入 scss 样式文件,其他`*.scss`文件使用`index.scss`文件中的 sass 特性无需在`*scss`中@import，vue 中的`<style/>`中也无需@import
+
+```js
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@import "@/styles/index.scss";'
+        }
+      }
+    }
+```
+## this.$* 使用替代方案
+
+挂载方法: `window.$message = useMessage()`
+使用方法: `window.$message('error',response.data.message)`
+
 ## Recommended IDE Setup
 
 - [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)

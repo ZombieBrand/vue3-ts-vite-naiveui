@@ -9,6 +9,11 @@ import {
   MessageOptions,
 } from "naive-ui";
 import AsyncQueue from "@/utils/asyncQueue";
+
+/**
+ * 使用说明
+ *  window.$message(MessageType,显示内容,MessageOptions)
+ */
 export default {
   name: "MessageContent",
   setup() {
