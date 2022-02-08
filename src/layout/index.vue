@@ -1,17 +1,14 @@
 <template>
   <div class="app-wrapper">
-    <!--  左侧菜单 Menu  -->
-    <Sidebar class="sidebar-container"></Sidebar>
-    <div class="main-container">
-      <div class="fixed-header">
-        <!--  顶部 Navbar -->
-        <Navbar></Navbar>
-      </div>
-      <!--  内容 AppMain -->
-      <AppMain>
-
-      </AppMain>
-    </div>
+    <n-layout position="absolute">
+      <n-layout-header :bordered="true" :style="{height: navHeight}">
+        <Navbar />
+      </n-layout-header>
+      <n-layout position="absolute" :has-sider="true" :style="{top: mainTop}">
+        <Sidebar />
+          <AppMain />
+      </n-layout>
+    </n-layout>
   </div>
 </template>
 
@@ -19,9 +16,10 @@
 import Navbar from "@/layout/components/Navbar.vue";
 import Sidebar from "@/layout/components/Sidebar/index.vue";
 import AppMain from "@/layout/components/AppMain.vue";
-import exportScss from "@/styles/export.module.scss";
-import { ref } from "vue";
-const menuText = ref(exportScss.menuText);
+import exportScss from '@/styles/export.module.scss'
+import { computed } from "vue";
+const navHeight = computed(()=>exportScss['navHeight'])
+const mainTop = computed(()=>exportScss['mainTop'])
 </script>
 <script lang="ts">
 export default {
@@ -31,17 +29,8 @@ export default {
 
 <style lang="scss" scoped>
 .app-wrapper {
-  @include clearfix;
   position: relative;
   height: 100%;
   width: 100%;
-}
-
-.fixed-header {
-  position: fixed;
-  top: 0;
-  right: 0;
-  z-index: 9;
-  width: calc(100% - #{$sideBarWidth});
 }
 </style>

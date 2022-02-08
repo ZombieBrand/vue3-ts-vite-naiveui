@@ -2,10 +2,8 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import router from "@/router";
 import { createPinia } from "pinia";
-import { setGlobalOptions } from 'vue-request';
-setGlobalOptions({
-  manual: true,
-});
+import '@/styles/index.scss'
+
 // 引入鉴权控制
 import '@/permission'
 import piniaPluginPersistedstate from "pinia-plugin-persistedstate";

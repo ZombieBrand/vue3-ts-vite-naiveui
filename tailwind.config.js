@@ -3,6 +3,7 @@ module.exports = {
   theme: {
     extend: {},
   },
+  important: true,
   corePlugins: {
     preflight: false,
   },

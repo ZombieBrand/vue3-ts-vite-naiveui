@@ -8,11 +8,10 @@ const submitLogin = (data: T.login): Promise<any> => {
     data,
   });
 };
-const getUserInfo = (data: any): Promise<any> => {
+const getUserInfo = (): Promise<any> => {
   return request({
     url: "/getUserInfo",
-    method: "post",
-    data,
+    method: "get",
   });
 };
 

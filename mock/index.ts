@@ -14,53 +14,54 @@ export default [
     url: "/api/login",
     method: "post",
     response: ({ body }: loginData) => {
-      return resultSuccess({ username: body.username, token });
+      return resultSuccess(
+        { username: body.username, token },
+        { message: "登陆成功" }
+      );
     },
   },
   {
     url: "/api/getUserInfo",
-    method: "post",
-    response: ({ body = {} }) => {
+    method: "get",
+    response: () => {
       return {
         code: 200,
         data: {
-          nickname: "@cname",
+          role: [
+            {
+              id: "1",
+              title: "超级管理员",
+            },
+          ],
+          title: "@name",
+          username: "@cname",
           age: "@integer(10-100)",
-          uid: "@id",
-          url: "@image",
+          _id: "@id",
+          id: "0",
+          avatar: "@image",
           city: "@city",
           country: "@county(true)",
           province: "@province",
-          mobile_phone: "@phone",
+          mobile_phone: Mock.Random.integer(),
           email: "@email",
           region: "@region",
-          body,
-          menus: [
-            {
-              menu_name: "一级导航",
-              id: "@id",
-              code: "Nav1",
-              children: [
-                {
-                  code: "about",
-                  menu_url: "views/about",
-                  access_permissions: '["about"]',
-                  children: [],
-                  menu_name: "测试1",
-                  id: "@id",
-                },
-                {
-                  code: "home",
-                  menu_url: "views/home",
-                  access_permissions: '["home"]',
-                  children: [],
-                  menu_name: "测试2",
-                  id: "@id",
-                },
-              ],
-            },
-          ],
+          permission: {
+            menus: [
+              "userManage",
+              "roleList",
+              "permissionList",
+              "articleRanking",
+              "articleCreate",
+            ],
+            points: [
+              "distributeRole",
+              "importUser",
+              "removeUser",
+              "distributePermission",
+            ],
+          },
         },
+        message: "获取用户信息成功",
       };
     },
   },

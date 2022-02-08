@@ -1,13 +1,49 @@
 <template>
-
+  <n-space
+    align="center"
+    justify="space-between"
+    :wrap="false"
+    class="h-full px-4"
+  >
+    <div>logo</div>
+    <n-space align="center" justify="space-between" :wrap="false">
+      <n-dropdown
+        trigger="click"
+        @select="selectUserDropDown"
+        :options="options"
+      >
+        <n-avatar :src="userInfo.avatar" class="mt-3 cursor-pointer" />
+      </n-dropdown>
+      <n-icon size="24" class="mt-3 cursor-pointer">
+        <settings />
+      </n-icon>
+    </n-space>
+  </n-space>
 </template>
 
-<script>
+<script lang="ts">
 export default {
-  name: "Navbar"
-}
+  name: "Navbar",
+};
 </script>
-
-<style scoped>
-
-</style>
+<script setup lang="ts">
+import { Settings } from "@vicons/ionicons5";
+import { useUserStore } from "@/store/modules/user";
+const userStore = useUserStore();
+const userInfo = userStore.userInfo;
+const options = [
+  {
+    label: "退出登陆",
+    key: "loginOut",
+  },
+];
+const selectUserDropDown = (key: string) => {
+  switch (key) {
+    case "loginOut":
+      console.log(key);
+      userStore.loginOut();
+      break;
+  }
+};
+</script>
+<style scoped></style>

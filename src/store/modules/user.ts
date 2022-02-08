@@ -1,26 +1,16 @@
 import { defineStore } from "pinia";
-import { loginRequest } from "@/api/user";
-import * as T from "@/types/api/user";
+import { loginRequest, getUserInfoRequest } from "@/api/user";
+import type * as T from "@/types/api/user";
 import md5 from "md5";
-import { getItem, setItem } from "@/utils/storage";
+import { getItem, removeAllItem, setItem } from "@/utils/storage";
 import { TOKEN } from "@/constant";
 import router from "@/router/index";
-export interface IUserState {
-  token: string;
-  username: string;
-  welcome: string;
-  avatar: string;
-  permissions: any[];
-  info: any;
-}
+import { setTimeStamp } from "@/utils/auth";
+
 export const useUserStore = defineStore("user", {
-  state: (): IUserState => ({
+  state: (): T.IUserState => ({
     token: getItem(TOKEN) || "",
-    username: "",
-    welcome: "",
-    avatar: "",
-    permissions: [],
-    info: {},
+    userInfo: {},
   }),
   actions: {
     login(userInfo: T.login) {
@@ -32,23 +22,44 @@ export const useUserStore = defineStore("user", {
           password: md5(password),
         })
           .then((res) => {
-            resolve(res);
             const {
               code,
-              result: { token, username },
+              result: { token },
               type,
             } = data.value;
-            console.log(code, type);
             setItem(TOKEN, token);
             this.token = token;
-            this.username = username;
-            router.push({ name: "Layout" });
+            router.push("/");
+            // 保存登陆时间
+            setTimeStamp();
+            resolve(res);
           })
           .catch((error) => {
             reject(error);
             console.log(data.value);
           });
       });
+    },
+    async getUserInfo() {
+      const { data, run } = getUserInfoRequest;
+      try {
+        await run();
+        this.userInfo = data.value;
+        return data.value;
+      } catch (e) {
+        console.log(e);
+      }
+    },
+    async loginOut() {
+      setItem(TOKEN, "");
+      this.token = "";
+      this.userInfo = {};
+      removeAllItem();
+      try {
+        await router.push("/login");
+      } catch (e) {
+        console.log(e);
+      }
     },
   },
   persist: true,

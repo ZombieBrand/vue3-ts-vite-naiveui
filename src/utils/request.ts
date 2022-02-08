@@ -2,8 +2,14 @@ import axios, { AxiosRequestConfig } from "axios";
 import { TOKEN } from "@/constant";
 import { getItem } from "@/utils/storage";
 import type { TCustomOptions } from "@/types/request";
+import type { MessageType } from "naive-ui";
+import { isCheckTimeout } from "@/utils/auth";
+import { useUserStore } from "@/store/modules/user";
+import { setGlobalOptions } from "vue-request";
+setGlobalOptions({
+  manual: true,
+});
 const pendingMap = new Map();
-
 const LoadingInstance = {
   _count: 0,
 };
@@ -40,6 +46,12 @@ function myAxios(axiosConfig: AxiosRequestConfig, customOptions?: any) {
       }
       // 自动携带token
       if (getItem(TOKEN) && typeof window !== "undefined") {
+        if (isCheckTimeout()) {
+          const userStore = useUserStore();
+          userStore.loginOut();
+          window.$message("error", "token失效");
+          return Promise.reject(config);
+        }
         // @ts-ignore
         config.headers.Authorization = getItem(TOKEN);
       }
@@ -54,15 +66,17 @@ function myAxios(axiosConfig: AxiosRequestConfig, customOptions?: any) {
   // 响应拦截
   service.interceptors.response.use(
     (response) => {
+      console.log(response,custom_options,11111)
       removePending(response.config);
       custom_options.loading && closeLoading(custom_options, true); // 关闭loading
-
       if (
         custom_options.code_message_show &&
         response.data &&
-        response.data.code !== 200
+        response.data.code === 200
       ) {
-        window.$message('error',response.data.message)
+        window.$message("success", response.data.message);
+      } else {
+        custom_options.error_message_show && httpSuccessStatusHandle(response); // 处理错误状态码
         return Promise.reject(response.data); // code不等于200, 页面具体逻辑就不执行了
       }
 
@@ -87,8 +101,9 @@ export default myAxios;
  */
 function httpErrorStatusHandle(error: any) {
   // 处理被取消的请求
-  if (axios.isCancel(error))
+  if (axios.isCancel(error)) {
     return console.error("请求的重复请求：" + error.message);
+  }
   let message = "";
   if (error && error.response) {
     switch (error.response.status) {
@@ -133,15 +148,38 @@ function httpErrorStatusHandle(error: any) {
         break;
       default:
         message = "异常问题，请联系管理员！";
-        break;
     }
   }
-  if (error.message.includes("timeout")) message = "网络请求超时！";
-  if (error.message.includes("Network"))
+  if (error.message.includes("timeout")) {
+    message = "网络请求超时！";
+  }
+  if (error.message.includes("Network")) {
     message = window.navigator.onLine ? "服务端异常！" : "您断网了！";
-  window.$message('error',message)
+  }
+  window.$message("error", message);
 }
 
+/**
+ * http成功,业务状态提示处理
+ * @param response
+ */
+
+function httpSuccessStatusHandle(response: any) {
+  let message = "";
+  let messageStatus: MessageType = "success";
+  const userStore = useUserStore();
+  switch (response.data.code) {
+    case 401:
+      userStore.loginOut();
+      message = "账户在其他设备登陆!";
+      messageStatus = "warning";
+      break;
+    default:
+      message = `异常问题${response.data.code}，请联系管理员！`;
+      messageStatus = "error";
+  }
+  window.$message(messageStatus, message);
+}
 /**
  * 关闭Loading层实例
  * @param {*} _options

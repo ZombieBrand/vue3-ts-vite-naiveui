@@ -98,8 +98,8 @@ const loginSubmit = () => {
       try {
         await userStore.login(loginData);
         window.$message('success',`${t("message.user.successLogin")}`)
-
       } catch (e) {
+        console.log(e)
         window.$message('error',`${t("message.user.errorLogin")}`)
       }
     } else {

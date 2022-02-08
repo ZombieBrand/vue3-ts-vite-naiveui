@@ -10,7 +10,6 @@ const language = computed(() => {
 const dataLanguage = computed(() => {
   return locale.value === "zh" ? dateZhCN : dateEnUS;
 });
-
 </script>
 <script lang="ts">
 export default {
@@ -23,7 +22,9 @@ export default {
     :locale="language"
     :date-locale="dataLanguage"
     :theme-overrides="{ common: { fontWeightStrong: '600' } }"
+    class="w-full h-full"
   >
+    <n-global-style />
     <AppProvider>
       <router-view />
     </AppProvider>
