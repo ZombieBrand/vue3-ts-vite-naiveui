@@ -2,6 +2,10 @@ import { defineStore } from "pinia";
 import { useUserStore } from "./modules/user";
 export const useStore = defineStore("main", {
   state: () => ({
+    userInfo:()=>{
+      const userStore = useUserStore()
+      return userStore.userInfo
+    }
   }),
   getters:{
     token:()=>{

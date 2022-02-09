@@ -22,7 +22,7 @@ export default {
 import { computed, ref} from "vue";
 import Menu from './Menu.vue'
 import exportScss from "@/styles/export.module.scss";
-const collapsed = ref(true)
+const collapsed = ref(false)
 const sideCollapsedWidth = computed(() => {
   return parseFloat(exportScss["sideCollapsedWidth"]);
 });

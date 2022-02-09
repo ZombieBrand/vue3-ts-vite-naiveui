@@ -48,6 +48,7 @@ export const useUserStore = defineStore("user", {
         return data.value;
       } catch (e) {
         console.log(e);
+        window.$message('error','获取用户信息失败!')
       }
     },
     async loginOut() {
@@ -59,6 +60,7 @@ export const useUserStore = defineStore("user", {
         await router.push("/login");
       } catch (e) {
         console.log(e);
+        window.$message('error','退出登陆失败!')
       }
     },
   },

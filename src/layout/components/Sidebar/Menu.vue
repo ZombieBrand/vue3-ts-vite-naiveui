@@ -1,128 +1,80 @@
 <template>
   <n-menu
-      :mode="menuMode"
-      :collapsed="props.collapsed"
-      :collapsed-width="menuCollapsedWidth"
-      :collapsed-icon-size="menuCollapsedIconSize"
-      :options="menuOptions"
+    :mode="menuMode"
+    :collapsed="props.collapsed"
+    :collapsed-width="menuCollapsedWidth"
+    :collapsed-icon-size="menuCollapsedIconSize"
+    :options="menuOptions"
+    @update:value="clickMenuItem"
   />
 </template>
 
 <script lang="ts">
 export default {
-  name: "Menu"
-}
+  name: "Menu",
+};
 </script>
 <script lang="ts" setup>
 import exportScss from "@/styles/export.module.scss";
-import { h, computed, ref } from "vue";
-import { NIcon } from "naive-ui";
-import {
-  BookOutline as BookIcon,
-  PersonOutline as PersonIcon,
-  WineOutline as WineIcon,
-} from "@vicons/ionicons5";
+import { computed, ref } from "vue";
+import { useI18n } from "vue-i18n";
+const { t } = useI18n();
 const props = defineProps({
-  collapsed:{
+  collapsed: {
     type: Boolean,
-    default: true
-  }
-})
+    default: false,
+  },
+});
 const menuMode = ref("vertical");
 /*----------样式参数Start--------------*/
 const menuCollapsedIconSize = computed(() => {
   return menuMode.value !== "horizontal"
-      ? parseFloat(exportScss["menuCollapsedIconSize"])
-      : "";
+    ? parseFloat(exportScss["menuCollapsedIconSize"])
+    : "";
 });
 const menuCollapsedWidth = computed(() => {
   return menuMode.value !== "horizontal"
-      ? parseFloat(exportScss["menuCollapsedWidth"])
-      : "";
+    ? parseFloat(exportScss["menuCollapsedWidth"])
+    : "";
 });
 
-
 /*----------样式参数End----------------*/
-
-function renderIcon(icon: any) {
-  return () => h(NIcon, null, { default: () => h(icon) });
+import { useRouter } from "vue-router";
+import type { RouteRecordRaw } from "vue-router";
+import { generateMenus, filterRouters } from "@/utils/route";
+const router = useRouter();
+const routes = computed(() => {
+  const filterRoutes = filterRouters(router.getRoutes());
+  return generateMenus(filterRoutes);
+});
+console.log(routes.value, "routes");
+// 点击菜单
+function clickMenuItem(key: string) {
+  if (/http(s)?:/.test(key)) {
+    window.open(key);
+  } else {
+    router.push({ name: key });
+  }
 }
 
-const menuOptions = [
-  {
-    label: "且听风吟",
-    key: "hear-the-wind-sing",
-    icon: renderIcon(BookIcon),
-  },
-  {
-    label: "1973年的弹珠玩具",
-    key: "pinball-1973",
-    icon: renderIcon(BookIcon),
-    disabled: true,
-    children: [
-      {
-        label: "鼠",
-        key: "rat",
-      },
-    ],
-  },
-  {
-    label: "寻羊冒险记",
-    key: "a-wild-sheep-chase",
-    disabled: true,
-    icon: renderIcon(BookIcon),
-  },
-  {
-    label: "舞，舞，舞",
-    key: "dance-dance-dance",
-    icon: renderIcon(BookIcon),
-    children: [
-      {
-        type: "group",
-        label: "人物",
-        key: "people",
-        children: [
-          {
-            label: "叙事者",
-            key: "narrator",
-            icon: renderIcon(PersonIcon),
-          },
-          {
-            label: "羊男",
-            key: "sheep-man",
-            icon: renderIcon(PersonIcon),
-          },
-        ],
-      },
-      {
-        label: "饮品",
-        key: "beverage",
-        icon: renderIcon(WineIcon),
-        children: [
-          {
-            label: "威士忌",
-            key: "whisky",
-          },
-        ],
-      },
-      {
-        label: "食物",
-        key: "food",
-        children: [
-          {
-            label: "三明治",
-            key: "sandwich",
-          },
-        ],
-      },
-      {
-        label: "过去增多，未来减少",
-        key: "the-past-increases-the-future-recedes",
-      },
-    ],
-  },
-];
-</script>
-<style scoped>
+const formatMenuOptions = (route: RouteRecordRaw[]) => {
+  return route.map((item) => {
+    const routeTemplate = {
+      label: item.meta ? t(`route.${item.meta.title}`) : "",
+      key: item.path,
+      icon: item.meta?.icon,
+      children: null,
+    };
+    if (item.children && item.children.length > 0) {
+      // @ts-ignore
+      routeTemplate.children = formatMenuOptions(item.children);
+    }
+    return routeTemplate;
+  });
+};
 
-</style>
+const menuOptions = computed(() => {
+  return formatMenuOptions(routes.value);
+});
+</script>
+<style scoped></style>

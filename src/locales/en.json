@@ -1,4 +1,17 @@
 {
+  "route": {
+    "profile": "profile",
+    "User": "User",
+    "UserManage": "UserManage",
+    "UserRole": "UserRole",
+    "UserPermission": "UserPermission",
+    "UserInfo": "UserInfo",
+    "UserImport": "UserImport",
+    "Article": "Article",
+    "ArticleRanking": "ArticleRanking",
+    "ArticleCreate": "ArticleCreate",
+    "ArticleEditor": "ArticleEditor"
+  },
   "global": {
     "pleaseEnter": "Please Enter",
     "pleaseSelect": "Please Select"

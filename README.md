@@ -76,6 +76,9 @@ console.log(exportScss); // 对应的变量值
 挂载方法: `window.$message = useMessage()`
 使用方法: `window.$message('error',response.data.message)`
 
+## Token 
+采用JWT鉴权,处理方式包含(动态token,刷新token,时效token),此项目采用时效Token.
+
 ## Recommended IDE Setup
 
 - [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)

@@ -1,4 +1,17 @@
 {
+  "route": {
+    "profile": "个人中心",
+    "User": "用户",
+    "UserManage": "用户管理",
+    "UserRole": "用户角色",
+    "UserPermission": "用户权限",
+    "UserInfo": "用户信息",
+    "UserImport": "用户导入",
+    "Article": "文章",
+    "ArticleRanking": "文章排名",
+    "ArticleCreate": "文章创建",
+    "ArticleEditor": "文章编辑"
+  },
   "global": {
     "pleaseEnter": "请输入",
     "pleaseSelect": "请选择"

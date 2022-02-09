@@ -1,8 +1,10 @@
 <template>
   <n-layout :embedded="true" content-style="padding: 12px;">
-    <Transition name="zoom-fade" mode="out-in">
-      <router-view></router-view>
-    </Transition>
+    <router-view v-slot="{ Component }">
+      <transition name="zoom-fade" mode="out-in">
+        <component :is="Component" />
+      </transition>
+    </router-view>
   </n-layout>
 </template>
 

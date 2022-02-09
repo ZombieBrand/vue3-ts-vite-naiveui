@@ -5,6 +5,8 @@ import {
   RouterOptions,
 } from "vue-router";
 import Layout from "@/layout/index.vue";
+import { BookOutline as BookIcon } from "@vicons/ionicons5";
+import { renderIcon } from "@/utils";
 // 扩展hidden router受到RouteRecordRaw类型约束
 export type AppRouteRecordRaw = RouteRecordRaw & {
   hidden?: boolean;
@@ -19,12 +21,6 @@ const publicRoutes = [
     path: "/login",
     name: "Login",
     component: () => import("@/views/login/index.vue"),
-    meta: {
-      // meta里是模糊类型所以任意增加自定义属性无需基于RouteRecordRaw扩展
-      title: "login",
-      icon: "BookIcon",
-      roles: ["admin"],
-    },
   },
   {
     path: "/",
@@ -37,7 +33,7 @@ const publicRoutes = [
         component: () => import("@/views/profile/index.vue"),
         meta: {
           title: "profile",
-          icon: "BookIcon",
+          icon: renderIcon(BookIcon),
         },
       },
       // 404
@@ -64,7 +60,7 @@ const privateRouter = [
     redirect: "/user/manage",
     meta: {
       title: "User",
-      icon: "BookIcon",
+      icon: renderIcon(BookIcon)
     },
     children: [
       {
@@ -73,7 +69,7 @@ const privateRouter = [
         component: () => import("@/views/user-manage/index.vue"),
         meta: {
           title: "UserManage",
-          icon: "BookIcon",
+          icon: renderIcon(BookIcon),
         },
       },
       {
@@ -82,7 +78,7 @@ const privateRouter = [
         component: () => import("@/views/role-list/index.vue"),
         meta: {
           title: "UserRole",
-          icon: "BookIcon",
+          icon: renderIcon(BookIcon),
         },
       },
       {
@@ -91,7 +87,7 @@ const privateRouter = [
         component: () => import("@/views/permission-list/index.vue"),
         meta: {
           title: "UserPermission",
-          icon: "BookIcon",
+          icon: renderIcon(BookIcon),
         },
       },
       {
@@ -100,7 +96,7 @@ const privateRouter = [
         component: () => import("@/views/user-info/index.vue"),
         meta: {
           title: "UserInfo",
-          icon: "BookIcon",
+          icon: renderIcon(BookIcon),
         },
       },
       {
@@ -109,7 +105,7 @@ const privateRouter = [
         component: () => import("@/views/import/index.vue"),
         meta: {
           title: "UserImport",
-          icon: "BookIcon",
+          icon: renderIcon(BookIcon),
         },
       },
     ],
@@ -120,7 +116,7 @@ const privateRouter = [
     redirect: "/article/ranking",
     meta: {
       title: "Article",
-      icon: "BookIcon",
+      icon: renderIcon(BookIcon),
     },
     children: [
       {
@@ -129,16 +125,13 @@ const privateRouter = [
         component: () => import("@/views/article-ranking/index.vue"),
         meta: {
           title: "ArticleRanking",
-          icon: "BookIcon",
+          icon: renderIcon(BookIcon),
         },
       },
       {
         path: "/article/:id",
         name: "ArticleDetail",
         component: () => import("@/views/article-detail/index.vue"),
-        meta: {
-          title: "ArticleDetail",
-        },
       },
       {
         path: "/article/create",
@@ -146,7 +139,7 @@ const privateRouter = [
         component: () => import("@/views/article-create/index.vue"),
         meta: {
           title: "ArticleCreate",
-          icon: "BookIcon",
+          icon: renderIcon(BookIcon),
         },
       },
       {
@@ -163,5 +156,5 @@ const privateRouter = [
 
 export default createRouter(<RouterOptions>{
   history: createWebHashHistory(),
-  routes: [...publicRoutes,...privateRouter] as AppRouteRecordRaw[], // 扩展后的ts类型进行断言
+  routes: [...publicRoutes, ...privateRouter] as AppRouteRecordRaw[], // 扩展后的ts类型进行断言
 });
