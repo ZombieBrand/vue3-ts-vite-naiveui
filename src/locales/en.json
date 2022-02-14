@@ -1,16 +1,17 @@
 {
   "route": {
-    "profile": "profile",
+    "profile": "Profile",
     "User": "User",
-    "UserManage": "UserManage",
-    "UserRole": "UserRole",
-    "UserPermission": "UserPermission",
-    "UserInfo": "UserInfo",
-    "UserImport": "UserImport",
+    "UserManage": "User Manage",
+    "UserRole": "User Role",
+    "UserPermission": "User Permission",
+    "UserInfo": "User Info",
+    "UserImport": "User Import",
     "Article": "Article",
-    "ArticleRanking": "ArticleRanking",
-    "ArticleCreate": "ArticleCreate",
-    "ArticleEditor": "ArticleEditor"
+    "ArticleRanking": "Article Ranking",
+    "ArticleCreate": "Article Create",
+    "ArticleEditor": "Article Editor",
+    "ArticleDetail": "Article Detail"
   },
   "global": {
     "pleaseEnter": "Please Enter",

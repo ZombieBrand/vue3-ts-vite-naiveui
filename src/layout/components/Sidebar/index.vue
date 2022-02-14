@@ -8,6 +8,7 @@
     :collapsed="collapsed"
     @collapse="collapsed = true"
     @expand="collapsed = false"
+    :bordered="true"
   >
     <Menu :collapsed="collapsed"></Menu>
   </n-layout-sider>

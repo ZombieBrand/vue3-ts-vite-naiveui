@@ -5,7 +5,18 @@ import {
   RouterOptions,
 } from "vue-router";
 import Layout from "@/layout/index.vue";
-import { BookOutline as BookIcon } from "@vicons/ionicons5";
+import {
+  BookOutline as BookIcon,
+  People,
+  PersonAdd,
+  Accessibility,
+  LockClosed,
+  InformationCircle,
+  Person,
+  PersonCircle,
+  Flame,
+  AddCircle,
+} from "@vicons/ionicons5";
 import { renderIcon } from "@/utils";
 // 扩展hidden router受到RouteRecordRaw类型约束
 export type AppRouteRecordRaw = RouteRecordRaw & {
@@ -33,7 +44,7 @@ const publicRoutes = [
         component: () => import("@/views/profile/index.vue"),
         meta: {
           title: "profile",
-          icon: renderIcon(BookIcon),
+          icon: renderIcon(PersonCircle),
         },
       },
       // 404
@@ -60,7 +71,7 @@ const privateRouter = [
     redirect: "/user/manage",
     meta: {
       title: "User",
-      icon: renderIcon(BookIcon)
+      icon: renderIcon(People),
     },
     children: [
       {
@@ -69,7 +80,7 @@ const privateRouter = [
         component: () => import("@/views/user-manage/index.vue"),
         meta: {
           title: "UserManage",
-          icon: renderIcon(BookIcon),
+          icon: renderIcon(Person),
         },
       },
       {
@@ -78,7 +89,7 @@ const privateRouter = [
         component: () => import("@/views/role-list/index.vue"),
         meta: {
           title: "UserRole",
-          icon: renderIcon(BookIcon),
+          icon: renderIcon(Accessibility),
         },
       },
       {
@@ -87,7 +98,7 @@ const privateRouter = [
         component: () => import("@/views/permission-list/index.vue"),
         meta: {
           title: "UserPermission",
-          icon: renderIcon(BookIcon),
+          icon: renderIcon(LockClosed),
         },
       },
       {
@@ -96,7 +107,7 @@ const privateRouter = [
         component: () => import("@/views/user-info/index.vue"),
         meta: {
           title: "UserInfo",
-          icon: renderIcon(BookIcon),
+          icon: renderIcon(InformationCircle),
         },
       },
       {
@@ -105,7 +116,7 @@ const privateRouter = [
         component: () => import("@/views/import/index.vue"),
         meta: {
           title: "UserImport",
-          icon: renderIcon(BookIcon),
+          icon: renderIcon(PersonAdd),
         },
       },
     ],
@@ -125,13 +136,16 @@ const privateRouter = [
         component: () => import("@/views/article-ranking/index.vue"),
         meta: {
           title: "ArticleRanking",
-          icon: renderIcon(BookIcon),
+          icon: renderIcon(Flame),
         },
       },
       {
         path: "/article/:id",
         name: "ArticleDetail",
         component: () => import("@/views/article-detail/index.vue"),
+        meta: {
+          title: "ArticleDetail",
+        },
       },
       {
         path: "/article/create",
@@ -139,7 +153,7 @@ const privateRouter = [
         component: () => import("@/views/article-create/index.vue"),
         meta: {
           title: "ArticleCreate",
-          icon: renderIcon(BookIcon),
+          icon: renderIcon(AddCircle),
         },
       },
       {

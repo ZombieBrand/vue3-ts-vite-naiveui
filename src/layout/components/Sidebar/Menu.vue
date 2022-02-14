@@ -47,13 +47,12 @@ const routes = computed(() => {
   const filterRoutes = filterRouters(router.getRoutes());
   return generateMenus(filterRoutes);
 });
-console.log(routes.value, "routes");
 // 点击菜单
 function clickMenuItem(key: string) {
   if (/http(s)?:/.test(key)) {
     window.open(key);
   } else {
-    router.push({ name: key });
+    router.push(key);
   }
 }
 

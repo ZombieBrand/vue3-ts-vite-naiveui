@@ -10,7 +10,8 @@
     "Article": "文章",
     "ArticleRanking": "文章排名",
     "ArticleCreate": "文章创建",
-    "ArticleEditor": "文章编辑"
+    "ArticleEditor": "文章编辑",
+    "ArticleDetail": "文章详情"
   },
   "global": {
     "pleaseEnter": "请输入",

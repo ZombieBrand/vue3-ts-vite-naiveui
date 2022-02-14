@@ -1,12 +1,12 @@
 <template>
   <div class="app-wrapper">
     <n-layout position="absolute">
-      <n-layout-header :bordered="true" :style="{height: navHeight}">
+      <n-layout-header :bordered="true" :style="{ height: navHeight }">
         <Navbar />
       </n-layout-header>
-      <n-layout position="absolute" :has-sider="true" :style="{top: mainTop}">
+      <n-layout position="absolute" :has-sider="true" :style="{ top: mainTop }">
         <Sidebar />
-          <AppMain />
+        <AppMain />
       </n-layout>
     </n-layout>
   </div>
@@ -16,10 +16,10 @@
 import Navbar from "@/layout/components/Navbar.vue";
 import Sidebar from "@/layout/components/Sidebar/index.vue";
 import AppMain from "@/layout/components/AppMain.vue";
-import exportScss from '@/styles/export.module.scss'
+import exportScss from "@/styles/export.module.scss";
 import { computed } from "vue";
-const navHeight = computed(()=>exportScss['navHeight'])
-const mainTop = computed(()=>exportScss['mainTop'])
+const navHeight = computed(() => exportScss["navHeight"]);
+const mainTop = computed(() => exportScss["mainTop"]);
 </script>
 <script lang="ts">
 export default {
