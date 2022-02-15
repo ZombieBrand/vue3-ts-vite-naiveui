@@ -5,7 +5,7 @@
     :wrap="false"
     class="h-full px-4"
   >
-    <div>logo</div>
+    <NavLogo></NavLogo>
     <n-space align="center" justify="space-between" :wrap="false">
       <n-dropdown
         trigger="click"
@@ -29,6 +29,7 @@ export default {
 <script setup lang="ts">
 import { Settings } from "@vicons/ionicons5";
 import { useUserStore } from "@/store/modules/user";
+import NavLogo from "@/layout/components/NavLogo.vue";
 const userStore = useUserStore();
 const userInfo = userStore.userInfo;
 const options = [
@@ -40,7 +41,6 @@ const options = [
 const selectUserDropDown = (key: string) => {
   switch (key) {
     case "loginOut":
-      console.log(key);
       userStore.loginOut();
       break;
   }

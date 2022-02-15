@@ -33,13 +33,7 @@ export default defineConfig(({ mode, command }) => {
         include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
       }),
       // gzip压缩 生产环境生成 .gz 文件
-      viteCompression({
-        verbose: true,
-        disable: false,
-        threshold: 10239,
-        algorithm: "gzip",
-        ext: ".gz",
-      }),
+      viteCompression(),
     ],
     // 配置别名
     resolve: {

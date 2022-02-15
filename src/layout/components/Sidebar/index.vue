@@ -6,8 +6,8 @@
     :width="sideWidth"
     :native-scrollbar="false"
     :collapsed="collapsed"
-    @collapse="collapsed = true"
-    @expand="collapsed = false"
+    @collapse="toggleCollapse(true)"
+    @expand="toggleCollapse(false)"
     :bordered="true"
   >
     <Menu :collapsed="collapsed"></Menu>
@@ -20,10 +20,19 @@ export default {
 };
 </script>
 <script setup lang="ts">
-import { computed, ref} from "vue";
-import Menu from './Menu.vue'
+import { computed } from "vue";
+import { useAppStore } from "@/store/modules/app";
+import Menu from "./Menu.vue";
 import exportScss from "@/styles/export.module.scss";
-const collapsed = ref(false)
+const appStore = useAppStore();
+
+// 菜单折叠状态
+const collapsed = computed(() => appStore.sideMenuCollapse);
+const toggleCollapse = (status: boolean) => {
+  appStore.setMenuCollapse(status);
+};
+
+// 菜单样式
 const sideCollapsedWidth = computed(() => {
   return parseFloat(exportScss["sideCollapsedWidth"]);
 });
