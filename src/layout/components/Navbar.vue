@@ -1,9 +1,6 @@
 <template>
-  <n-space
-    align="center"
-    justify="space-between"
-    :wrap="false"
-    class="h-full px-4"
+  <div
+    class="flex flex-nowrap items-center justify-between cursor-pointer w-full h-full px-4"
   >
     <NavLogo></NavLogo>
     <n-space align="center" justify="space-between" :wrap="false">
@@ -18,7 +15,7 @@
         <settings />
       </n-icon>
     </n-space>
-  </n-space>
+  </div>
 </template>
 
 <script lang="ts">

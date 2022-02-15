@@ -1,7 +1,7 @@
 <template>
   <div class="app-wrapper">
     <n-layout position="absolute">
-      <n-layout-header :bordered="true" :style="{ height: navHeight }">
+      <n-layout-header :bordered="true">
         <Navbar />
       </n-layout-header>
       <n-layout position="absolute" :has-sider="true" :style="{ top: mainTop }">
