@@ -41,7 +41,6 @@ export default class AsyncQueue {
       }
       // 当前是否有任务在执行,没有则取出队列中第一个任务执行
       if (!this.running) {
-        console.log(this.queue.length);
         this.queue.shift()?.()
       }
     })

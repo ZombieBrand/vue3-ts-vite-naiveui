@@ -2,7 +2,7 @@
   <div class="app-wrapper">
     <n-layout position="absolute">
       <n-layout-header :bordered="true">
-        <Navbar />
+        <Navbar :style="{ height: navHeight }" />
       </n-layout-header>
       <n-layout position="absolute" :has-sider="true" :style="{ top: mainTop }">
         <Sidebar />

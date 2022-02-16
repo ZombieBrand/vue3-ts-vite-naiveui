@@ -24,45 +24,41 @@ export default [
     url: "/api/getUserInfo",
     method: "get",
     response: () => {
-      return {
-        code: 200,
-        data: {
-          role: [
-            {
-              id: "1",
-              title: "超级管理员",
-            },
-          ],
-          title: "@name",
-          username: "@cname",
-          age: "@integer(10-100)",
-          _id: "@id",
-          id: "0",
-          avatar: "@image",
-          city: "@city",
-          country: "@county(true)",
-          province: "@province",
-          mobile_phone: Mock.Random.integer(),
-          email: "@email",
-          region: "@region",
-          permission: {
-            menus: [
-              "userManage",
-              "roleList",
-              "permissionList",
-              "articleRanking",
-              "articleCreate",
-            ],
-            points: [
-              "distributeRole",
-              "importUser",
-              "removeUser",
-              "distributePermission",
-            ],
+      return resultSuccess( {
+        role: [
+          {
+            id: "1",
+            title: "超级管理员",
           },
+        ],
+        title: "@name",
+        username: "@cname",
+        age: "@integer(10-100)",
+        _id: "@id",
+        id: "0",
+        avatar: "@image",
+        city: "@city",
+        country: "@county(true)",
+        province: "@province",
+        mobile_phone: Mock.Random.integer(),
+        email: "@email",
+        region: "@region",
+        permission: {
+          menus: [
+            "userManage",
+            "roleList",
+            "permissionList",
+            "articleRanking",
+            "articleCreate",
+          ],
+          points: [
+            "distributeRole",
+            "importUser",
+            "removeUser",
+            "distributePermission",
+          ],
         },
-        message: "获取用户信息成功",
-      };
+      },{  message: "获取用户信息成功",});
     },
   },
 ] as MockMethod[];

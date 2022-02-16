@@ -1,18 +1,14 @@
 <template>
-  <div @click="goHome" class="flex items-center cursor-pointer h-full">
-    <div class="self-center mr-2">
+  <div v-once @click="goHome" class="flex justify-center items-center cursor-pointer h-full space-x-4">
       <n-image
           :preview-disabled="true"
-          class="w-10 self-center"
-          src="https://07akioni.oss-cn-beijing.aliyuncs.com/07akioni.jpeg"
+          class="w-10 align-middle"
+          :src="logoImg"
       />
-    </div>
-    <div>
       <span
           class="text-2xl font-sans font-bold"
-      >LogoText</span
+      >Zombie</span
       >
-    </div>
   </div>
 </template>
 
@@ -23,6 +19,7 @@ export default {
 </script>
 <script setup lang="ts">
 import { useRouter } from "vue-router";
+import logoImg from '@/assets/images.jpeg'
 const router = useRouter();
 const goHome = () => {
   router.push("/");

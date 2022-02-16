@@ -1,20 +1,24 @@
 <template>
   <div
-    class="flex flex-nowrap items-center justify-between cursor-pointer w-full h-full px-4"
+    class="flex flex-nowrap items-center justify-between cursor-pointer"
   >
-    <NavLogo></NavLogo>
-    <n-space align="center" justify="space-between" :wrap="false">
+    <div class="flex items-center">
+      <NavLogo :style="{ width: sideWidth }"></NavLogo>
+      <Breadcrumb class="px-4"></Breadcrumb>
+    </div>
+
+    <div class="flex flex-nowrap items-center justify-between space-x-3 px-4">
       <n-dropdown
         trigger="click"
         @select="selectUserDropDown"
         :options="options"
       >
-        <n-avatar :src="userInfo.avatar" class="mt-3 cursor-pointer" />
+        <n-avatar :src="userInfo.avatar" class="cursor-pointer" />
       </n-dropdown>
-      <n-icon size="24" class="mt-3 cursor-pointer">
+      <n-icon size="24" class="cursor-pointer">
         <settings />
       </n-icon>
-    </n-space>
+    </div>
   </div>
 </template>
 
@@ -26,7 +30,11 @@ export default {
 <script setup lang="ts">
 import { Settings } from "@vicons/ionicons5";
 import { useUserStore } from "@/store/modules/user";
+import Breadcrumb from "@/components/Breadcrumb/index.vue";
 import NavLogo from "@/layout/components/NavLogo.vue";
+import { computed } from "vue";
+import exportScss from "@/styles/export.module.scss";
+const sideWidth = computed(() => exportScss["sideWidth"]);
 const userStore = useUserStore();
 const userInfo = userStore.userInfo;
 const options = [

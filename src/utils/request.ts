@@ -66,7 +66,6 @@ function myAxios(axiosConfig: AxiosRequestConfig, customOptions?: any) {
   // 响应拦截
   service.interceptors.response.use(
     (response) => {
-      console.log(response,custom_options,11111)
       removePending(response.config);
       custom_options.loading && closeLoading(custom_options, true); // 关闭loading
       if (

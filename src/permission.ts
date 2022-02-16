@@ -16,7 +16,7 @@ router.beforeEach(async (to, from, next) => {
       next("/");
     } else {
       // 判断用户资料是否存在,如果不存在,则获取用户信息
-      if (!hasUserInfo) {
+      if (hasUserInfo) {
         const userStore = useUserStore();
         const result = await userStore.getUserInfo();
         // TODO:路由前置守卫获取用户信息结果未处理

@@ -44,11 +44,11 @@ export const useUserStore = defineStore("user", {
       const { data, run } = getUserInfoRequest;
       try {
         await run();
-        this.userInfo = data.value;
-        return data.value;
+        this.userInfo = data.value.result;
+        return data.value.result;
       } catch (e) {
         console.log(e);
-        window.$message('error','获取用户信息失败!')
+        window.$message("error", "获取用户信息失败!");
       }
     },
     async loginOut() {
@@ -60,7 +60,7 @@ export const useUserStore = defineStore("user", {
         await router.push("/login");
       } catch (e) {
         console.log(e);
-        window.$message('error','退出登陆失败!')
+        window.$message("error", "退出登陆失败!");
       }
     },
   },
