@@ -57,11 +57,11 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, ref, computed,onMounted } from "vue";
+import { reactive, ref, computed, onMounted } from "vue";
 import { useI18n } from "vue-i18n";
 import SwitchLanguage from "@/components/SwitchLanguage.vue";
 import { useUserStore } from "@/store/modules/user";
-import {removeAllItem} from "@/utils/storage";
+import { removeAllItem } from "@/utils/storage";
 const userStore = useUserStore();
 const { t } = useI18n();
 const formRef = ref();
@@ -88,19 +88,19 @@ const rules = ref({
     },
   ],
 });
-onMounted(()=>{
-  removeAllItem()
-})
+onMounted(() => {
+  removeAllItem();
+});
 // 登录动作
 const loginSubmit = () => {
   formRef.value.validate(async (errors: boolean) => {
     if (!errors) {
       try {
         await userStore.login(loginData);
-        window.$message('success',`${t("message.user.successLogin")}`)
+        window.$message("success", `${t("message.user.successLogin")}`);
       } catch (e) {
-        console.log(e)
-        window.$message('error',`${t("message.user.errorLogin")}`)
+        console.log(e);
+        window.$message("error", `${t("message.user.errorLogin")}`);
       }
     } else {
       console.log(errors);

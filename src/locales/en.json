@@ -1,5 +1,6 @@
 {
   "route": {
+    "home":"Home Page",
     "profile": "Profile",
     "User": "User",
     "UserManage": "User Manage",

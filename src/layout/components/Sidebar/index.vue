@@ -10,7 +10,7 @@
     @expand="toggleCollapse(false)"
     :bordered="true"
   >
-    <Menu :collapsed="collapsed"></Menu>
+    <Menu :collapsed="collapsed" />
   </n-layout-sider>
 </template>
 

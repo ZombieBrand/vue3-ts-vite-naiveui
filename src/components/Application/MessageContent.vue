@@ -26,7 +26,7 @@ export default {
         msgReactive = null;
       }
     };
-    let timer: NodeJS.Timeout | null = null
+    let timer: NodeJS.Timeout | null = null;
     const notifyQueue = new AsyncQueue();
     window.$message = (
       type: MessageType,
@@ -49,12 +49,12 @@ export default {
           true
         )
         .finally(() => {
-          if(timer){
-            clearTimeout(timer)
+          if (timer) {
+            clearTimeout(timer);
           }
           timer = setTimeout(() => {
             removeMessage();
-            timer = null
+            timer = null;
           }, duration);
           return msgReactive;
         });

@@ -17,10 +17,10 @@ export function setTimeStamp() {
 /**
  * 是否超时
  */
-export function isCheckTimeout(){
-    // 当前时间
-    const currentTime = Date.now()
-    // 缓存时间
-    const timeStamp = getTimeStamp()
-    return currentTime - timeStamp > TOKEN_TIMEOUT_VALUE
+export function isCheckTimeout() {
+  // 当前时间
+  const currentTime = Date.now();
+  // 缓存时间
+  const timeStamp = getTimeStamp();
+  return currentTime - timeStamp > TOKEN_TIMEOUT_VALUE;
 }

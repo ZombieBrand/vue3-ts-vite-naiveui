@@ -5,8 +5,8 @@ export const setItem = (key: string, value: object | string | number) => {
   if (typeof value === "object") {
     value = JSON.stringify(value);
   }
-  if(typeof value === 'number'){
-    value = value.toString()
+  if (typeof value === "number") {
+    value = value.toString();
   }
   localStorage.setItem(key, value);
 };

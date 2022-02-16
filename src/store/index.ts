@@ -19,9 +19,7 @@ export const useStore = defineStore("main", {
       const userStore = useUserStore();
       return JSON.stringify(userStore.userInfo) !== "{}";
     },
-    cssVar: () => {
-
-    },
+    cssVar: () => {},
   },
   persist: true,
 });

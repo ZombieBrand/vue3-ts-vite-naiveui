@@ -1,5 +1,6 @@
 {
   "route": {
+    "home":"首页",
     "profile": "个人中心",
     "User": "用户",
     "UserManage": "用户管理",

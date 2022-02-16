@@ -1,5 +1,3 @@
-import Mock from "mockjs";
-
 export interface login {
   username: string;
   password: string;

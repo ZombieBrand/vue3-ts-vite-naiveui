@@ -7,7 +7,7 @@ import path from "path-browserify"; // 解决vite客户端无法使用nodejs->pa
  */
 const getChildrenRoutes = (routes: RouteRecordRaw[]) => {
   let result: RouteRecordRaw[] = [];
-  for (let route of routes) {
+  for (const route of routes) {
     if (route.children && route.children.length > 0) {
       result = [...result, ...route.children];
     }
@@ -41,7 +41,7 @@ const isNull = (data: RouteRecordRaw["children"] | RouteRecordRaw["meta"]) => {
 export const generateMenus = (routes: RouteRecordRaw[], basePath = "") => {
   let result: RouteRecordRaw[] = [];
   // 遍历路由表
-  for (let item of routes) {
+  for (const item of routes) {
     // 不存在children 不存在meta 直接return
     if (isNull(item.children) && isNull(item.meta)) {
       continue;

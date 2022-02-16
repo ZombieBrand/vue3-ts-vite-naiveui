@@ -23,9 +23,7 @@ export const useUserStore = defineStore("user", {
         })
           .then((res) => {
             const {
-              code,
               result: { token },
-              type,
             } = data.value;
             setItem(TOKEN, token);
             this.token = token;

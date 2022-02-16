@@ -20,7 +20,7 @@ router.beforeEach(async (to, from, next) => {
         const userStore = useUserStore();
         const result = await userStore.getUserInfo();
         // TODO:路由前置守卫获取用户信息结果未处理
-        console.log({ result },11111);
+        console.log({ result }, 11111);
       }
       next();
     }

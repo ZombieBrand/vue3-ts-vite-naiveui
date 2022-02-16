@@ -1,5 +1,5 @@
-import { h } from 'vue';
-import { NIcon } from 'naive-ui';
+import { h } from "vue";
+import { NIcon } from "naive-ui";
 /**
  * render 图标
  * */

@@ -1,10 +1,8 @@
 <template>
-  <div
-    class="flex flex-nowrap items-center justify-between cursor-pointer"
-  >
+  <div class="flex flex-nowrap items-center justify-between">
     <div class="flex items-center">
-      <NavLogo :style="{ width: sideWidth }"></NavLogo>
-      <Breadcrumb class="px-4"></Breadcrumb>
+      <NavLogo :style="{ width: sideWidth }" />
+      <Breadcrumb class="px-4" />
     </div>
 
     <div class="flex flex-nowrap items-center justify-between space-x-3 px-4">
