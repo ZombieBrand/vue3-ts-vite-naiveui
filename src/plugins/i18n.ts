@@ -11,7 +11,7 @@ const install = (app: App) => {
     legacy: false,
     locale,
     fallbackLocale: "zh",
-    globalInjection: true, //这里设置true后全局组件可以直接使用$t无需额外注册组件
+    globalInjection: true, //这里设置true后全局组件可以直接使用$t无需额外注册组件 set
     messages,
   });
   app.use(i18n);

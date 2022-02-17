@@ -72,6 +72,7 @@ const privateRouter = [
     meta: {
       title: "User",
       icon: renderIcon(People),
+      breadcrumb: true
     },
     children: [
       {

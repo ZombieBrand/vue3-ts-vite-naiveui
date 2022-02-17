@@ -48,7 +48,7 @@
                 >
               </n-form-item>
             </n-form>
-            <switch-language />
+            <SwitchLanguage />
           </div>
         </div>
       </div>

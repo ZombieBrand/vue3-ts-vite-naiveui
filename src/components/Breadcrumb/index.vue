@@ -1,13 +1,19 @@
 <template>
   <n-breadcrumb>
-    <n-breadcrumb-item
-      v-for="item of breadcrumb"
-      :href="'#' + item.path"
-      :key="item.path"
-    >
+    <template v-for="item of breadcrumb">
       <!-- 不可点击 -->
-      <span>{{ $t(`route.${item.meta.title}`) }}</span>
-    </n-breadcrumb-item>
+      <n-breadcrumb-item
+        v-if="item.meta.breadcrumb === true"
+        :key="item.path + 'noClick'"
+        class="no-click"
+      >
+        <span>{{ $t(`route.${item.meta.title}`) }}</span>
+      </n-breadcrumb-item>
+      <!-- 可点击 -->
+      <n-breadcrumb-item v-else :href="'#' + item.path" :key="item.path">
+        <span>{{ $t(`route.${item.meta.title}`) }}</span>
+      </n-breadcrumb-item>
+    </template>
   </n-breadcrumb>
 </template>
 
@@ -16,6 +22,7 @@ export default {
   name: "Breadcrumb",
 };
 </script>
+
 <script lang="ts" setup>
 import { ref, watch } from "vue";
 import { useRoute } from "vue-router";
@@ -43,4 +50,9 @@ watch(
   }
 );
 </script>
-<style scoped></style>
+
+<style lang="scss" scoped>
+.no-click ::v-deep(.n-breadcrumb-item__link) {
+  cursor: default;
+}
+</style>

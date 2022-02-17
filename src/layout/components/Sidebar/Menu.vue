@@ -30,7 +30,6 @@ const activeMenu = computed(() => {
   const { path } = route;
   return path;
 });
-
 /*----------样式参数Start--------------*/
 const menuCollapsedIconSize = computed(() => {
   return menuMode.value !== "horizontal"

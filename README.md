@@ -24,11 +24,48 @@ Vue 3 + Typescript + Vite + Naive UI + VueRouter + pinia + axios
   在 SFC 开发中要使用还需要`const { t, d, n, tm, locale } = useI18n()`
 - [vite-mock](https://github.com/anncwb/vite-plugin-mock) 使用基于 mockjs 的 vite 插件,支持 Mock 数据
 
+## i18n国际化
+`src/plugins/i18n.ts`注册国际化插件
+`src/components/SwitchLanguage.vue` 语言切换组件
+
+在html模版语言里可以使用`$t('route.home')`
+
+在setup里使用方法如下:
+
+```vue
+<script setup>
+  import { getCurrentInstance } from 'vue'
+  const { proxy } = getCurrentInstance()
+  proxy.$t('route.home')
+</script>
+```
+还可以在组件.vue文件中直接用i18n标签声明语言变量
+```vue
+<template>
+<!-- .... -->
+</template>
+<script setup>
+/* .... */
+</script>
+
+<i18n>
+{
+  "en": {
+    "language": "Language",
+    "hello": "hello, world!"
+  },
+  "ja": {
+    "language": "言語",
+    "hello": "こんにちは、世界！"
+  }
+}
+</i18n>
+```
 ## tailwindcss 和 NaiveUI 冲突解决
 
 在`tailwind.config.js`中增加如下配置
 
-```
+```js
  corePlugins: {
     preflight: false,
   },
