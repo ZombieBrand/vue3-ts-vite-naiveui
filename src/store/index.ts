@@ -1,11 +1,13 @@
 import { defineStore } from "pinia";
 import { useUserStore } from "./modules/user";
+import { t } from "@/locales";
 export const useStore = defineStore("main", {
   state: () => ({
     userInfo: () => {
       const userStore = useUserStore();
       return userStore.userInfo;
     },
+    i18n: t("route.home"),
   }),
   getters: {
     token: () => {

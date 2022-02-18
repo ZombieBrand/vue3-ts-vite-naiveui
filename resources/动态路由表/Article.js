@@ -1,26 +1,26 @@
-import layout from '@/layout'
+import layout from "@/layout";
 
 export default {
-  path: '/article',
+  path: "/article",
   component: layout,
-  redirect: '/article/ranking',
-  name: 'articleRanking',
-  meta: { title: 'article', icon: 'article' },
+  redirect: "/article/ranking",
+  name: "articleRanking",
+  meta: { title: "article", icon: "article" },
   children: [
     {
-      path: '/article/ranking',
-      component: () => import('@/views/article-ranking/index'),
+      path: "/article/ranking",
+      component: () => import("@/views/article-ranking/index"),
       meta: {
-        title: 'articleRanking',
-        icon: 'article-ranking'
-      }
+        title: "articleRanking",
+        icon: "article-ranking",
+      },
     },
     {
-      path: '/article/:id',
-      component: () => import('@/views/article-detail/index'),
+      path: "/article/:id",
+      component: () => import("@/views/article-detail/index"),
       meta: {
-        title: 'articleDetail'
-      }
-    }
-  ]
-}
+        title: "articleDetail",
+      },
+    },
+  ],
+};

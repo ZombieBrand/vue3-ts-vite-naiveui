@@ -13,10 +13,20 @@
       >
         <n-avatar :src="userInfo.avatar" class="cursor-pointer" />
       </n-dropdown>
-      <n-icon size="24" class="cursor-pointer">
+      <n-icon size="24" class="cursor-pointer" @click="activateSetting">
         <settings />
       </n-icon>
     </div>
+    <n-drawer v-model:show="settingActive" :width="500" placement="right">
+      <n-drawer-content title="系统配置">
+        <div class="w-full flex flex-col items-center">
+          <n-divider>{{ $t("global.internationalization") }}</n-divider>
+          <SwitchLanguage />
+          <n-divider>{{ $t("global.internationalization") }}</n-divider>
+          <ThemeSwitch />
+        </div>
+      </n-drawer-content>
+    </n-drawer>
   </div>
 </template>
 
@@ -30,7 +40,9 @@ import { Settings } from "@vicons/ionicons5";
 import { useUserStore } from "@/store/modules/user";
 import Breadcrumb from "@/components/Breadcrumb/index.vue";
 import NavLogo from "@/layout/components/NavLogo.vue";
-import { computed } from "vue";
+import SwitchLanguage from "@/components/SwitchLanguage.vue";
+import ThemeSwitch from "@/components/ThemeSwitch/index.vue";
+import { computed, ref } from "vue";
 import exportScss from "@/styles/export.module.scss";
 const sideWidth = computed(() => exportScss["sideWidth"]);
 const userStore = useUserStore();
@@ -47,6 +59,10 @@ const selectUserDropDown = (key: string) => {
       userStore.loginOut();
       break;
   }
+};
+const settingActive = ref(false);
+const activateSetting = () => {
+  settingActive.value = true;
 };
 </script>
 <style scoped></style>

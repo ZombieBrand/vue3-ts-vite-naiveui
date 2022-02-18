@@ -1,6 +1,6 @@
 {
   "route": {
-    "home":"Home Page",
+    "home": "Home Page",
     "profile": "Profile",
     "User": "User",
     "UserManage": "User Manage",
@@ -16,7 +16,9 @@
   },
   "global": {
     "pleaseEnter": "Please Enter",
-    "pleaseSelect": "Please Select"
+    "pleaseSelect": "Please Select",
+    "internationalization": "internationalization",
+    "darkTheme": "Dark Theme"
   },
   "login": {
     "title": "Management platform",

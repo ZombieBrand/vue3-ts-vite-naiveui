@@ -41,16 +41,16 @@
                   @click="loginSubmit"
                   attr-type="submit"
                   size="large"
-                  strong
-                  secondary
+                  :strong="true"
+                  :secondary="true"
                   class="w-full"
                   >{{ $t("login.logIn") }}</n-button
                 >
               </n-form-item>
             </n-form>
-            <SwitchLanguage />
           </div>
         </div>
+        <SwitchLanguage class="absolute top-0 right-0" />
       </div>
     </div>
   </div>

@@ -24,25 +24,57 @@ Vue 3 + Typescript + Vite + Naive UI + VueRouter + pinia + axios
   在 SFC 开发中要使用还需要`const { t, d, n, tm, locale } = useI18n()`
 - [vite-mock](https://github.com/anncwb/vite-plugin-mock) 使用基于 mockjs 的 vite 插件,支持 Mock 数据
 
-## i18n国际化
+## i18n 国际化
+`src/locales/index.ts` 初始化设置i18n
+
 `src/plugins/i18n.ts`注册国际化插件
+
 `src/components/SwitchLanguage.vue` 语言切换组件
 
-在html模版语言里可以使用`$t('route.home')`
+```typescript
+// src/locales/index.ts
 
-在setup里使用方法如下:
+import { createI18n } from "vue-i18n";
+import messages from "@intlify/vite-plugin-vue-i18n/messages";
+import { useLocalStorage } from "@vueuse/core";
+import en from "./en.json";
+// ts配置
+type MessageSchema = typeof en;
+const storage = useLocalStorage("language", "zh");
+const locale = storage.value;
+export const i18n = createI18n<[MessageSchema], "en" | "zh">({
+  legacy: false,
+  locale,
+  fallbackLocale: "zh",
+  globalInjection: true, //这里设置true后全局组件可以直接使用$t无需额外注册组件 set
+  messages,
+});
+export const { t } = i18n.global; //这里导出主要是为了在其他ts文件中使用
+```
+
+在 html 模版语言里可以使用`$t('route.home')`和指令`v-t`
+
+在 setup 里使用方法如下:
 
 ```vue
 <script setup>
-  import { getCurrentInstance } from 'vue'
-  const { proxy } = getCurrentInstance()
-  proxy.$t('route.home')
+import { getCurrentInstance } from "vue";
+const { proxy } = getCurrentInstance();
+proxy.$t("route.home");
 </script>
 ```
-还可以在组件.vue文件中直接用i18n标签声明语言变量
+在其他ts文件用法
+
+```ts
+import { t } from "@/locales";
+const i18n = t("route.home") // 首页文字
+```
+
+还可以在组件.vue 文件中直接用 i18n 标签声明语言变量
+
 ```vue
 <template>
-<!-- .... -->
+  <!-- .... -->
 </template>
 <script setup>
 /* .... */
@@ -61,6 +93,7 @@ Vue 3 + Typescript + Vite + Naive UI + VueRouter + pinia + axios
 }
 </i18n>
 ```
+
 ## tailwindcss 和 NaiveUI 冲突解决
 
 在`tailwind.config.js`中增加如下配置
@@ -100,21 +133,23 @@ console.log(exportScss); // 对应的变量值
 还有一个小技巧，如果`vite.config.js`中配置了全局注入 scss 样式文件,其他`*.scss`文件使用`index.scss`文件中的 sass 特性无需在`*scss`中@import，vue 中的`<style/>`中也无需@import
 
 ```js
-    css: {
-      preprocessorOptions: {
-        scss: {
-          additionalData: '@import "@/styles/index.scss";'
-        }
-      }
+css: {
+  preprocessorOptions: {
+    scss: {
+      additionalData: '@import "@/styles/index.scss";';
     }
+  }
+}
 ```
-## this.$* 使用替代方案
+
+## this.$\* 使用替代方案
 
 挂载方法: `window.$message = useMessage()`
 使用方法: `window.$message('error',response.data.message)`
 
-## Token 
-采用JWT鉴权,处理方式包含(动态token,刷新token,时效token),此项目采用时效Token.
+## Token
+
+采用 JWT 鉴权,处理方式包含(动态 token,刷新 token,时效 token),此项目采用时效 Token.
 
 ## Recommended IDE Setup
 
