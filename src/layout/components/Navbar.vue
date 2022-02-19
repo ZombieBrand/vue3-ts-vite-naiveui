@@ -22,8 +22,11 @@
         <div class="w-full flex flex-col items-center">
           <n-divider>{{ $t("global.internationalization") }}</n-divider>
           <SwitchLanguage />
-          <n-divider>{{ $t("global.internationalization") }}</n-divider>
-          <ThemeSwitch />
+          <n-divider>{{ $t("global.theme") }}</n-divider>
+          <div class="w-64 flex justify-between items-center">
+            <ThemeSwitch />
+            <CustomColor />
+          </div>
         </div>
       </n-drawer-content>
     </n-drawer>
@@ -42,6 +45,7 @@ import Breadcrumb from "@/components/Breadcrumb/index.vue";
 import NavLogo from "@/layout/components/NavLogo.vue";
 import SwitchLanguage from "@/components/SwitchLanguage.vue";
 import ThemeSwitch from "@/components/ThemeSwitch/index.vue";
+import CustomColor from "@/components/ThemeSwitch/CustomColor.vue";
 import { computed, ref } from "vue";
 import exportScss from "@/styles/export.module.scss";
 const sideWidth = computed(() => exportScss["sideWidth"]);

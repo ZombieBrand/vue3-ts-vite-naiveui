@@ -5,7 +5,7 @@
       <n-notification-provider>
         <n-message-provider>
           <MessageContent />
-          <slot></slot>
+            <slot></slot>
         </n-message-provider>
       </n-notification-provider>
     </n-dialog-provider>

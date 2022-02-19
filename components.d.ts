@@ -6,12 +6,14 @@ declare module 'vue' {
   export interface GlobalComponents {
     Application: typeof import('./src/components/Application/Application.vue')['default']
     Breadcrumb: typeof import('./src/components/Breadcrumb/index.vue')['default']
+    CustomColor: typeof import('./src/components/ThemeSwitch/CustomColor.vue')['default']
     LoadingContent: typeof import('./src/components/Application/LoadingContent.vue')['default']
     MessageContent: typeof import('./src/components/Application/MessageContent.vue')['default']
     NAvatar: typeof import('naive-ui')['NAvatar']
     NBreadcrumb: typeof import('naive-ui')['NBreadcrumb']
     NBreadcrumbItem: typeof import('naive-ui')['NBreadcrumbItem']
     NButton: typeof import('naive-ui')['NButton']
+    NColorPicker: typeof import('naive-ui')['NColorPicker']
     NConfigProvider: typeof import('naive-ui')['NConfigProvider']
     NDialogProvider: typeof import('naive-ui')['NDialogProvider']
     NDivider: typeof import('naive-ui')['NDivider']
@@ -33,6 +35,7 @@ declare module 'vue' {
     NNotificationProvider: typeof import('naive-ui')['NNotificationProvider']
     NSelect: typeof import('naive-ui')['NSelect']
     NSpace: typeof import('naive-ui')['NSpace']
+    NThemeEditor: typeof import('naive-ui')['NThemeEditor']
     SwitchLanguage: typeof import('./src/components/SwitchLanguage.vue')['default']
     ThemeSwitch: typeof import('./src/components/ThemeSwitch/index.vue')['default']
   }

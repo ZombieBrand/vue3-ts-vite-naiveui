@@ -13,19 +13,22 @@ export default {
 };
 </script>
 <script setup lang="ts">
-import { ref } from "vue";
-const darkTheme = ref(false);
+import { computed } from "vue";
+import { useAppStore } from "@/store/modules/app";
+const appStore = useAppStore();
+const darkTheme = computed(() => appStore.darkTheme);
 const themeSwitch = () => {
-  darkTheme.value = !darkTheme.value;
+  appStore.setDarkTheme(!darkTheme.value);
 };
-// TODO:样式开发完成还需完成切换数据
+const bgColor = computed(() => (darkTheme.value ? "#f0f0f0" : "#27173a"));
+const outlineColor = computed(() => (darkTheme.value ? "#27173a" : "#f0f0f0"));
 </script>
-<style scoped>
+<style lang="scss" scoped>
+$backgroundColor: v-bind(bgColor);
+
 .center {
   text-align: center;
-  margin: auto auto;
 }
-
 .switch {
   position: relative;
   display: inline-block;
@@ -47,8 +50,7 @@ const themeSwitch = () => {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #27173a;
-  -webkit-transition: 0.4s;
+  background-color: $backgroundColor;
   transition: 0.4s;
 }
 
@@ -60,28 +62,26 @@ const themeSwitch = () => {
   left: 4px;
   bottom: 4px;
   background-color: #ffc207;
-  -webkit-transition: 0.4s;
   transition: 0.4s;
 }
 
 input:checked + .slider {
-  background-color: #27173a;
+  background-color: $backgroundColor;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 2px #27173a;
+  box-shadow: 0 0 2px $backgroundColor;
 }
 
 input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
   transform: translateX(26px);
   box-shadow: inset -7px 0 0 2px #ffc207;
-  background-color: #27173a;
+  background-color: $backgroundColor;
 }
 
 .slider.round {
   border-radius: 17px;
+  outline: 3px solid v-bind(outlineColor);
 }
 
 .slider.round:before {

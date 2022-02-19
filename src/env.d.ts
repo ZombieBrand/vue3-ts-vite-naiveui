@@ -7,3 +7,4 @@ declare module "*.vue" {
 }
 
 declare module "md5";
+declare module "chroma-js";
