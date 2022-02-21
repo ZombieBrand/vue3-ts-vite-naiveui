@@ -18,7 +18,9 @@
     "pleaseEnter": "Please Enter",
     "pleaseSelect": "Please Select",
     "internationalization": "internationalization",
-    "theme": "Theme"
+    "customTheme": "Custom Theme",
+    "darkTheme": "Dark Theme",
+    "followSystem": "Follow System"
   },
   "login": {
     "title": "Management platform",

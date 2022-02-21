@@ -6,6 +6,7 @@
     </div>
 
     <div class="flex flex-nowrap items-center justify-between space-x-3 px-4">
+      <FullScreen></FullScreen>
       <n-dropdown
         trigger="click"
         @select="selectUserDropDown"
@@ -13,7 +14,7 @@
       >
         <n-avatar :src="userInfo.avatar" class="cursor-pointer" />
       </n-dropdown>
-      <n-icon size="24" class="cursor-pointer" @click="activateSetting">
+      <n-icon size="28" class="cursor-pointer" @click="activateSetting">
         <settings />
       </n-icon>
     </div>
@@ -22,11 +23,12 @@
         <div class="w-full flex flex-col items-center">
           <n-divider>{{ $t("global.internationalization") }}</n-divider>
           <SwitchLanguage />
-          <n-divider>{{ $t("global.theme") }}</n-divider>
+          <n-divider>{{ $t("global.darkTheme") }}</n-divider>
           <div class="w-64 flex justify-between items-center">
             <ThemeSwitch />
-            <CustomColor />
           </div>
+          <n-divider>{{ $t("global.customTheme") }}</n-divider>
+          <CustomColor />
         </div>
       </n-drawer-content>
     </n-drawer>
@@ -46,6 +48,7 @@ import NavLogo from "@/layout/components/NavLogo.vue";
 import SwitchLanguage from "@/components/SwitchLanguage.vue";
 import ThemeSwitch from "@/components/ThemeSwitch/index.vue";
 import CustomColor from "@/components/ThemeSwitch/CustomColor.vue";
+import FullScreen from "@/components/FullScreen.vue";
 import { computed, ref } from "vue";
 import exportScss from "@/styles/export.module.scss";
 const sideWidth = computed(() => exportScss["sideWidth"]);
@@ -68,5 +71,5 @@ const settingActive = ref(false);
 const activateSetting = () => {
   settingActive.value = true;
 };
+
 </script>
-<style scoped></style>

@@ -151,6 +151,9 @@ css: {
 
 采用 JWT 鉴权,处理方式包含(动态 token,刷新 token,时效 token),此项目采用时效 Token.
 
+## 全屏幕控制
+`Element.requestFullscreen()` 方法用于发出异步请求使元素进入全屏模式。
+`Document.exitFullscreen()` 方法用于让当前文档退出全屏模式
 ## Recommended IDE Setup
 
 - [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
