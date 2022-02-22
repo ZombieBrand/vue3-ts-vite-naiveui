@@ -16,15 +16,13 @@ export const useUserStore = defineStore("user", {
     login(userInfo: T.login) {
       const { username, password } = userInfo;
       return new Promise((resolve, reject) => {
-        const { data, run } = loginRequest;
-        run({
+      loginRequest({
           username,
           password: md5(password),
-        })
-          .then((res) => {
+        }).then((res) => {
             const {
               result: { token },
-            } = data.value;
+            } = res;
             setItem(TOKEN, token);
             this.token = token;
             router.push("/");
@@ -34,16 +32,14 @@ export const useUserStore = defineStore("user", {
           })
           .catch((error) => {
             reject(error);
-            console.log(data.value);
           });
       });
     },
     async getUserInfo() {
-      const { data, run } = getUserInfoRequest;
       try {
-        await run();
-        this.userInfo = data.value.result;
-        return data.value.result;
+        const result = await getUserInfoRequest();
+        this.userInfo = result.result;
+        return result.result;
       } catch (e) {
         console.log(e);
         window.$message("error", "获取用户信息失败!");
