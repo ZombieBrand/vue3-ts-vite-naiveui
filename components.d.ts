@@ -8,6 +8,7 @@ declare module 'vue' {
     Breadcrumb: typeof import('./src/components/Breadcrumb/index.vue')['default']
     CustomColor: typeof import('./src/components/ThemeSwitch/CustomColor.vue')['default']
     FullScreen: typeof import('./src/components/FullScreen.vue')['default']
+    HeaderSearch: typeof import('./src/components/HeaderSearch/index.vue')['default']
     LoadingContent: typeof import('./src/components/Application/LoadingContent.vue')['default']
     MessageContent: typeof import('./src/components/Application/MessageContent.vue')['default']
     NAvatar: typeof import('naive-ui')['NAvatar']

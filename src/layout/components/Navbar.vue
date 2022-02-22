@@ -6,7 +6,8 @@
     </div>
 
     <div class="flex flex-nowrap items-center justify-between space-x-3 px-4">
-      <FullScreen></FullScreen>
+      <HeaderSearch />
+      <FullScreen />
       <n-dropdown
         trigger="click"
         @select="selectUserDropDown"
@@ -49,6 +50,7 @@ import SwitchLanguage from "@/components/SwitchLanguage.vue";
 import ThemeSwitch from "@/components/ThemeSwitch/index.vue";
 import CustomColor from "@/components/ThemeSwitch/CustomColor.vue";
 import FullScreen from "@/components/FullScreen.vue";
+import HeaderSearch from "@/components/HeaderSearch/index.vue";
 import { computed, ref } from "vue";
 import exportScss from "@/styles/export.module.scss";
 const sideWidth = computed(() => exportScss["sideWidth"]);
