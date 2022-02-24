@@ -1,5 +1,4 @@
 import type { RouteRecordRaw } from "vue-router";
-// @ts-ignore
 import path from "path-browserify"; // 解决vite客户端无法使用nodejs->path功能问题
 /**
  * 所有的子集路由

@@ -32,7 +32,7 @@ const activeMenu = computed(() => {
   return path;
 });
 // 获取转化后的菜单数据
-const menuOptions = useRoutsFormat()
+const { formatMenuOptions: menuOptions } = useRoutsFormat();
 // 点击菜单
 function clickMenuItem(key: string) {
   if (/http(s)?:/.test(key)) {

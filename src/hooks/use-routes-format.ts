@@ -27,7 +27,10 @@ export default function useRoutsFormat() {
     });
   };
 
-  return computed(() => {
-    return formatMenuOptions(routes.value);
-  });
+  return {
+    formatMenuOptions: computed(() => {
+      return formatMenuOptions(routes.value);
+    }),
+    routes,
+  };
 }

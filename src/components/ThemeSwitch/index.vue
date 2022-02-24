@@ -1,5 +1,5 @@
 <template>
-  <n-checkbox v-model:checked="autoDark">{{
+  <n-checkbox :checked="autoDark" @update:checked="toggleAutoDark">{{
     $t("global.followSystem")
   }}</n-checkbox>
   <div class="center">
@@ -20,12 +20,11 @@ import { usePreferredDark } from "@vueuse/core";
 import { ref, computed, watchEffect } from "vue";
 import type { Ref } from "vue";
 import { useAppStore } from "@/store/modules/app";
-const autoDark = ref(false); //是否开启跟随系统
-const isDark = usePreferredDark(); //系统黑暗主题是否开启
 const appStore = useAppStore();
 
+const autoDark = computed(() => appStore.autoDark); //是否开启跟随系统
+const isDark = usePreferredDark(); //系统黑暗主题是否开启
 const darkTheme = computed(() => appStore.darkTheme); //黑暗主题状态
-
 const themeSwitchEl: Ref<HTMLInputElement | null> = ref(null);
 
 // 点击切换黑暗主题
@@ -35,6 +34,12 @@ const themeSwitch = () => {
     appStore.setDarkTheme(!darkTheme.value);
   }
 };
+
+// 切换跟随系统主题
+const toggleAutoDark = (checked: boolean) => {
+  appStore.setAutoDark(checked);
+};
+
 // 开启跟随系统主题则自动设置 darkTheme状态,并且switch.disabled = true
 watchEffect(() => {
   if (autoDark.value) {
