@@ -3,7 +3,7 @@ import { computed } from "vue";
 import type { ComputedRef } from "vue";
 import { useI18n } from "vue-i18n";
 import AppProvider from "@/components/Application";
-import useCustomColor from "@/hooks/use-custom-color";
+import useCustomColor from "@/hooks/useCustomColor";
 import { useAppStore } from "@/store/modules/app";
 import { darkTheme, zhCN, dateZhCN, enUS, dateEnUS } from "naive-ui";
 const appStore = useAppStore();

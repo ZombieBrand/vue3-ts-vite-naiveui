@@ -32,7 +32,7 @@ import { useRouter } from "vue-router";
 import { computed, ref, h, VNodeChild, watch } from "vue";
 import { Search } from "@vicons/ionicons5";
 import type { SelectOption, SelectInst } from "naive-ui";
-import useRoutsFormat from "@/hooks/use-routes-format";
+import useRoutsFormat from "@/hooks/useRoutesFormat";
 import { generateRoutes, TResult } from "./fuse-data";
 const router = useRouter();
 const searchValue = ref("");

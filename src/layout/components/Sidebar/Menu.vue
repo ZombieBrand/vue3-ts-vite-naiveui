@@ -17,7 +17,7 @@ export default {
 </script>
 <script lang="ts" setup>
 import exportScss from "@/styles/export.module.scss";
-import useRoutsFormat from "@/hooks/use-routes-format";
+import useRoutsFormat from "@/hooks/useRoutesFormat";
 import { useRouter } from "vue-router";
 const router = useRouter();
 import { computed, ref } from "vue";

@@ -1,6 +1,11 @@
 import { defineStore } from "pinia";
 import type { TTagsView } from "@/types/tags";
 
+interface TChangeTagsViewArg {
+  index: number;
+  tag: TTagsView;
+}
+
 export const useAppStore = defineStore("app", {
   state: () => ({
     sideMenuCollapse: false,
@@ -29,6 +34,9 @@ export const useAppStore = defineStore("app", {
       });
 
       !isFind && this.tagsViewList.push(tag);
+    },
+    changeTagsView({ index, tag }:TChangeTagsViewArg) {
+      this.tagsViewList[index] = tag;
     },
   },
   persist: true,
