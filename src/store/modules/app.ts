@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import type { TTagsView } from "@/types/tags";
+import type { TTagsView, removePayload } from "@/types/tags";
 
 interface TChangeTagsViewArg {
   index: number;
@@ -27,6 +27,7 @@ export const useAppStore = defineStore("app", {
     setAutoDark(state: boolean) {
       this.autoDark = state;
     },
+    // 根据点击路由添加到tagsView
     addTagsViewList(tag: TTagsView) {
       // 去重复
       const isFind = this.tagsViewList.find((item) => {
@@ -35,8 +36,26 @@ export const useAppStore = defineStore("app", {
 
       !isFind && this.tagsViewList.push(tag);
     },
-    changeTagsView({ index, tag }:TChangeTagsViewArg) {
+    // 改变路由信息
+    changeTagsView({ index, tag }: TChangeTagsViewArg) {
       this.tagsViewList[index] = tag;
+    },
+    // 删除当前选中tagsView标签
+    removeTagsView(payload: removePayload) {
+      const index = payload.index;
+      const tagsViewListTotal = this.tagsViewList.length;
+      switch (payload.type) {
+        case "index":
+          this.tagsViewList.splice(index, 1);
+          break;
+        case "other":
+          this.tagsViewList.splice(index + 1, tagsViewListTotal - 1);
+          this.tagsViewList.splice(0,index);
+          break;
+        case "right":
+          this.tagsViewList.splice(index + 1, tagsViewListTotal - 1);
+          break;
+      }
     },
   },
   persist: true,

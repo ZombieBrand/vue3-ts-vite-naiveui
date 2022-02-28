@@ -20,7 +20,8 @@
     "internationalization": "国际化",
     "customTheme": "自定义主题",
     "darkTheme": "黑暗主题",
-    "followSystem": "跟随系统"
+    "followSystem": "跟随系统",
+    "refresh": "刷新"
   },
   "login": {
     "title": "管理平台",
@@ -39,6 +40,12 @@
     "user": {
       "successLogin": "登录成功!",
       "errorLogin": "登录失败!"
+    }
+  },
+  "components": {
+    "tagsView": {
+      "closeRight": "关闭右侧",
+      "closeOther": "关闭其他"
     }
   }
 }

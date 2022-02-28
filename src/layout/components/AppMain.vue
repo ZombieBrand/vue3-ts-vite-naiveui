@@ -16,6 +16,6 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import TagsView from "@/components/TagsView.vue";
+import TagsView from "@/components/TagsView/TagsView.vue";
 
 </script>

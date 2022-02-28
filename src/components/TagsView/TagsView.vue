@@ -6,6 +6,7 @@
       class="tags-view-item"
       :class="isActive(tag) ? 'active' : ''"
       :to="{ path: tag.fullPath }"
+      @contextmenu.prevent="openMenu($event, index)"
       :style="{
         backgroundColor: isActive(tag) ? primaryColor : '',
         borderColor: isActive(tag) ? primaryColor : '',
@@ -21,6 +22,7 @@
         <CloseCircle />
       </n-icon>
     </router-link>
+    <ContextMenu v-show="visible" :index="menuIndex" :style="menuStyle" v-model:visible="visible"/>
   </div>
 </template>
 
@@ -30,9 +32,10 @@ export default {
 };
 </script>
 <script lang="ts" setup>
+import ContextMenu from "@/components/TagsView/ContextMenu.vue";
 import { CloseCircle } from "@vicons/ionicons5";
 import { useAppStore } from "@/store/modules/app";
-import { computed, onMounted, watch } from "vue";
+import { computed, onMounted, ref, watch } from "vue";
 import { useRoute } from "vue-router";
 import type { TTagsView } from "@/types/tags";
 import { useI18n } from "vue-i18n";
@@ -54,6 +57,7 @@ const isActive = (tag: TTagsView) => {
   return tag.path === route.path;
 };
 
+// 观察多语言更新title
 watch(locale, () => {
   tagsViewList.value.forEach((tag, index) => {
     const title = tag.meta.title;
@@ -66,7 +70,26 @@ watch(locale, () => {
     });
   });
 });
-const onCloseClick = (index: number) => {};
+// 鼠标右键
+const visible = ref(false);
+const menuIndex = ref<number | null>(0);
+const menuStyle = ref({
+  left: "0px",
+  top: "0px",
+});
+const openMenu = (evt: MouseEvent, index: number) => {
+  const { x, y } = evt;
+  menuStyle.value.left = x + "px";
+  menuStyle.value.top = y + "px";
+  visible.value = true;
+  menuIndex.value = index;
+};
+const onCloseClick = (index: number) => {
+  appStore.removeTagsView({
+    type: "index",
+    index,
+  });
+};
 </script>
 <style lang="scss" scoped>
 .tags-view-container {

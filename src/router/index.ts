@@ -36,6 +36,7 @@ const publicRoutes = [
   {
     path: "/",
     component: Layout,
+    redirect:'/profile',
     children: [
       // 个人中心
       {

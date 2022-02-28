@@ -6,6 +6,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     Application: typeof import('./src/components/Application/Application.vue')['default']
     Breadcrumb: typeof import('./src/components/Breadcrumb/index.vue')['default']
+    ContextMenu: typeof import('./src/components/TagsView/ContextMenu.vue')['default']
     CustomColor: typeof import('./src/components/ThemeSwitch/CustomColor.vue')['default']
     FullScreen: typeof import('./src/components/FullScreen.vue')['default']
     HeaderSearch: typeof import('./src/components/HeaderSearch/index.vue')['default']
@@ -23,12 +24,9 @@ declare module 'vue' {
     NDrawer: typeof import('naive-ui')['NDrawer']
     NDrawerContent: typeof import('naive-ui')['NDrawerContent']
     NDropdown: typeof import('naive-ui')['NDropdown']
-    NForm: typeof import('naive-ui')['NForm']
-    NFormItem: typeof import('naive-ui')['NFormItem']
     NGlobalStyle: typeof import('naive-ui')['NGlobalStyle']
     NIcon: typeof import('naive-ui')['NIcon']
     NImage: typeof import('naive-ui')['NImage']
-    NInput: typeof import('naive-ui')['NInput']
     NLayout: typeof import('naive-ui')['NLayout']
     NLayoutHeader: typeof import('naive-ui')['NLayoutHeader']
     NLayoutSider: typeof import('naive-ui')['NLayoutSider']
@@ -38,7 +36,7 @@ declare module 'vue' {
     NNotificationProvider: typeof import('naive-ui')['NNotificationProvider']
     NSelect: typeof import('naive-ui')['NSelect']
     SwitchLanguage: typeof import('./src/components/SwitchLanguage.vue')['default']
-    TagsView: typeof import('./src/components/TagsView.vue')['default']
+    TagsView: typeof import('./src/components/TagsView/TagsView.vue')['default']
     ThemeSwitch: typeof import('./src/components/ThemeSwitch/index.vue')['default']
   }
 }

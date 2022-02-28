@@ -20,7 +20,8 @@
     "internationalization": "internationalization",
     "customTheme": "Custom Theme",
     "darkTheme": "Dark Theme",
-    "followSystem": "Follow System"
+    "followSystem": "Follow System",
+    "refresh": "Refresh"
   },
   "login": {
     "title": "Management platform",
@@ -39,6 +40,12 @@
     "user": {
       "successLogin": "Login successful!",
       "errorLogin": "Login failed!"
+    }
+  },
+  "components": {
+    "tagsView": {
+      "closeRight": "Close Right",
+      "closeOther": "Close Other"
     }
   }
 }

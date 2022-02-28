@@ -9,3 +9,8 @@ export interface TTagsView {
   query: LocationQuery;
   title: string;
 }
+
+export interface removePayload {
+  type: "other" | "right" | "index";
+  index: number;
+}
