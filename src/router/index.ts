@@ -36,7 +36,7 @@ const publicRoutes = [
   {
     path: "/",
     component: Layout,
-    redirect:'/profile',
+    redirect: "/profile",
     children: [
       // 个人中心
       {
@@ -46,6 +46,7 @@ const publicRoutes = [
         meta: {
           title: "profile",
           icon: renderIcon(PersonCircle),
+          noCache: true,
         },
       },
       // 404

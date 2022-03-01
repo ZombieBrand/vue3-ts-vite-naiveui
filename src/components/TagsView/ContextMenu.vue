@@ -20,6 +20,8 @@ import { useRouter } from "vue-router";
 import { useAppStore } from "@/store/modules/app";
 import { defineEmits, ref } from "vue";
 import { onClickOutside } from "@vueuse/core";
+import type { removePayload } from "@/types/tags";
+
 const appStore = useAppStore();
 const props = defineProps({
   index: {
@@ -40,7 +42,7 @@ const onCloseRightClick = () => {
   appStore.removeTagsView({
     type: "right",
     index: props.index,
-  });
+  } as removePayload);
   close();
 };
 // 关闭其他
@@ -48,7 +50,7 @@ const onCloseOtherClick = () => {
   appStore.removeTagsView({
     type: "other",
     index: props.index,
-  });
+  } as removePayload);
   close();
 };
 // 点击外侧关闭菜单
