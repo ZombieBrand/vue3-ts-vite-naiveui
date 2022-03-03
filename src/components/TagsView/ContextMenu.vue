@@ -18,7 +18,7 @@ export default {
 <script lang="ts" setup>
 import { useRouter } from "vue-router";
 import { useAppStore } from "@/store/modules/app";
-import { defineEmits, ref } from "vue";
+import { ref } from "vue";
 import { onClickOutside } from "@vueuse/core";
 import type { removePayload } from "@/types/tags";
 

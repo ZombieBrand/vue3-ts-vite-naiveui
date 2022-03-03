@@ -1,5 +1,4 @@
 @import "transition";
-
 *,
 *::before,
 *::after {
@@ -41,6 +40,9 @@ h6 {
 }
 a{
   text-decoration: none;
+}
+ul,ol{
+  list-style: none;
 }
 #app {
   height: 100%;

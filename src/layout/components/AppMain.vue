@@ -2,7 +2,7 @@
   <n-layout :embedded="true" content-style="padding:0 12px 12px 12px;">
     <router-view v-slot="{ Component, route }">
       <TagsView class="absolute top-0 left-0" />
-      <transition name="zoom-fade" mode="out-in">
+      <transition name="scale" mode="out-in">
         <keep-alive :exclude="noCache">
           <component
             :is="Component"
