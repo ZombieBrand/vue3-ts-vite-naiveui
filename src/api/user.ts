@@ -1,3 +1,4 @@
+import { useRequest } from "vue-request";
 import request from "@/utils/request";
 import * as T from "@/types/api/user";
 export const loginRequest = (data: T.login): Promise<any> => {
@@ -13,6 +14,17 @@ export const getUserInfoRequest = (): Promise<any> => {
     method: "get",
   });
 };
+export const feature = () => {
+  return request({
+    url: "/user/feature",
+  });
+};
 
-// export const loginRequest = () => useRequest(submitLogin);
-// export const getUserInfoRequest = () => useRequest(getUserInfo);
+export const chapter = () => {
+  return request({
+    url: "/user/chapter",
+  });
+};
+
+export const featureRequest = () => useRequest(feature);
+export const chapterRequest = () => useRequest(chapter);

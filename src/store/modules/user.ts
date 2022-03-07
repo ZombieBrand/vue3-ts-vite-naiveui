@@ -16,10 +16,11 @@ export const useUserStore = defineStore("user", {
     login(userInfo: T.login) {
       const { username, password } = userInfo;
       return new Promise((resolve, reject) => {
-      loginRequest({
+        loginRequest({
           username,
           password: md5(password),
-        }).then((res) => {
+        })
+          .then((res) => {
             const {
               result: { token },
             } = res;
