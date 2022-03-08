@@ -14,9 +14,10 @@
 
 <script setup lang="ts">
 import { Language } from "@vicons/ionicons5";
-import { computed, ref } from "vue";
+import { computed, ref, inject } from "vue";
 import { useLocalStorage } from "@vueuse/core";
 import { useI18n } from "vue-i18n";
+const reload = inject("reload") as Function;
 const { availableLocales, locale } = useI18n();
 const currentLanguage = ref(locale.value);
 const localesOptions = computed(() => {
@@ -25,9 +26,11 @@ const localesOptions = computed(() => {
     value: item,
   }));
 });
+
 const toggleLocales = () => {
   locale.value = currentLanguage.value;
   switchLanguage(locale.value);
+  reload();
 };
 const switchLanguage = (lang: string) => {
   const storage = useLocalStorage("language", "en");

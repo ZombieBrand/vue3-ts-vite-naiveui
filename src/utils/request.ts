@@ -6,6 +6,7 @@ import type { MessageType } from "naive-ui";
 import { isCheckTimeout } from "@/utils/auth";
 import { useUserStore } from "@/store/modules/user";
 import { setGlobalOptions } from "vue-request";
+import { getLanguage } from "@/utils";
 setGlobalOptions({
   manual: true,
 });
@@ -53,9 +54,10 @@ function myAxios(axiosConfig: AxiosRequestConfig, customOptions?: any) {
           return Promise.reject(config);
         }
         // @ts-ignore
-        config.headers.Authorization = getItem(TOKEN);
+        config.headers["Authorization"]= getItem(TOKEN);
       }
-
+      // @ts-ignore
+      config.headers["Accept-Language"] = getLanguage();
       return config;
     },
     (error) => {

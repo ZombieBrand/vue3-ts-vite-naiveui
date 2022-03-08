@@ -47,5 +47,16 @@
       "closeRight": "关闭右侧",
       "closeOther": "关闭其他"
     }
+  },
+  "profile": {
+    "muted": "个人学习vue3+ts+vite项目",
+    "introduce": "介绍",
+    "projectIntroduction": "项目介绍",
+    "projectFunction": "项目功能",
+    "feature": "功能",
+    "author": "作者",
+    "name": "ZombieBrand",
+    "job": "一个前端开发程序猿",
+    "Introduction": "喜欢汽车,爬山,打球,玩游戏,撸串哈哈!"
   }
 }

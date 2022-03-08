@@ -18,7 +18,6 @@ export default {
 };
 </script>
 <script setup lang="ts">
-import { defineProps } from 'vue'
 defineProps({
   image: {
     type: String

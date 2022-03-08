@@ -47,5 +47,16 @@
       "closeRight": "Close Right",
       "closeOther": "Close Other"
     }
+  },
+  "profile": {
+    "muted": "Personal vuE3 + TS + Vite project",
+    "introduce": "introduce",
+    "projectIntroduction": "Project introduction",
+    "projectFunction": "Project Function",
+    "feature": "feature",
+    "author": "author",
+    "name": "ZombieBrand",
+    "job": "A front-end development program ape",
+    "Introduction": "Like cars, climbing, playing ball, playing games, masturbation ha ha!"
   }
 }

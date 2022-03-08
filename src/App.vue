@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from "vue";
+import { ref, computed, provide, nextTick } from "vue";
 import type { ComputedRef } from "vue";
 import { useI18n } from "vue-i18n";
 import AppProvider from "@/components/Application";
@@ -17,11 +17,20 @@ const dataLanguage = computed(() => {
   return locale.value === "zh" ? dateZhCN : dateEnUS;
 });
 
-
 // 黑暗主题状态 = boolean
-const currentDarkTheme: ComputedRef<boolean> = computed(() => appStore.darkTheme);
+const currentDarkTheme: ComputedRef<boolean> = computed(
+  () => appStore.darkTheme
+);
 // 自定义主题色
 const themeOverrides = useCustomColor();
+const isReloadAlive = ref(true);
+const reload = () => {
+  isReloadAlive.value= false
+  nextTick(()=>{
+    isReloadAlive.value = true
+  })
+};
+provide("reload", reload);
 </script>
 <script lang="ts">
 export default {
@@ -37,10 +46,8 @@ export default {
     class="w-full h-full"
   >
     <n-global-style />
-    <AppProvider>
+    <AppProvider v-if="isReloadAlive">
       <router-view />
     </AppProvider>
   </n-config-provider>
 </template>
-
-<style></style>

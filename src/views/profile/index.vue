@@ -1,38 +1,39 @@
 <template>
   <div class="my-container">
-    <ProjectCard></ProjectCard>
-<!--    <el-row>-->
-<!--      <el-col :span="6">-->
-<!--        <project-card class="user-card"></project-card>-->
-<!--      </el-col>-->
-<!--      <el-col :span="18">-->
-<!--        <el-card>-->
-<!--          <el-tabs v-model="activeName">-->
-<!--            <el-tab-pane :label="$t('msg.profile.feature')" name="feature">-->
-<!--              <feature />-->
-<!--            </el-tab-pane>-->
-<!--            <el-tab-pane :label="$t('msg.profile.chapter')" name="chapter">-->
-<!--              <chapter />-->
-<!--            </el-tab-pane>-->
-<!--            <el-tab-pane :label="$t('msg.profile.author')" name="author">-->
-<!--              <author />-->
-<!--            </el-tab-pane>-->
-<!--          </el-tabs>-->
-<!--        </el-card>-->
-<!--      </el-col>-->
-<!--    </el-row>-->
+    <n-grid :x-gap="12" :cols="4">
+      <n-gi :span="1">
+        <ProjectCard :features="features"></ProjectCard>
+      </n-gi>
+      <n-gi :span="3">
+        <n-card style="margin-bottom: 16px">
+          <feature :features="features"/>
+        </n-card>
+      </n-gi>
+    </n-grid>
   </div>
 </template>
 
-<script lang="ts" setup>
-import ProjectCard from './components/ProjectCard.vue'
-import Chapter from './components/Chapter.vue'
-import Feature from './components/Feature.vue'
-import Author from './components/Author.vue'
-import { ref } from 'vue'
-const activeName = ref('feature')
+<script lang="ts">
+export default {
+  name: "Profile",
+};
 </script>
+<script lang="ts" setup>
+import { useRequest } from "vue-request";
+import { feature } from "@/api/user";
+import ProjectCard from "./components/ProjectCard.vue";
+import Feature from "./components/Feature.vue";
+import { computed } from "vue";
+const {
+  run: featureRun,
+  data: featureData,
+  loading: featureLoading,
+} = useRequest(feature);
 
+// @ts-ignore
+const features = computed(()=> featureData.value ? featureData.value['result']: [])
+featureRun();
+</script>
 <style lang="scss" scoped>
 .my-container {
   .user-card {
@@ -40,4 +41,3 @@ const activeName = ref('feature')
   }
 }
 </style>
-
