@@ -21,7 +21,9 @@
     "customTheme": "自定义主题",
     "darkTheme": "黑暗主题",
     "followSystem": "跟随系统",
-    "refresh": "刷新"
+    "refresh": "刷新",
+    "check": "查看",
+    "remove": "删除"
   },
   "login": {
     "title": "管理平台",
@@ -58,5 +60,14 @@
     "name": "ZombieBrand",
     "job": "一个前端开发程序猿",
     "Introduction": "喜欢汽车,爬山,打球,玩游戏,撸串哈哈!"
+  },
+  "userManage": {
+    "importExcel": "Excel 导入",
+    "exportExcel": "Excel 导出",
+    "username": "用户名",
+    "avatar": "头像",
+    "contact": "联系方式",
+    "role": "角色",
+    "openTime": "开通时间"
   }
 }

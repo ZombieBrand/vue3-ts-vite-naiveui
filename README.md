@@ -154,6 +154,36 @@ css: {
 ## 全屏幕控制
 `Element.requestFullscreen()` 方法用于发出异步请求使元素进入全屏模式。
 `Document.exitFullscreen()` 方法用于让当前文档退出全屏模式
+
+## 开发问题解决方案
+
+axios结合useRequest使用reuslt警告:
+`TS2339: Property 'result' does not exist on type 'AxiosResponse '.`
+```typescript
+// 获取数据方法
+const { run: userManageRun } = useRequest(getUserManageList, {
+  onSuccess: (data) => {
+    const {
+      result: { list, page:_page, size:_size, total:_total },
+    } = data;
+  },
+  onError: (error) => {
+    console.log(error);
+  },
+});
+```
+解决方法:
+```typescript
+// src/axios.d.ts
+import * as axios from 'axios'
+
+declare module 'axios' {
+    interface AxiosInstance {
+        (config: AxiosRequestConfig): Promise<any>
+    }
+}
+
+```
 ## Recommended IDE Setup
 
 - [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)

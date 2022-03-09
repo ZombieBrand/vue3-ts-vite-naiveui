@@ -6,6 +6,6 @@ declare module "*.vue" {
   export default component;
 }
 
-declare module "md5";
-declare module "chroma-js";
-declare module 'path-browserify';
+declare module "md5"
+declare module "chroma-js"
+declare module "path-browserify"

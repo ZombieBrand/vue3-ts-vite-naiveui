@@ -17,11 +17,13 @@
   "global": {
     "pleaseEnter": "Please Enter",
     "pleaseSelect": "Please Select",
-    "internationalization": "internationalization",
+    "internationalization": "Internationalization",
     "customTheme": "Custom Theme",
     "darkTheme": "Dark Theme",
     "followSystem": "Follow System",
-    "refresh": "Refresh"
+    "refresh": "Refresh",
+    "check": "Check",
+    "remove": "Remove"
   },
   "login": {
     "title": "Management platform",
@@ -58,5 +60,14 @@
     "name": "ZombieBrand",
     "job": "A front-end development program ape",
     "Introduction": "Like cars, climbing, playing ball, playing games, masturbation ha ha!"
+  },
+  "userManage": {
+    "importExcel": "Import Excel",
+    "exportExcel": "Export Excel",
+    "username": "Username",
+    "avatar": "Avatar",
+    "contact": "Contact",
+    "role": "Role",
+    "openTime": "Open time"
   }
 }

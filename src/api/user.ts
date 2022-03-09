@@ -16,5 +16,6 @@ export const getUserInfoRequest = (): Promise<any> => {
 export const feature = () => {
   return request({
     url: "/user/feature",
+    method: "get",
   });
 };

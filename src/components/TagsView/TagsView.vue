@@ -1,5 +1,5 @@
 <template>
-  <div class="tags-view-container">
+  <div class="tags-view-container" :class="{ 'dark-mode': darkTheme }">
     <router-link
       v-for="(tag, index) of tagsViewList"
       :key="tag.fullPath"
@@ -22,7 +22,12 @@
         <CloseCircle />
       </n-icon>
     </router-link>
-    <ContextMenu v-show="visible" :index="menuIndex" :style="menuStyle" v-model:visible="visible"/>
+    <ContextMenu
+      v-show="visible"
+      :index="menuIndex"
+      :style="menuStyle"
+      v-model:visible="visible"
+    />
   </div>
 </template>
 
@@ -42,6 +47,7 @@ import { useI18n } from "vue-i18n";
 import { t } from "@/locales";
 import useAddTagsViewList from "@/hooks/useAddTagsViewList";
 const { locale } = useI18n();
+
 onMounted(() => {
   // 观察路由向appStore.tagsViewList添加数据
   useAddTagsViewList();
@@ -70,6 +76,7 @@ watch(locale, () => {
     });
   });
 });
+
 // 鼠标右键
 const visible = ref(false);
 const menuIndex = ref<number | null>(0);
@@ -78,6 +85,7 @@ const menuStyle = ref({
   top: "0px",
 });
 const openMenu = (evt: MouseEvent, index: number) => {
+  console.log(evt);
   const { x, y } = evt;
   menuStyle.value.left = x + "px";
   menuStyle.value.top = y + "px";
@@ -90,6 +98,17 @@ const onCloseClick = (index: number) => {
     index,
   });
 };
+
+const darkTheme = computed(() => appStore.darkTheme);
+watch(
+  darkTheme,
+  (value) => {
+    console.log(value, darkTheme);
+  },
+  {
+    immediate: true,
+  }
+);
 </script>
 <style lang="scss" scoped>
 .tags-view-container {
@@ -132,6 +151,7 @@ const onCloseClick = (index: number) => {
     }
     // close 按钮
     .el-icon-close {
+      margin-left: 4px;
       width: 16px;
       height: 16px;
       vertical-align: middle;
@@ -146,6 +166,27 @@ const onCloseClick = (index: number) => {
       &:hover {
         background-color: #b4bccc;
         color: #fff;
+      }
+    }
+  }
+  &.dark-mode {
+    background: #000000;
+    border-bottom: 1px solid #303133;
+    .tags-view-item {
+      border: 1px solid #303133;
+      color: #ffffff;
+      background: #000000;
+    }
+    &.active {
+      color: #000000;
+      &::before {
+        background: #000000;
+      }
+    }
+    .el-icon-close {
+      &:hover {
+        background-color: #ffffff;
+        color: #000000;
       }
     }
   }
