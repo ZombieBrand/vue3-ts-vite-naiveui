@@ -182,7 +182,17 @@ declare module 'axios' {
         (config: AxiosRequestConfig): Promise<any>
     }
 }
+```
+`pnpm build:pro` 打包报错:
+`Cannot access ambient const enums when the '--isolatedModules' flag is provided.`
 
+解决方法:
+```typescript
+// tsconfig.json
+
+"compilerOptions": {
+  "skipLibCheck": true
+}
 ```
 ## Recommended IDE Setup
 

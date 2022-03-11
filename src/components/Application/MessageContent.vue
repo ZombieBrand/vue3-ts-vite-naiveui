@@ -4,15 +4,14 @@
 <script lang="ts">
 import {
   useMessage,
-  MessageType,
   MessageReactive,
   MessageOptions,
 } from "naive-ui";
 import AsyncQueue from "@/utils/asyncQueue";
-
+import { TMessageType } from "@/types/message";
 /**
  * 使用说明
- *  window.$message(MessageType,显示内容,MessageOptions)
+ *  window.$message(TMessageType,显示内容,MessageOptions)
  */
 export default {
   name: "MessageContent",
@@ -26,10 +25,10 @@ export default {
         msgReactive = null;
       }
     };
-    let timer: NodeJS.Timeout | null = null;
+    let timer: number | null = null;
     const notifyQueue = new AsyncQueue();
     window.$message = (
-      type: MessageType,
+      type: TMessageType = "info",
       content: string,
       options: MessageOptions = {}
     ) => {

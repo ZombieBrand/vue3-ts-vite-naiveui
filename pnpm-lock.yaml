@@ -11,8 +11,9 @@ specifiers:
   '@vitejs/plugin-vue': ^2.2.4
   '@vueuse/core': ^7.7.1
   autoprefixer: ^10.4.2
-  axios: ^0.26.0
+  axios: ^0.26.1
   chroma-js: ^2.4.2
+  dayjs: ^1.10.8
   eslint: ^8.10.0
   eslint-config-prettier: ^8.5.0
   eslint-define-config: ^1.2.5
@@ -21,7 +22,7 @@ specifiers:
   fuse.js: ^6.5.3
   md5: ^2.3.0
   mockjs: ^1.1.0
-  naive-ui: ^2.26.2
+  naive-ui: ^2.26.4
   path-browserify: ^1.0.1
   pinia: ^2.0.11
   pinia-plugin-persistedstate: ^1.5.1
@@ -39,15 +40,16 @@ specifiers:
   vue: ^3.2.31
   vue-i18n: ^9.2.0-beta.32
   vue-request: ^1.2.4
-  vue-router: ^4.0.13
+  vue-router: ^4.0.14
   vue-tsc: 0.32.0
 
 dependencies:
   '@types/md5': 2.3.2
   '@vicons/ionicons5': 0.12.0
   '@vueuse/core': 7.7.1_vue@3.2.31
-  axios: 0.26.0
+  axios: 0.26.1
   chroma-js: 2.4.2
+  dayjs: 1.10.8
   fuse.js: 6.5.3
   md5: 2.3.0
   mockjs: 1.1.0
@@ -57,7 +59,7 @@ dependencies:
   vue: 3.2.31
   vue-i18n: 9.2.0-beta.32_vue@3.2.31
   vue-request: 1.2.4_vue@3.2.31
-  vue-router: 4.0.13_vue@3.2.31
+  vue-router: 4.0.14_vue@3.2.31
 
 devDependencies:
   '@intlify/vite-plugin-vue-i18n': 3.3.1_ee51299bfed31ad0f4705239faf2563e
@@ -72,7 +74,7 @@ devDependencies:
   eslint-define-config: 1.2.5
   eslint-plugin-prettier: 4.0.0_f3d13a703a9c1079e3d1af6044603beb
   eslint-plugin-vue: 8.5.0_eslint@8.10.0
-  naive-ui: 2.26.2_vue@3.2.31
+  naive-ui: 2.26.4_vue@3.2.31
   path-browserify: 1.0.1
   postcss: 8.4.8
   prettier: 2.5.1
@@ -633,8 +635,8 @@ packages:
       '@vue/shared': 3.2.31
     dev: false
 
-  /@vue/devtools-api/6.0.12:
-    resolution: {integrity: sha512-iO/4FIezHKXhiDBdKySCvJVh8/mZPxHpiQrTy+PXVqJZgpTPTdHy4q8GXulaY+UKEagdkBb0onxNQZ0LNiqVhw==}
+  /@vue/devtools-api/6.0.13:
+    resolution: {integrity: sha512-T34EjcArVqzANedEZe2kXQ+AZsld2z1ptJlkOGm87+blk+s6udnP4ze/NYqV8lz1o9AIivimN0xxteLlWiWQdg==}
     dev: false
 
   /@vue/reactivity-transform/3.2.31:
@@ -834,8 +836,8 @@ packages:
       postcss-value-parser: 4.2.0
     dev: true
 
-  /axios/0.26.0:
-    resolution: {integrity: sha512-lKoGLMYtHvFrPVt3r+RBMp9nh34N0M8zEfCWqdWZx6phynIEhQqAdydpyBAAG211zlhX9Rgu08cOamy6XjE5Og==}
+  /axios/0.26.1:
+    resolution: {integrity: sha512-fPwcX4EvnSHuInCMItEhAGnaSEXRBjtzh9fOtsE6E1G6p7vl7edEeZe11QHf18+6+9gR5PbKV/sGKNaD8YaMeA==}
     dependencies:
       follow-redirects: 1.14.9
     transitivePeerDependencies:
@@ -878,7 +880,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001314
-      electron-to-chromium: 1.4.77
+      electron-to-chromium: 1.4.81
       escalade: 3.1.1
       node-releases: 2.0.2
       picocolors: 1.0.0
@@ -1062,6 +1064,10 @@ packages:
     engines: {node: '>=0.11'}
     dev: true
 
+  /dayjs/1.10.8:
+    resolution: {integrity: sha512-wbNwDfBHHur9UOzNUjeKUOJ0fCb0a52Wx0xInmQ7Y8FstyajiV1NmK1e00cxsr9YrE9r7yAChE0VvpuY5Rnlow==}
+    dev: false
+
   /debug/2.6.9:
     resolution: {integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==}
     dependencies:
@@ -1164,8 +1170,8 @@ packages:
     resolution: {integrity: sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=}
     dev: true
 
-  /electron-to-chromium/1.4.77:
-    resolution: {integrity: sha512-fiDxw8mO9Ph1Z0bjX2sFTPpi0J0QkOiwOJF+5Q0J0baNc/F9lLePAvDPlnoxvbUYYMizqrKPeotRRkJ9LtxAew==}
+  /electron-to-chromium/1.4.81:
+    resolution: {integrity: sha512-Gs7xVpIZ7tYYSDA+WgpzwpPvfGwUk3KSIjJ0akuj5XQHFdyQnsUoM76EA4CIHXNLPiVwTwOFay9RMb0ChG3OBw==}
     dev: true
 
   /emmet/2.3.6:
@@ -2124,8 +2130,8 @@ packages:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}
     dev: true
 
-  /naive-ui/2.26.2_vue@3.2.31:
-    resolution: {integrity: sha512-74xBHl5BHh7o26eVFm9Smpgp2VXon2iQHW5Jfw2J7bOzslYbzsTuIsSpZxK0XWwu2FNmL429NWO9eONpHAc/SA==}
+  /naive-ui/2.26.4_vue@3.2.31:
+    resolution: {integrity: sha512-yJQl6y58pxQWKi8YAofiFk0+4WVN+dNYoyKiMfaVdvVQTh9VxjBrcs4z5NUT+d98xUXOtmMzpIlrW/4P1xty+w==}
     peerDependencies:
       vue: ^3.0.0
     dependencies:
@@ -2285,7 +2291,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@vue/devtools-api': 6.0.12
+      '@vue/devtools-api': 6.0.13
       typescript: 4.6.2
       vue: 3.2.31
       vue-demi: 0.12.1_vue@3.2.31
@@ -3068,7 +3074,7 @@ packages:
       '@intlify/core-base': 9.2.0-beta.32
       '@intlify/shared': 9.2.0-beta.32
       '@intlify/vue-devtools': 9.2.0-beta.32
-      '@vue/devtools-api': 6.0.12
+      '@vue/devtools-api': 6.0.13
       vue: 3.2.31
     dev: false
 
@@ -3080,12 +3086,12 @@ packages:
       vue: 3.2.31
     dev: false
 
-  /vue-router/4.0.13_vue@3.2.31:
-    resolution: {integrity: sha512-LmXrC+BkDRLak+d5xTMgUYraT3Nj0H/vCbP+7usGvIl9Viqd1UP6AsP0i69pSbn9O0dXK/xCdp4yPw21HqV9Jw==}
+  /vue-router/4.0.14_vue@3.2.31:
+    resolution: {integrity: sha512-wAO6zF9zxA3u+7AkMPqw9LjoUCjSxfFvINQj3E/DceTt6uEz1XZLraDhdg2EYmvVwTBSGlLYsUw8bDmx0754Mw==}
     peerDependencies:
       vue: ^3.2.0
     dependencies:
-      '@vue/devtools-api': 6.0.12
+      '@vue/devtools-api': 6.0.13
       vue: 3.2.31
     dev: false
 

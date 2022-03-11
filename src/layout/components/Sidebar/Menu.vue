@@ -16,13 +16,13 @@ export default {
 };
 </script>
 <script lang="ts" setup>
+import { computed, ref } from "vue";
 import exportScss from "@/styles/export.module.scss";
 import useRoutsFormat from "@/hooks/useRoutesFormat";
-import { useRouter } from "vue-router";
-const router = useRouter();
-import { computed, ref } from "vue";
-import { useRoute } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
 import { useAppStore } from "@/store/modules/app";
+
+const router = useRouter();
 const appStore = useAppStore();
 const collapsed = computed(() => appStore.sideMenuCollapse);
 const route = useRoute();

@@ -23,7 +23,8 @@
     "followSystem": "跟随系统",
     "refresh": "刷新",
     "check": "查看",
-    "remove": "删除"
+    "remove": "删除",
+    "action": "操作"
   },
   "login": {
     "title": "管理平台",

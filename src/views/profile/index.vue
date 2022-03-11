@@ -6,7 +6,7 @@
       </n-gi>
       <n-gi :span="3">
         <n-card style="margin-bottom: 16px">
-          <feature :features="features"/>
+          <feature :features="features" />
         </n-card>
       </n-gi>
     </n-grid>
@@ -30,8 +30,10 @@ const {
   loading: featureLoading,
 } = useRequest(feature);
 
-// @ts-ignore
-const features = computed(()=> featureData.value ? featureData.value['result']: [])
+
+const features  = computed(() =>
+  featureData.value ? featureData.value["result"] : []
+);
 featureRun();
 </script>
 <style lang="scss" scoped>

@@ -2,7 +2,7 @@ import axios, { AxiosRequestConfig } from "axios";
 import { TOKEN } from "@/constant";
 import { getItem } from "@/utils/storage";
 import type { TCustomOptions } from "@/types/request";
-import type { MessageType } from "naive-ui";
+import type { TMessageType } from "@/types/message";
 import { isCheckTimeout } from "@/utils/auth";
 import { useUserStore } from "@/store/modules/user";
 import { setGlobalOptions } from "vue-request";
@@ -54,7 +54,7 @@ function myAxios(axiosConfig: AxiosRequestConfig, customOptions?: any) {
           return Promise.reject(config);
         }
         // @ts-ignore
-        config.headers["Authorization"]= getItem(TOKEN);
+        config.headers["Authorization"] = getItem(TOKEN);
       }
       // @ts-ignore
       config.headers["Accept-Language"] = getLanguage();
@@ -167,7 +167,7 @@ function httpErrorStatusHandle(error: any) {
 
 function httpSuccessStatusHandle(response: any) {
   let message = "";
-  let messageStatus: MessageType = "success";
+  let messageStatus: TMessageType = "success";
   const userStore = useUserStore();
   switch (response.data.code) {
     case 401:

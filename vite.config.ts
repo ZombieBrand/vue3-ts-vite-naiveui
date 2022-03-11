@@ -65,17 +65,12 @@ export default defineConfig(({ mode, command }) => {
       //   },
       // },
     },
+    esbuild: {
+      pure: mode === "production" ? ["console.log", "debugger"] : [], // 去除日志和debugger
+    },
     // 生产环境打包配置
     build: {
-      minify: "terser",
       sourcemap: true,
-      terserOptions: {
-        //去除 console debugger
-        compress: {
-          drop_console: true,
-          drop_debugger: true,
-        },
-      },
     },
   };
 });

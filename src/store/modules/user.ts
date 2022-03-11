@@ -7,10 +7,30 @@ import { TOKEN } from "@/constant";
 import router from "@/router/index";
 import { setTimeStamp } from "@/utils/auth";
 
+const initUserInfo = () => ({
+  role: [],
+  title: "",
+  username: "",
+  age: "",
+  _id: "",
+  id: "",
+  avatar: "",
+  city: "",
+  country: "",
+  province: "",
+  mobile_phone: "",
+  email: "",
+  region: "",
+  permission: {
+    menus: [],
+    points: [],
+  },
+});
+
 export const useUserStore = defineStore("user", {
   state: (): T.IUserState => ({
     token: getItem(TOKEN) || "",
-    userInfo: {},
+    userInfo: initUserInfo(),
   }),
   actions: {
     login(userInfo: T.login) {
@@ -49,7 +69,7 @@ export const useUserStore = defineStore("user", {
     async loginOut() {
       setItem(TOKEN, "");
       this.token = "";
-      this.userInfo = {};
+      this.userInfo = initUserInfo();
       removeAllItem();
       try {
         await router.push("/login");

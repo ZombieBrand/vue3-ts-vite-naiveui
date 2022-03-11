@@ -33,7 +33,7 @@
             <div class="text-muted">
               {{ $t('profile.muted') }}
             </div>
-            <div class="progress-item" v-for="item in features" :key="item.id">
+            <div class="progress-item" v-for="(item,index) in features" :key="index">
               <div>{{ item.title }}</div>
               <n-progress type="line" :percentage="item.percentage" />
             </div>
@@ -49,15 +49,13 @@ export default {
 };
 </script>
 <script setup lang="ts">
+import type { TFeatures } from "@/types/profile";
 import PanThumb from "@/components/PanThumb/index.vue";
 import { useUserStore } from "@/store/modules/user";
 const useStore = useUserStore();
-defineProps({
-  features: {
-    type: Array,
-    required: true
-  }
-})
+defineProps<{
+  features: TFeatures[];
+}>();
 </script>
 <style lang="scss" scoped>
 .user-container {

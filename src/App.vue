@@ -31,6 +31,7 @@ const reload = () => {
   })
 };
 provide("reload", reload);
+console.log('log存在')
 </script>
 <script lang="ts">
 export default {

@@ -46,7 +46,6 @@ declare module 'vue' {
     NNotificationProvider: typeof import('naive-ui')['NNotificationProvider']
     NProgress: typeof import('naive-ui')['NProgress']
     NSelect: typeof import('naive-ui')['NSelect']
-    NSpace: typeof import('naive-ui')['NSpace']
     PanThumb: typeof import('./src/components/PanThumb/index.vue')['default']
     SwitchLanguage: typeof import('./src/components/SwitchLanguage.vue')['default']
     TagsView: typeof import('./src/components/TagsView/TagsView.vue')['default']

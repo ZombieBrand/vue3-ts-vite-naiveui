@@ -79,7 +79,7 @@ watch(locale, () => {
 
 // 鼠标右键
 const visible = ref(false);
-const menuIndex = ref<number | null>(0);
+const menuIndex = ref<number | undefined>(0);
 const menuStyle = ref({
   left: "0px",
   top: "0px",

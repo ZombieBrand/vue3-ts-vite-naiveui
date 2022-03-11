@@ -9,33 +9,33 @@ export default [
     response: () => {
       return resultSuccess(
         {
-          list: [
+          "list|20-100": [
             {
               role: [
                 {
-                  id: "1",
+                  id: Mock.mock('@guid'),
                   title: "超级管理员",
                 },
               ],
               _id: "@id",
-              id: "0",
-              openTime: "1433088000000",
+              id: Mock.mock('@guid'),
+              openTime: Mock.mock('@datetime'),
               username: "super-admin",
-              mobile: Mock.Random.integer(),
+              mobile: Mock.mock('@natural'),
               avatar: "@image",
             },
             {
               role: [
                 {
-                  id: "2",
+                  id: Mock.mock('@guid'),
                   title: "管理员",
                 },
               ],
               _id: "@id",
-              id: "1",
-              username: "admin",
-              openTime: "1559318400000",
-              mobile: Mock.Random.integer(),
+              id: Mock.mock('@guid'),
+              username: "@name",
+              openTime: Mock.mock('@datetime'),
+              mobile: Mock.mock('@natural'),
               avatar: "@image",
             },
           ],

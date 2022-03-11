@@ -23,7 +23,8 @@
     "followSystem": "Follow System",
     "refresh": "Refresh",
     "check": "Check",
-    "remove": "Remove"
+    "remove": "Remove",
+    "action": "Action"
   },
   "login": {
     "title": "Management platform",

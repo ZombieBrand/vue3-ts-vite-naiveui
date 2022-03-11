@@ -1,23 +1,26 @@
 <template>
   <div class="user-manage-container">
-    <n-card title="功能">
-      <n-space justify="end">
-        <n-button :strong="true" :secondary="true" type="primary">
-          {{ $t("userManage.importExcel") }}
-        </n-button>
-        <n-button :strong="true" :secondary="true" type="primary">
-          {{ $t("userManage.exportExcel") }}
-        </n-button>
-      </n-space>
-    </n-card>
-    <n-card>
-      <n-data-table
-        :columns="columns"
-        :data="tableData"
-        :pagination="true"
-        :bordered="false"
-      />
-    </n-card>
+    <n-space vertical>
+      <n-card title="功能">
+        <n-space justify="end">
+          <n-button :strong="true" :secondary="true" type="primary">
+            {{ $t("userManage.importExcel") }}
+          </n-button>
+          <n-button :strong="true" :secondary="true" type="primary">
+            {{ $t("userManage.exportExcel") }}
+          </n-button>
+        </n-space>
+      </n-card>
+      <n-card>
+        <n-data-table
+          :columns="columns"
+          :data="tableData"
+          :pagination="true"
+          :bordered="false"
+          @update:page-size="changePageSize"
+        />
+      </n-card>
+    </n-space>
   </div>
 </template>
 
@@ -31,12 +34,13 @@ import { ref, h } from "vue";
 import type { Ref } from "vue";
 import { getUserManageList } from "@/api/user-manage";
 import { useRequest } from "vue-request";
-import { NButton, NAvatar, NTag } from "naive-ui";
+import { NButton, NAvatar, NTag, NSpace } from "naive-ui";
 import type { DataTableColumns } from "naive-ui";
 import type { User } from "@/types/userManage";
 import { t } from "@/locales";
+import { timeFormat } from "@/utils";
 // 数据相关
-const tableData: Ref<User | never[]> = ref([]);
+const tableData: Ref<User[] | never[]> = ref([]);
 const total = ref(0);
 const page = ref(1);
 const size = ref(0);
@@ -64,7 +68,7 @@ const createColumns = ({
 }: {
   check: (row: User) => void;
   role: (row: User) => void;
-  remove: (row: User) => void;
+  remove: (row: User, index: number) => void;
 }): DataTableColumns<User> => {
   return [
     {
@@ -107,43 +111,55 @@ const createColumns = ({
     {
       title: t("userManage.openTime"),
       key: "openTime",
+      render(row) {
+        return timeFormat(row.openTime)
+      },
     },
     {
-      title: "Action",
+      title: t("global.action"),
       key: "actions",
-      render(row) {
-        return [
-          h(
-            NButton,
-            {
-              strong: true,
-              tertiary: true,
-              size: "small",
-              onClick: () => check(row),
-            },
-            { default: () => t('global.check') }
-          ),
-          h(
-            NButton,
-            {
-              strong: true,
-              tertiary: true,
-              size: "small",
-              onClick: () => role(row),
-            },
-            { default: () =>  t('userManage.role') }
-          ),
-          h(
-            NButton,
-            {
-              strong: true,
-              tertiary: true,
-              size: "small",
-              onClick: () => remove(row),
-            },
-            { default: () => t('global.remove') }
-          ),
-        ];
+      render(row, index) {
+        return h(
+          NSpace,
+          {},
+          {
+            default: () => [
+              h(
+                NButton,
+                {
+                  strong: true,
+                  tertiary: true,
+                  size: "small",
+                  type: "primary",
+                  onClick: () => check(row),
+                },
+                { default: () => t("global.check") }
+              ),
+              h(
+                NButton,
+                {
+                  strong: true,
+                  tertiary: true,
+                  size: "small",
+                  type: "primary",
+                  onClick: () => role(row),
+                },
+                { default: () => t("userManage.role") }
+              ),
+              h(
+                NButton,
+                {
+                  strong: true,
+                  tertiary: true,
+                  size: "small",
+                  type: "error",
+                  onClick: () => remove(row, index),
+                },
+                { default: () => t("global.remove") }
+              ),
+            ],
+          }
+        );
       },
     },
   ];
@@ -155,10 +171,11 @@ const columns = createColumns({
   role(row) {
     console.log(row);
   },
-  remove(row) {
-    console.log(row);
+  remove(row, index) {
+    tableData.value.splice(index, 1);
   },
 });
+function changePageSize() {}
 </script>
 
 <style lang="scss" scoped></style>

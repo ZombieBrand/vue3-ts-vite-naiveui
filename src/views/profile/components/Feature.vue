@@ -1,6 +1,11 @@
 <template>
   <n-collapse :accordion="true">
-    <n-collapse-item v-for="item of features" :key="item.id" :title="item.title" :name="item.id" >
+    <n-collapse-item
+      v-for="(item, index) of features"
+      :key="index"
+      :title="item.title"
+      :name="index"
+    >
       <div v-html="item.content"></div>
     </n-collapse-item>
   </n-collapse>
@@ -12,11 +17,9 @@ export default {
 };
 </script>
 <script setup lang="ts">
-defineProps({
-  features: {
-    type: Array,
-    required: true,
-  },
-});
+import type { TFeatures } from "@/types/profile";
+defineProps<{
+  features: TFeatures[];
+}>();
 </script>
 <style scoped></style>
