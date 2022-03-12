@@ -17,7 +17,7 @@ export default {
 </script>
 <script setup lang="ts">
 import { usePreferredDark } from "@vueuse/core";
-import { ref, computed, watchEffect } from "vue";
+import { ref, computed, watch } from "vue";
 import type { Ref } from "vue";
 import { useAppStore } from "@/store/modules/app";
 const appStore = useAppStore();
@@ -41,19 +41,11 @@ const toggleAutoDark = (checked: boolean) => {
 };
 
 // 开启跟随系统主题则自动设置 darkTheme状态,并且switch.disabled = true
-watchEffect(() => {
-  if (autoDark.value) {
-    themeSwitchEl.value !== null && (themeSwitchEl.value.disabled = true);
-    if (isDark.value) {
-      themeSwitchEl.value !== null && (themeSwitchEl.value.checked = true);
-      appStore.setDarkTheme(true);
-    } else {
-      themeSwitchEl.value !== null && (themeSwitchEl.value.checked = false);
-      appStore.setDarkTheme(false);
-    }
-  } else {
-    themeSwitchEl.value !== null && (themeSwitchEl.value.disabled = false);
-  }
+watch(isDark, (value) => {
+  appStore.judgeAutoDark(value);
+});
+watch(autoDark, (value) => {
+  themeSwitchEl.value !== null && (themeSwitchEl.value.disabled = value);
 });
 
 // 根据黑暗主题状态设置对应颜色样式

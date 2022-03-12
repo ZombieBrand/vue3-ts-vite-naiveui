@@ -25,13 +25,13 @@ const currentDarkTheme: ComputedRef<boolean> = computed(
 const themeOverrides = useCustomColor();
 const isReloadAlive = ref(true);
 const reload = () => {
-  isReloadAlive.value= false
-  nextTick(()=>{
-    isReloadAlive.value = true
-  })
+  isReloadAlive.value = false;
+  nextTick(() => {
+    isReloadAlive.value = true;
+  });
 };
 provide("reload", reload);
-console.log('log存在')
+console.log("log存在");
 </script>
 <script lang="ts">
 export default {

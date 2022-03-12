@@ -12,12 +12,13 @@ export default [
           {
             title: "Vue3",
             percentage: 100,
-            content:"项目基于最新的<a target=\"_blank\" href=\"https://v3.cn.vuejs.org/guide/introduction.html\">vue3</a>全家桶进行开发，全面使用最新的的RFC script setup语法标准，为你带来不一样的 vue3 开发体验",
+            content:
+              '项目基于最新的<a target="_blank" href="https://v3.cn.vuejs.org/guide/introduction.html">vue3</a>全家桶进行开发，全面使用最新的的RFC script setup语法标准，为你带来不一样的 vue3 开发体验',
           },
           {
             title: "TypeScript",
             percentage: 80,
-            content: '项目使用TypScript开发保证项目的可靠性和稳定性',
+            content: "项目使用TypScript开发保证项目的可靠性和稳定性",
           },
           {
             title: "权限验证（页面权限、功能权限、动态权限、权限配置）",

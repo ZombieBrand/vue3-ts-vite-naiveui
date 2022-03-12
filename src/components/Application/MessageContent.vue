@@ -2,11 +2,7 @@
   <slot></slot>
 </template>
 <script lang="ts">
-import {
-  useMessage,
-  MessageReactive,
-  MessageOptions,
-} from "naive-ui";
+import { useMessage, MessageReactive, MessageOptions } from "naive-ui";
 import AsyncQueue from "@/utils/asyncQueue";
 import { TMessageType } from "@/types/message";
 /**

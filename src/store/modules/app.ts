@@ -27,6 +27,11 @@ export const useAppStore = defineStore("app", {
     setAutoDark(state: boolean) {
       this.autoDark = state;
     },
+    judgeAutoDark(isDark: boolean) {
+      if (this.autoDark) {
+        this.darkTheme = isDark;
+      }
+    },
     // 根据点击路由添加到tagsView
     addTagsViewList(tag: TTagsView) {
       // 去重复
@@ -50,7 +55,7 @@ export const useAppStore = defineStore("app", {
           break;
         case "other":
           this.tagsViewList.splice(index + 1, tagsViewListTotal - 1);
-          this.tagsViewList.splice(0,index);
+          this.tagsViewList.splice(0, index);
           break;
         case "right":
           this.tagsViewList.splice(index + 1, tagsViewListTotal - 1);

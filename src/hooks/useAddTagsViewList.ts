@@ -26,7 +26,7 @@ export default function () {
   };
   watch(
     route,
-    (to, from) => {
+    (to) => {
       // 处理保存tagView路由
       if (!isTags(to.path)) return;
       const { fullPath, meta, name, params, path, query } = to;

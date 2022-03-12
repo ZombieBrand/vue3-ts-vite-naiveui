@@ -1,1 +1,6 @@
-export declare type TMessageType = 'info' | 'success' | 'warning' | 'error' | 'loading';
+export declare type TMessageType =
+  | "info"
+  | "success"
+  | "warning"
+  | "error"
+  | "loading";

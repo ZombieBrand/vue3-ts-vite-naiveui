@@ -1,5 +1,5 @@
 export interface TFeatures {
-    title: string;
-    percentage: number;
-    content: string;
+  title: string;
+  percentage: number;
+  content: string;
 }

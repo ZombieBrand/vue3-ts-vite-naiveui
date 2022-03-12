@@ -1,46 +1,48 @@
 <template>
-    <n-card class="user-container" :title="$t('profile.introduce')">
-      <div class="user-profile">
-        <!-- 头像 -->
-        <div class="box-center">
-          <PanThumb
-              :image="useStore.userInfo.avatar"
-              :height="'100px'"
-              :width="'100px'"
-              :hoverable="false"
+  <n-card class="user-container" :title="$t('profile.introduce')">
+    <div class="user-profile">
+      <!-- 头像 -->
+      <div class="box-center">
+        <PanThumb
+          :image="useStore.userInfo.avatar"
+          :height="'100px'"
+          :width="'100px'"
+          :hoverable="false"
+        >
+          <div>Hello</div>
+          {{ useStore.userInfo.title }}
+        </PanThumb>
+      </div>
+      <!-- 姓名 && 角色 -->
+      <div class="box-center">
+        <div class="user-name text-center">ZombieBrand</div>
+        <div class="user-role text-center text-muted">
+          {{ useStore.userInfo.title }}
+        </div>
+      </div>
+    </div>
+    <!-- 简介 -->
+    <div class="project-bio">
+      <div class="project-bio-section">
+        <div class="project-bio-section-header">
+          <span>{{ $t("profile.projectIntroduction") }}</span>
+        </div>
+        <div class="project-bio-section-body">
+          <div class="text-muted">
+            {{ $t("profile.muted") }}
+          </div>
+          <div
+            class="progress-item"
+            v-for="(item, index) in features"
+            :key="index"
           >
-            <div>Hello</div>
-            {{ useStore.userInfo.title }}
-          </PanThumb>
-        </div>
-        <!-- 姓名 && 角色 -->
-        <div class="box-center">
-          <div class="user-name text-center">
-              ZombieBrand
-          </div>
-          <div class="user-role text-center text-muted">
-            {{ useStore.userInfo.title }}
+            <div>{{ item.title }}</div>
+            <n-progress type="line" :percentage="item.percentage" />
           </div>
         </div>
       </div>
-      <!-- 简介 -->
-      <div class="project-bio">
-        <div class="project-bio-section">
-          <div class="project-bio-section-header">
-            <span>{{ $t('profile.projectIntroduction') }}</span>
-          </div>
-          <div class="project-bio-section-body">
-            <div class="text-muted">
-              {{ $t('profile.muted') }}
-            </div>
-            <div class="progress-item" v-for="(item,index) in features" :key="index">
-              <div>{{ item.title }}</div>
-              <n-progress type="line" :percentage="item.percentage" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </n-card>
+    </div>
+  </n-card>
 </template>
 
 <script lang="ts">

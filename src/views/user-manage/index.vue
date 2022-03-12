@@ -112,7 +112,7 @@ const createColumns = ({
       title: t("userManage.openTime"),
       key: "openTime",
       render(row) {
-        return timeFormat(row.openTime)
+        return timeFormat(row.openTime);
       },
     },
     {

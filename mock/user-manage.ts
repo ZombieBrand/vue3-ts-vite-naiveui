@@ -13,29 +13,29 @@ export default [
             {
               role: [
                 {
-                  id: Mock.mock('@guid'),
+                  id: Mock.mock("@guid"),
                   title: "超级管理员",
                 },
               ],
               _id: "@id",
-              id: Mock.mock('@guid'),
-              openTime: Mock.mock('@datetime'),
+              id: Mock.mock("@guid"),
+              openTime: Mock.mock("@datetime"),
               username: "super-admin",
-              mobile: Mock.mock('@natural'),
+              mobile: Mock.mock("@natural"),
               avatar: "@image",
             },
             {
               role: [
                 {
-                  id: Mock.mock('@guid'),
+                  id: Mock.mock("@guid"),
                   title: "管理员",
                 },
               ],
               _id: "@id",
-              id: Mock.mock('@guid'),
+              id: Mock.mock("@guid"),
               username: "@name",
-              openTime: Mock.mock('@datetime'),
-              mobile: Mock.mock('@natural'),
+              openTime: Mock.mock("@datetime"),
+              mobile: Mock.mock("@natural"),
               avatar: "@image",
             },
           ],

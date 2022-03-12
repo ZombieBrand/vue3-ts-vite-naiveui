@@ -7,10 +7,10 @@ export default function () {
   const appStore = useAppStore();
   const primaryColor = computed(() => appStore.primaryColor);
   const primaryColorHover = computed(() =>
-    chroma(primaryColor.value).brighten(0.4).css('hsl')
+    chroma(primaryColor.value).brighten(0.4).css("hsl")
   );
   const primaryColorPressed = computed(() =>
-    chroma(primaryColor.value).darken(0.8).css('hsl')
+    chroma(primaryColor.value).darken(0.8).css("hsl")
   );
 
   const themeOverrides: ComputedRef<GlobalThemeOverrides> = computed(() => ({
@@ -30,7 +30,9 @@ export default function () {
   }));
 
   function hasDefaultColor() {
-    return chroma(primaryColor.value).css('hsl') === "hsl(148.24,73.91%,36.08%)";
+    return (
+      chroma(primaryColor.value).css("hsl") === "hsl(148.24,73.91%,36.08%)"
+    );
   }
   return themeOverrides;
 }

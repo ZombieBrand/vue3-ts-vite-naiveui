@@ -5,7 +5,7 @@
         <Navbar :style="{ height: navHeight }" />
       </n-layout-header>
       <n-layout position="absolute" :has-sider="true" :style="{ top: mainTop }">
-        <Sidebar class="guide-sidebar"/>
+        <Sidebar class="guide-sidebar" />
         <AppMain />
       </n-layout>
     </n-layout>

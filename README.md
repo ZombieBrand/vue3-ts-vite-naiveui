@@ -25,7 +25,8 @@ Vue 3 + Typescript + Vite + Naive UI + VueRouter + pinia + axios
 - [vite-mock](https://github.com/anncwb/vite-plugin-mock) 使用基于 mockjs 的 vite 插件,支持 Mock 数据
 
 ## i18n 国际化
-`src/locales/index.ts` 初始化设置i18n
+
+`src/locales/index.ts` 初始化设置 i18n
 
 `src/plugins/i18n.ts`注册国际化插件
 
@@ -63,11 +64,12 @@ const { proxy } = getCurrentInstance();
 proxy.$t("route.home");
 </script>
 ```
-在其他ts文件用法
+
+在其他 ts 文件用法
 
 ```ts
 import { t } from "@/locales";
-const i18n = t("route.home") // 首页文字
+const i18n = t("route.home"); // 首页文字
 ```
 
 还可以在组件.vue 文件中直接用 i18n 标签声明语言变量
@@ -152,19 +154,21 @@ css: {
 采用 JWT 鉴权,处理方式包含(动态 token,刷新 token,时效 token),此项目采用时效 Token.
 
 ## 全屏幕控制
+
 `Element.requestFullscreen()` 方法用于发出异步请求使元素进入全屏模式。
 `Document.exitFullscreen()` 方法用于让当前文档退出全屏模式
 
 ## 开发问题解决方案
 
-axios结合useRequest使用reuslt警告:
+axios 结合 useRequest 使用 reuslt 警告:
 `TS2339: Property 'result' does not exist on type 'AxiosResponse '.`
+
 ```typescript
 // 获取数据方法
 const { run: userManageRun } = useRequest(getUserManageList, {
   onSuccess: (data) => {
     const {
-      result: { list, page:_page, size:_size, total:_total },
+      result: { list, page: _page, size: _size, total: _total },
     } = data;
   },
   onError: (error) => {
@@ -172,21 +176,25 @@ const { run: userManageRun } = useRequest(getUserManageList, {
   },
 });
 ```
+
 解决方法:
+
 ```typescript
 // src/axios.d.ts
-import * as axios from 'axios'
+import * as axios from "axios";
 
-declare module 'axios' {
-    interface AxiosInstance {
-        (config: AxiosRequestConfig): Promise<any>
-    }
+declare module "axios" {
+  interface AxiosInstance {
+    (config: AxiosRequestConfig): Promise<any>;
+  }
 }
 ```
+
 `pnpm build:pro` 打包报错:
 `Cannot access ambient const enums when the '--isolatedModules' flag is provided.`
 
 解决方法:
+
 ```typescript
 // tsconfig.json
 
@@ -194,6 +202,7 @@ declare module 'axios' {
   "skipLibCheck": true
 }
 ```
+
 ## Recommended IDE Setup
 
 - [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)

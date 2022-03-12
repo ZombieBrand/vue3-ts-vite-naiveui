@@ -2,11 +2,11 @@
   <div class="my-container">
     <n-grid :x-gap="12" :cols="4">
       <n-gi :span="1">
-        <ProjectCard :features="features"></ProjectCard>
+        <ProjectCard :features="features" />
       </n-gi>
       <n-gi :span="3">
         <n-card style="margin-bottom: 16px">
-          <feature :features="features" />
+          <Feature :features="features" />
         </n-card>
       </n-gi>
     </n-grid>
@@ -24,14 +24,9 @@ import { feature } from "@/api/user";
 import ProjectCard from "./components/ProjectCard.vue";
 import Feature from "./components/Feature.vue";
 import { computed } from "vue";
-const {
-  run: featureRun,
-  data: featureData,
-  loading: featureLoading,
-} = useRequest(feature);
+const { run: featureRun, data: featureData } = useRequest(feature);
 
-
-const features  = computed(() =>
+const features = computed(() =>
   featureData.value ? featureData.value["result"] : []
 );
 featureRun();
