@@ -15,8 +15,7 @@
         <n-data-table
           :columns="columns"
           :data="tableData"
-          :pagination="true"
-          :bordered="false"
+          :pagination="paginationOptions"
           @update:page-size="changePageSize"
         />
       </n-card>
@@ -39,6 +38,8 @@ import type { DataTableColumns } from "naive-ui";
 import type { User } from "@/types/userManage";
 import { t } from "@/locales";
 import { timeFormat } from "@/utils";
+import { paginationOptions } from "@/components/TableData";
+
 // 数据相关
 const tableData: Ref<User[] | never[]> = ref([]);
 const total = ref(0);
