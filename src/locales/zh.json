@@ -26,6 +26,10 @@
     "remove": "删除",
     "action": "操作"
   },
+  "uploadExcel": {
+    "upload": "点击上传",
+    "drop": "将文件拖到此处"
+  },
   "login": {
     "title": "管理平台",
     "logIn": "登录"

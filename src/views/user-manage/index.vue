@@ -3,10 +3,20 @@
     <n-space vertical>
       <n-card title="功能">
         <n-space justify="end">
-          <n-button :strong="true" :secondary="true" type="primary">
+          <n-button
+            :strong="true"
+            :secondary="true"
+            type="primary"
+            @click="importExcel"
+          >
             {{ $t("userManage.importExcel") }}
           </n-button>
-          <n-button :strong="true" :secondary="true" type="primary">
+          <n-button
+            :strong="true"
+            :secondary="true"
+            type="primary"
+            @click="exportExcel"
+          >
             {{ $t("userManage.exportExcel") }}
           </n-button>
         </n-space>
@@ -17,6 +27,7 @@
           :data="tableData"
           :pagination="paginationOptions"
           @update:page-size="changePageSize"
+          @update:page="changePage"
         />
       </n-card>
     </n-space>
@@ -37,29 +48,32 @@ import { NButton, NAvatar, NTag, NSpace } from "naive-ui";
 import type { DataTableColumns } from "naive-ui";
 import type { User } from "@/types/userManage";
 import { t } from "@/locales";
-import { timeFormat } from "@/utils";
 import { paginationOptions } from "@/components/TableData";
-
+import { dateFilter } from "@/filter";
+import { useRouter } from "vue-router";
 // 数据相关
 const tableData: Ref<User[] | never[]> = ref([]);
 const total = ref(0);
 const page = ref(1);
-const size = ref(0);
+const size = ref(10);
 // 获取数据方法
-const { run: userManageRun } = useRequest(getUserManageList, {
-  onSuccess: (data) => {
-    const {
-      result: { list, page: _page, size: _size, total: _total },
-    } = data;
-    tableData.value = list;
-    total.value = _total;
-    page.value = _size;
-    size.value = _page;
-  },
-  onError: (error) => {
-    console.log(error);
-  },
-});
+const { run: userManageRun } = useRequest(
+  getUserManageList({ page: page.value, size: size.value }),
+  {
+    onSuccess: (data) => {
+      const {
+        result: { list, page: _page, size: _size, total: _total },
+      } = data;
+      tableData.value = list;
+      total.value = _total;
+      page.value = _size;
+      size.value = _page;
+    },
+    onError: (error) => {
+      console.log(error);
+    },
+  }
+);
 userManageRun({});
 
 const createColumns = ({
@@ -113,7 +127,7 @@ const createColumns = ({
       title: t("userManage.openTime"),
       key: "openTime",
       render(row) {
-        return timeFormat(row.openTime);
+        return dateFilter(row.openTime);
       },
     },
     {
@@ -176,7 +190,19 @@ const columns = createColumns({
     tableData.value.splice(index, 1);
   },
 });
-function changePageSize() {}
+
+function changePageSize(pageSize: number) {
+  size.value = pageSize;
+}
+function changePage(pageNum: number) {
+  page.value = pageNum;
+}
+
+const router = useRouter();
+function importExcel() {
+  router.push({ name: "UserImport" });
+}
+function exportExcel() {}
 </script>
 
 <style lang="scss" scoped></style>

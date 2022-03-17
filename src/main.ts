@@ -18,4 +18,11 @@ meta.name = "naive-ui-style";
 document.head.appendChild(meta);
 const pinia = createPinia();
 pinia.use(piniaPluginPersistedstate);
-createApp(App).use(router).use(pinia).use(i18n).mount("#app");
+// 全局属性
+import { installFilter } from "@/filter";
+createApp(App)
+  .use(router)
+  .use(pinia)
+  .use(i18n)
+  .use(installFilter)
+  .mount("#app");

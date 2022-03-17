@@ -60,6 +60,7 @@ export default defineConfig(({ mode, command }) => {
       //   [ENV.VITE_APP_BASE_API]: {
       //     target: ENV.VITE_APP_WEB_URL,
       //     changeOrigin: true,
+      //     secure: false,
       //     rewrite: (path) =>
       //       path.replace(new RegExp(`^${ENV.VITE_APP_BASE_API}`), ""),
       //   },

@@ -5,7 +5,6 @@
  * @param immediately 是否立即执行
  */
 export default class AsyncQueue {
-  // eslint-disable-next-line no-empty-function
   public constructor(
     private queue: any[] = [],
     private running: boolean = false

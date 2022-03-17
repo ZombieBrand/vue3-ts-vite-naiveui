@@ -6,7 +6,9 @@ export default [
   {
     url: "/api/user-manage/list",
     method: "get",
-    response: () => {
+    statusCode: 200,
+    response: ({ query }: Record<string, any>) => {
+      const { page, size } = query;
       return resultSuccess(
         {
           "list|20-100": [
@@ -40,10 +42,21 @@ export default [
             },
           ],
           total: 7,
-          page: 1,
-          size: 2,
+          page: +page,
+          size: +size,
         },
         { message: "获取用户信息成功" }
+      );
+    },
+  },
+  {
+    url: "/api/user-manage/batch/import",
+    method: "post",
+    statusCode: 200,
+    response: () => {
+      return resultSuccess(
+          {},
+        { message: "批量上传成功!" }
       );
     },
   },

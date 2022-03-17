@@ -26,6 +26,10 @@
     "remove": "Remove",
     "action": "Action"
   },
+  "uploadExcel": {
+    "upload": "Click upload",
+    "drop": "Drag the file here"
+  },
   "login": {
     "title": "Management platform",
     "logIn": "log in"

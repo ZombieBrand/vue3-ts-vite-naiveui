@@ -50,6 +50,7 @@ declare module 'vue' {
     SwitchLanguage: typeof import('./src/components/SwitchLanguage.vue')['default']
     TagsView: typeof import('./src/components/TagsView/TagsView.vue')['default']
     ThemeSwitch: typeof import('./src/components/ThemeSwitch/index.vue')['default']
+    UploadExcel: typeof import('./src/components/UploadExcel/index.vue')['default']
   }
 }
 

@@ -1,12 +1,14 @@
 import dayjs from "dayjs";
-
-const dateFilter = (val: string, format = "YYYY-MM-DD") => {
+import { App } from "vue";
+export const dateFilter = (val: string | number, format = "YYYY-MM-DD") => {
   if (Number.isFinite(val)) {
-    val = parseInt(val);
+    val = parseInt(val as string);
   }
   return dayjs(val).format(format);
 };
 
-export default (app) => {
-  app.config.globalProperties.$filters = {};
+export const installFilter =  (app: App) => {
+  app.config.globalProperties.$filters = {
+    dateFilter,
+  };
 };
