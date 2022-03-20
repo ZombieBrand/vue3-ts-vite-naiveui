@@ -31,6 +31,7 @@
         />
       </n-card>
     </n-space>
+    <ExportToExcel v-model="showExport" :exportData="tableData" />
   </div>
 </template>
 
@@ -40,7 +41,7 @@ export default {
 };
 </script>
 <script setup lang="ts">
-import { ref, h , onActivated } from "vue";
+import { ref, h, onActivated } from "vue";
 import type { Ref } from "vue";
 import { getUserManageList } from "@/api/user-manage";
 import { useRequest } from "vue-request";
@@ -51,6 +52,7 @@ import { t } from "@/locales";
 import { paginationOptions } from "@/components/TableData";
 import { dateFilter } from "@/filter";
 import { useRouter } from "vue-router";
+import ExportToExcel from "./components/ExportToExcel.vue";
 // 数据相关
 const tableData: Ref<User[] | never[]> = ref([]);
 const total = ref(0);
@@ -75,9 +77,9 @@ const { run: userManageRun } = useRequest(
   }
 );
 userManageRun({});
-onActivated(()=>{
+onActivated(() => {
   userManageRun({});
-})
+});
 const createColumns = ({
   check,
   role,
@@ -204,7 +206,10 @@ const router = useRouter();
 function importExcel() {
   router.push({ name: "UserImport" });
 }
-function exportExcel() {}
+const showExport = ref(false);
+function exportExcel() {
+  showExport.value = true;
+}
 </script>
 
 <style lang="scss" scoped></style>

@@ -30,6 +30,10 @@
     "upload": "Click upload",
     "drop": "Drag the file here"
   },
+  "exportExcel":{
+    "title":"The batch export",
+    "defaultName":"Exporting Files in Batches"
+  },
   "login": {
     "title": "Management platform",
     "logIn": "log in"

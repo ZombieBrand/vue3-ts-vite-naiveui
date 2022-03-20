@@ -31,7 +31,6 @@ export type AppRouteRecordRaw = RouteRecordRaw & {
  *  }
  */
 
-
 /**
  * @description 公共路由
  */

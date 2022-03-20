@@ -2,7 +2,6 @@ import { h } from "vue";
 import { NIcon } from "naive-ui";
 import { i18n } from "@/locales";
 
-
 /**
  * render 图标
  * */

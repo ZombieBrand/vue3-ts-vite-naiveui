@@ -72,10 +72,10 @@ function generateData(results: TResults[]) {
       // @ts-ignore
       const userInfoKey: string = USER_RELATIONS[keyName];
       if (userInfoKey === "openTime") {
-         // @ts-ignore
+        // @ts-ignore
         userInfo[userInfoKey] = formatDate(item[keyName]);
       } else {
-         // @ts-ignore
+        // @ts-ignore
         userInfo[userInfoKey] = item[keyName];
       }
     });
