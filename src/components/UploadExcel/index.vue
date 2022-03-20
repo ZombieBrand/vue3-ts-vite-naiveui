@@ -26,7 +26,7 @@
       @dragover.stop.prevent="handleDragover"
       @dragenter.stop.prevent="handleDragover"
     >
-      <i class="el-icon-upload" />
+      <i class="el-icon-upload"></i>
       <span>{{ $t("uploadExcel.drop") }}</span>
     </div>
   </div>

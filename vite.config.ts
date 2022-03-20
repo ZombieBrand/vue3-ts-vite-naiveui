@@ -51,7 +51,7 @@ export default defineConfig(({ mode, command }) => {
     },
     //启动服务配置
     server: {
-      host: "localhost",
+      host: "0.0.0.0",
       port: 8997,
       open: true,
       https: false,

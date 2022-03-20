@@ -40,7 +40,7 @@ export default {
 };
 </script>
 <script setup lang="ts">
-import { ref, h } from "vue";
+import { ref, h , onActivated } from "vue";
 import type { Ref } from "vue";
 import { getUserManageList } from "@/api/user-manage";
 import { useRequest } from "vue-request";
@@ -75,7 +75,9 @@ const { run: userManageRun } = useRequest(
   }
 );
 userManageRun({});
-
+onActivated(()=>{
+  userManageRun({});
+})
 const createColumns = ({
   check,
   role,

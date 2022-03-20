@@ -100,15 +100,7 @@ const onCloseClick = (index: number) => {
 };
 
 const darkTheme = computed(() => appStore.darkTheme);
-watch(
-  darkTheme,
-  (value) => {
-    console.log(value, darkTheme);
-  },
-  {
-    immediate: true,
-  }
-);
+
 </script>
 <style lang="scss" scoped>
 .tags-view-container {

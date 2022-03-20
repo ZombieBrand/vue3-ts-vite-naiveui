@@ -24,6 +24,15 @@ export type AppRouteRecordRaw = RouteRecordRaw & {
 };
 
 /**
+ *
+ *  meta:{
+ *    noCache: false   是否使用keep-alive缓存默认缓存 设置true时则不会缓存
+ *    breadcrumb: false  面包屑组件是否可以点击跳转默认是可以点击跳转路由 设置true时则不可点击跳转路由
+ *  }
+ */
+
+
+/**
  * @description 公共路由
  */
 

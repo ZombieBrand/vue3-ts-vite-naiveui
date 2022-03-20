@@ -53,9 +53,9 @@ export default [
     url: "/api/user-manage/batch/import",
     method: "post",
     statusCode: 200,
-    response: () => {
+    response: ({body}) => {
       return resultSuccess(
-          {},
+        body,
         { message: "批量上传成功!" }
       );
     },

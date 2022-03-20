@@ -7,7 +7,7 @@ export const dateFilter = (val: string | number, format = "YYYY-MM-DD") => {
   return dayjs(val).format(format);
 };
 
-export const installFilter =  (app: App) => {
+export const installFilter = (app: App) => {
   app.config.globalProperties.$filters = {
     dateFilter,
   };

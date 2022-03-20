@@ -1,7 +1,7 @@
 import { h } from "vue";
 import { NIcon } from "naive-ui";
 import { i18n } from "@/locales";
-import dayjs from "dayjs";
+
 
 /**
  * render 图标
