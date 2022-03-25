@@ -30,9 +30,9 @@
     "upload": "点击上传",
     "drop": "将文件拖到此处"
   },
-  "exportExcel":{
-    "title":"批量导出",
-    "defaultName":"批量导出文件"
+  "exportExcel": {
+    "title": "批量导出",
+    "defaultName": "批量导出文件"
   },
   "login": {
     "title": "管理平台",

@@ -65,7 +65,7 @@ import { getCurrentInstance } from "vue";
 
 // 这种写法不会有ts提示类型错误问题  ts推荐使用方法
 const appInstance = getCurrentInstance();
-const proxy = appInstance?.proxy
+const proxy = appInstance?.proxy;
 
 proxy.$t("route.home");
 </script>
@@ -155,8 +155,10 @@ css: {
 挂载方法: `window.$message = useMessage()`
 使用方法: `window.$message('error',response.data.message)`
 
-## vue模版中使用全局方法
+## vue 模版中使用全局方法
+
 通过`app.config.globalProperties.$xxxx = xxxx`实现模版中直接使用`$xxx`
+
 ```typescript
 import dayjs from "dayjs";
 import { App } from "vue";
@@ -167,7 +169,7 @@ export const dateFilter = (val: string | number, format = "YYYY-MM-DD") => {
   return dayjs(val).format(format);
 };
 
-export const installFilter =  (app: App) => {
+export const installFilter = (app: App) => {
   app.config.globalProperties.$filters = {
     dateFilter,
   };
@@ -177,22 +179,25 @@ export const installFilter =  (app: App) => {
 ```typescript
 // 全局属性
 import { installFilter } from "@/filter";
-createApp(App)
-  .use(installFilter)
-  .mount("#app");
+createApp(App).use(installFilter).mount("#app");
 ```
-vue - html模版中使用
+
+vue - html 模版中使用
+
 ```typescript
 // xxx.vue
 <div>$filters.dateFilter(Date.now())</div>
 ```
-vue - setup中使用
+
+vue - setup 中使用
+
 ```typescript
 const appInstance = getCurrentInstance();
-const proxy = appInstance?.proxy
+const proxy = appInstance?.proxy;
 
-console.log(proxy.$filters.dateFilter(Date.now()))
+console.log(proxy.$filters.dateFilter(Date.now()));
 ```
+
 ## Token
 
 采用 JWT 鉴权,处理方式包含(动态 token,刷新 token,时效 token),此项目采用时效 Token.

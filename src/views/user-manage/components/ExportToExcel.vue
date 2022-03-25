@@ -1,6 +1,6 @@
 <template>
   <n-modal
-    v-model:show="modelValue"
+    v-model:show="showValue"
     preset="dialog"
     :title="$t('exportExcel.title')"
     positive-text="确认"
@@ -18,8 +18,8 @@ export default {
 };
 </script>
 <script setup lang="ts">
-import { ref } from "vue";
-import { t } from "@/locales/index";
+import { ref, computed } from "vue";
+import { t } from "@/locales";
 import { USER_RELATIONS } from "./ExportToExcelConstant";
 import type { User } from "@/types/userManage";
 const props = defineProps({
@@ -34,9 +34,18 @@ const props = defineProps({
     required: true,
   },
 });
+const emits = defineEmits(["update:modelValue"]);
+const showValue = computed({
+  get: () => {
+    return props.modelValue;
+  },
+  set: (value) => {
+    console.log(value);
+    emits("update:modelValue", value);
+  },
+});
 const exportDefaultName = t("exportExcel.defaultName");
 const excelName = ref(exportDefaultName);
-const emits = defineEmits(["update:modelValue"]);
 const cancelCallback = () => {
   emits("update:modelValue", false);
 };
