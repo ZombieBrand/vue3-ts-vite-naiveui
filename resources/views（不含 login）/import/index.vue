@@ -2,7 +2,7 @@
   <div class="">导入</div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import {} from "vue";
 </script>
 

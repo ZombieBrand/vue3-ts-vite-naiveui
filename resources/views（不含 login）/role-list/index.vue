@@ -2,7 +2,7 @@
   <div class="">角色列表</div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import {} from "vue";
 </script>
 

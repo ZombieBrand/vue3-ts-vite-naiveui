@@ -2,7 +2,7 @@
   <div class="">个人中心</div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import {} from "vue";
 </script>
 
