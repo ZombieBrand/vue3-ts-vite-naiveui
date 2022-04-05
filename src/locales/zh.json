@@ -78,5 +78,21 @@
     "contact": "联系方式",
     "role": "角色",
     "openTime": "开通时间"
+  },
+  "userInfo": {
+    "print": "打印",
+    "title": "员工信息",
+    "name": "姓名",
+    "sex": "性别",
+    "nation": "民族",
+    "mobile": "手机号",
+    "province": "居住地",
+    "date": "入职时间",
+    "remark": "备注",
+    "address": "联系地址",
+    "experience": "经历",
+    "major": "专业",
+    "glory": "荣耀",
+    "foot": "签字：___________日期:___________"
   }
 }

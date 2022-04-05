@@ -22,6 +22,7 @@ import { ref, computed } from "vue";
 import { t } from "@/locales";
 import { USER_RELATIONS } from "./ExportToExcelConstant";
 import type { User } from "@/types/userManage";
+import { dateFilter } from "@/filter";
 const props = defineProps({
   modelValue: {
     type: Boolean,
@@ -80,6 +81,14 @@ function formatJson(headers: any, rows: User[]) {
           roles.map((role: { id: string; title: string }) => role.title)
         );
       }
+
+      // 时间
+      // @ts-ignore
+      if (headers[keyName] === "openTime") {
+        // @ts-ignore
+        return dateFilter(item[headers[keyName]]);
+      }
+
       // @ts-ignore
       return item[headers[keyName]];
     });

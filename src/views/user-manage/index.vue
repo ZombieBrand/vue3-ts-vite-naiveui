@@ -184,8 +184,14 @@ const createColumns = ({
   ];
 };
 const columns = createColumns({
+  // 查看用户详情
   check(row) {
-    console.log(row);
+    router.push({
+      name: "UserInfo",
+      params: {
+        id: row.id,
+      },
+    });
   },
   role(row) {
     console.log(row);

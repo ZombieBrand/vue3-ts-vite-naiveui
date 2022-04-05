@@ -20,3 +20,12 @@ export const userBatchImport = (data: TExcelData) => {
     data,
   });
 };
+
+/**
+ * 获取用户详情
+ */
+export const getUserDetail = (id: string) => {
+  return request({
+    url: `/user-manage/detail/${id}`,
+  });
+};

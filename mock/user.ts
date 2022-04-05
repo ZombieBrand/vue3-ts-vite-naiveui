@@ -105,46 +105,4 @@ export default [
       );
     },
   },
-  {
-    url: "/api/user-manage/detail/:id",
-    method: "get",
-    response: () =>
-      resultSuccess(
-        {
-          role: [
-            {
-              id: "1",
-              title: "@cname",
-            },
-          ],
-          remark: ["@cname", "@cname"],
-          experience: [
-            {
-              startTime: "1538323200000",
-              endTime: "1551369600000",
-              title: "@cname",
-              desc: "@cparagraph",
-            },
-            {
-              startTime: "1614528000000",
-              endTime: "1625068800000",
-              title: "@cname",
-              desc: "@cparagraph",
-            },
-          ],
-          id: "0",
-          openTime: "1433088000000",
-          username: "@name",
-          title: "@cname",
-          mobile: Mock.Random.integer(),
-          avatar: "@image",
-          gender: "男",
-          nationality: "汉",
-          address: "@region",
-          major: "@cparagraph",
-          glory: "@cparagraph",
-        },
-        { message: "获取员工信息成功" }
-      ),
-  },
 ] as MockMethod[];

@@ -78,5 +78,21 @@
     "contact": "Contact",
     "role": "Role",
     "openTime": "Open time"
-  }
+  },
+  "userInfo": {
+    "print": "Print",
+    "title": "Employee information",
+    "name": "name",
+    "sex": "gender",
+    "nation": "nationality",
+    "mobile": "phone number",
+    "province": "Place of residence",
+    "date": "Entry Time",
+    "remark": "Remark",
+    "address": "contact address",
+    "experience": "Experience",
+    "major": "Professional",
+    "glory": "Glory",
+    "foot": "Signature:___________Date:___________"
+  },
 }

@@ -57,4 +57,46 @@ export default [
       return resultSuccess(body, { message: "批量上传成功!" });
     },
   },
+  {
+    url: "/api/user-manage/detail/:id",
+    method: "get",
+    response: () =>
+      resultSuccess(
+        {
+          role: [
+            {
+              id: "1",
+              title: "@cname",
+            },
+          ],
+          remark: ["超级管理员", "BOSS", "@cname", "@cname"],
+          experience: [
+            {
+              startTime: Mock.Random.date(),
+              endTime: Mock.Random.date(),
+              title: "@cname",
+              desc: "@cparagraph",
+            },
+            {
+              startTime: Mock.Random.date(),
+              endTime: Mock.Random.date(),
+              title: "@cname",
+              desc: "@cparagraph",
+            },
+          ],
+          id: Mock.Random.id(),
+          openTime: Mock.Random.date(),
+          username: "@name",
+          title: "@cname",
+          mobile: Mock.Random.integer(),
+          avatar: "@image",
+          gender: "男",
+          nationality: "汉",
+          address: "@region",
+          major: "@cparagraph",
+          glory: "@cparagraph",
+        },
+        { message: "获取员工信息成功" }
+      ),
+  },
 ] as MockMethod[];

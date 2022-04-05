@@ -116,6 +116,7 @@ const privateRouter = [
         path: "/user/info:id",
         name: "UserInfo",
         component: () => import("@/views/user-info/index.vue"),
+        props: true,
         meta: {
           title: "UserInfo",
           icon: renderIcon(InformationCircle),
