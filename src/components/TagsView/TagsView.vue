@@ -56,7 +56,7 @@ onMounted(() => {
 const route = useRoute();
 const appStore = useAppStore();
 
-const primaryColor = appStore.primaryColor;
+const primaryColor = computed(() => appStore.primaryColor);
 const tagsViewList = computed(() => appStore.tagsViewList);
 
 const isActive = (tag: TTagsView) => {
@@ -108,6 +108,7 @@ const darkTheme = computed(() => appStore.darkTheme);
   background: #fff;
   border-bottom: 1px solid #d8dce5;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 0 3px 0 rgba(0, 0, 0, 0.04);
+
   .tags-view-item {
     display: inline-block;
     position: relative;
@@ -121,14 +122,18 @@ const darkTheme = computed(() => appStore.darkTheme);
     font-size: 12px;
     margin-left: 5px;
     margin-top: 4px;
+
     &:first-of-type {
       margin-left: 15px;
     }
+
     &:last-of-type {
       margin-right: 15px;
     }
+
     &.active {
       color: #fff;
+
       &::before {
         content: "";
         background: #fff;
@@ -140,6 +145,7 @@ const darkTheme = computed(() => appStore.darkTheme);
         margin-right: 4px;
       }
     }
+
     // close 按钮
     .el-icon-close {
       margin-left: 4px;
@@ -150,30 +156,37 @@ const darkTheme = computed(() => appStore.darkTheme);
       text-align: center;
       transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
       transform-origin: 100% 50%;
+
       &:before {
         transform: scale(0.6);
         display: inline-block;
       }
+
       &:hover {
         background-color: #b4bccc;
         color: #fff;
       }
     }
   }
+
   &.dark-mode {
     background: #000000;
     border-bottom: 1px solid #303133;
+
     .tags-view-item {
       border: 1px solid #303133;
       color: #ffffff;
       background: #000000;
     }
+
     &.active {
       color: #000000;
+
       &::before {
         background: #000000;
       }
     }
+
     .el-icon-close {
       &:hover {
         background-color: #ffffff;

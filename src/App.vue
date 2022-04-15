@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, provide, nextTick } from "vue";
+import { ref, computed, provide, nextTick, watch } from "vue";
 import type { ComputedRef } from "vue";
 import { useI18n } from "vue-i18n";
 import AppProvider from "@/components/Application";
@@ -23,6 +23,7 @@ const currentDarkTheme: ComputedRef<boolean> = computed(
 );
 // 自定义主题色
 const themeOverrides = useCustomColor();
+
 const isReloadAlive = ref(true);
 const reload = () => {
   isReloadAlive.value = false;
@@ -31,7 +32,6 @@ const reload = () => {
   });
 };
 provide("reload", reload);
-console.log("log存在");
 </script>
 <script lang="ts">
 export default {
@@ -46,7 +46,6 @@ export default {
     :theme-overrides="themeOverrides"
     class="w-full h-full"
   >
-    <n-global-style />
     <AppProvider v-if="isReloadAlive">
       <router-view />
     </AppProvider>
