@@ -57,6 +57,6 @@
     "vite": "^2.9.5",
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-mock": "^2.9.6",
-    "vue-tsc": "^0.33.9"
+    "vue-tsc": "^0.34.7"
   }
 }
