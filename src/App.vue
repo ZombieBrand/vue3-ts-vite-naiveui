@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, provide, nextTick, watch } from "vue";
+import { ref, computed, provide, nextTick } from "vue";
 import type { ComputedRef } from "vue";
 import { useI18n } from "vue-i18n";
 import AppProvider from "@/components/Application";
