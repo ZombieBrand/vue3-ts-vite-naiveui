@@ -1,7 +1,8 @@
 {
   "route": {
     "home": "Home Page",
-    "profile": "Profile",
+    "AuthorizationManagement": "Authorization Management",
+    "Profile": "Profile",
     "User": "User",
     "UserManage": "User Manage",
     "UserRole": "User Role",
@@ -24,7 +25,20 @@
     "refresh": "Refresh",
     "check": "Check",
     "remove": "Remove",
-    "action": "Action"
+    "action": "Action",
+    "edit": "Edit",
+    "confirm": "Confirm",
+    "cancel": "Cancel"
+  },
+  "license": {
+    "addLicense": "New license",
+    "CPUID": "CPUID",
+    "macAddress": "MAC address",
+    "company": "company",
+    "model": "Product model",
+    "applyTime": "Application time",
+    "deadline": "Expiration time",
+    "manageDeviceNum": "Managing device"
   },
   "uploadExcel": {
     "upload": "Click upload",

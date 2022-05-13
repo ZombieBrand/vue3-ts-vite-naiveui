@@ -17,13 +17,13 @@ export default defineConfig(({ mode, command }) => {
     base: "./", //打包路径
     plugins: [
       vue(),
-      viteMockServe({
-        mockPath: "mock",
-        localEnabled: command === "serve",
-        prodEnabled: command !== "serve" && prodMock,
-        supportTs: true,
-        watchFiles: true,
-      }),
+      // viteMockServe({
+      //   mockPath: "mock",
+      //   localEnabled: command === "serve",
+      //   prodEnabled: command !== "serve" && prodMock,
+      //   supportTs: true,
+      //   watchFiles: true,
+      // }),
       vueI18n({
         include: path.resolve(__dirname, "./src/locales/**"),
       }),
@@ -56,15 +56,22 @@ export default defineConfig(({ mode, command }) => {
       open: true,
       https: false,
       cors: true,
-      // proxy: {
-      //   [ENV.VITE_APP_BASE_API]: {
-      //     target: ENV.VITE_APP_WEB_URL,
-      //     changeOrigin: true,
-      //     secure: false,
-      //     rewrite: (path) =>
-      //       path.replace(new RegExp(`^${ENV.VITE_APP_BASE_API}`), ""),
-      //   },
-      // },
+      proxy: {
+        [ENV.VITE_APP_BASE_API]: {
+          target: ENV.VITE_APP_WEB_URL,
+          changeOrigin: true,
+          secure: false,
+          rewrite: (path) =>
+            path.replace(new RegExp(`^${ENV.VITE_APP_BASE_API}`), "/api"),
+        },
+        "/download": {
+          target: ENV.VITE_APP_WEB_URL,
+          changeOrigin: true,
+          secure: false,
+          rewrite: (path) =>
+            path.replace(new RegExp(`^/download`), "/download"),
+        },
+      },
     },
     esbuild: {
       pure: mode === "production" ? ["console.log", "debugger"] : [], // 去除日志和debugger

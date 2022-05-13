@@ -66,8 +66,8 @@ const userStore = useUserStore();
 const { t } = useI18n();
 const formRef = ref();
 const loginData = reactive({
-  username: "",
-  password: "",
+  username: "superAdmin",
+  password: "cyz121",
 });
 const rules = ref({
   username: {

@@ -19,7 +19,8 @@ export const useStore = defineStore("main", {
      */
     hasUserInfo: () => {
       const userStore = useUserStore();
-      return JSON.stringify(userStore.userInfo) !== "{}";
+      console.log({ userStore });
+      return userStore.userInfo.id !== "";
     },
     cssVar: () => {},
   },

@@ -41,9 +41,9 @@ export const useUserStore = defineStore("user", {
           password: md5(password),
         })
           .then((res) => {
-            const {
-              result: { token },
-            } = res;
+            console.log(res);
+            const { data } = res;
+            const token = data.access_token;
             setItem(TOKEN, token);
             this.token = token;
             router.push("/");
@@ -58,9 +58,12 @@ export const useUserStore = defineStore("user", {
     },
     async getUserInfo() {
       try {
-        const result = await getUserInfoRequest();
-        this.userInfo = result.result;
-        return result.result;
+        const { data } = await getUserInfoRequest();
+        this.userInfo.id = data.id;
+        this.userInfo.role = [data.role];
+        this.userInfo.username = data.username;
+        this.userInfo.email = data.email;
+        return data;
       } catch (e) {
         console.log(e);
         window.$message("error", "获取用户信息失败!");

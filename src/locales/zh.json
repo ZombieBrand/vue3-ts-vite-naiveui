@@ -1,7 +1,8 @@
 {
   "route": {
     "home": "首页",
-    "profile": "个人中心",
+    "AuthorizationManagement": "授权管理",
+    "Profile": "个人中心",
     "User": "用户",
     "UserManage": "用户管理",
     "UserRole": "用户角色",
@@ -24,7 +25,20 @@
     "refresh": "刷新",
     "check": "查看",
     "remove": "删除",
-    "action": "操作"
+    "action": "操作",
+    "edit": "编辑",
+    "confirm": "确认",
+    "cancel": "取消"
+  },
+  "license": {
+    "addLicense": "新增授权",
+    "CPUID": "CPUID",
+    "macAddress": "mac地址",
+    "company": "公司名称",
+    "model": "产品型号",
+    "applyTime": "申请时间",
+    "deadline": "到期时间",
+    "manageDeviceNum": "管理设备数量"
   },
   "uploadExcel": {
     "upload": "点击上传",

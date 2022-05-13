@@ -69,6 +69,7 @@ const fuse = new Fuse(routesOptions.value, {
   shouldSort: true,
   ignoreLocation: true,
   ignoreFieldNorm: true,
+  fieldNormWeight: 1,
   keys: [
     {
       name: "label",

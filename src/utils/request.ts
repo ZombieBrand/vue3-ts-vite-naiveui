@@ -54,7 +54,7 @@ function myAxios(axiosConfig: AxiosRequestConfig, customOptions?: any) {
           return Promise.reject(config);
         }
         // @ts-ignore
-        config.headers["Authorization"] = getItem(TOKEN);
+        config.headers["Authorization"] = `Bearer ${getItem(TOKEN)}`;
       }
       // @ts-ignore
       config.headers["Accept-Language"] = getLanguage();
@@ -68,12 +68,13 @@ function myAxios(axiosConfig: AxiosRequestConfig, customOptions?: any) {
   // 响应拦截
   service.interceptors.response.use(
     (response) => {
+      console.log(response.data);
       removePending(response.config);
       custom_options.loading && closeLoading(custom_options, true); // 关闭loading
       if (
         custom_options.code_message_show &&
         response.data &&
-        response.data.code === 200
+        response.data.code === 0
       ) {
         window.$message("success", response.data.message);
       } else {
@@ -101,6 +102,7 @@ export default myAxios;
  * @param {*} error
  */
 function httpErrorStatusHandle(error: any) {
+  const userStore = useUserStore();
   // 处理被取消的请求
   if (axios.isCancel(error)) {
     return console.error("请求的重复请求：" + error.message);
@@ -116,6 +118,7 @@ function httpErrorStatusHandle(error: any) {
         break;
       case 401:
         message = "您未登录，或者登录已经超时，请先登录！";
+        userStore.loginOut();
         break;
       case 403:
         message = "您没有权限操作！";

@@ -9,7 +9,7 @@ export const loginRequest = (data: T.login): Promise<any> => {
 };
 export const getUserInfoRequest = (): Promise<any> => {
   return request({
-    url: "/getUserInfo",
+    url: "/profile",
     method: "get",
   });
 };
