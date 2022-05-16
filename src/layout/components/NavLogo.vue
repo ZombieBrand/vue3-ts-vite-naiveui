@@ -9,7 +9,7 @@
       class="w-10 align-middle"
       :src="logoImg"
     />
-    <span class="text-2xl font-sans font-bold">Zombie</span>
+    <span class="text-2xl font-sans font-bold">授权管理平台</span>
   </div>
 </template>
 
@@ -20,7 +20,7 @@ export default {
 </script>
 <script setup lang="ts">
 import { useRouter } from "vue-router";
-import logoImg from "@/assets/images.jpeg";
+import logoImg from "@/assets/logo.png";
 const router = useRouter();
 const goHome = () => {
   router.push("/");

@@ -6,7 +6,7 @@
       <h2
         class="tracking-widest text-xl text-center font-semibold text-white sm:text-2xl sm:leading-7 sm:text-black md:text-3xl"
       >
-        {{ $t("login.title") }}
+        准入授权管理平台
       </h2>
       <div class="relative flex flex-wrap">
         <div class="w-full relative">
