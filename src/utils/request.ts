@@ -68,7 +68,6 @@ function myAxios(axiosConfig: AxiosRequestConfig, customOptions?: any) {
   // 响应拦截
   service.interceptors.response.use(
     (response) => {
-      console.log(response.data);
       removePending(response.config);
       custom_options.loading && closeLoading(custom_options, true); // 关闭loading
       if (
@@ -78,6 +77,10 @@ function myAxios(axiosConfig: AxiosRequestConfig, customOptions?: any) {
       ) {
         window.$message("success", response.data.message);
       } else {
+        if (response.data.code === -1) {
+          window.$message("error", response.data.message);
+          return Promise.reject(response.data);
+        }
         custom_options.error_message_show && httpSuccessStatusHandle(response); // 处理错误状态码
         return Promise.reject(response.data); // code不等于200, 页面具体逻辑就不执行了
       }

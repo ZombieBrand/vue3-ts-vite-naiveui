@@ -378,7 +378,6 @@ function formValueReset(row: TLicense | undefined = undefined) {
 }
 function createCancel() {
   createVisible.value = false;
-  getData();
 }
 </script>
 

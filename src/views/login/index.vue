@@ -100,7 +100,6 @@ const loginSubmit = () => {
         window.$message("success", `${t("message.user.successLogin")}`);
       } catch (e) {
         console.log(e);
-        window.$message("error", `${t("message.user.errorLogin")}`);
       }
     } else {
       console.log(errors);

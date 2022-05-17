@@ -18,7 +18,7 @@ import { getItem, setItem } from "@/utils/storage";
 onMounted(() => {
   const guideStatus = getItem("guide");
   if (guideStatus !== "completed") {
-    tour.start();
+    // tour.start();
     setItem("guide", "completed");
   }
 });
