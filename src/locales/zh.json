@@ -42,6 +42,10 @@
     "username": "用户名",
     "password": "密码"
   },
+  "role": {
+    "title": "名称",
+    "describe": "描述"
+  },
   "placeholder": {
     "username": "@:global.pleaseEnter@:user.username",
     "password": "@:global.pleaseEnter@:user.password",

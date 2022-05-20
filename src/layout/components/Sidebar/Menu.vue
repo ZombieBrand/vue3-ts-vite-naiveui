@@ -12,7 +12,7 @@
 
 <script lang="ts">
 export default {
-  name: "Menu",
+  name: "SideMenu",
 };
 </script>
 <script lang="ts" setup>

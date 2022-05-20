@@ -42,6 +42,10 @@
     "username": "User Name",
     "password": "Password"
   },
+  "role": {
+    "title": "title",
+    "describe": "describe"
+  },
   "placeholder": {
     "username": "@:global.pleaseEnter@:user.username",
     "password": "@:global.pleaseEnter@:user.password",

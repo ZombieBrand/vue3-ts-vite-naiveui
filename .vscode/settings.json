@@ -1,7 +1,4 @@
 {
   "bookmarks.sideBar.expanded": true,
-  "i18n-ally.localesPaths": [
-    "src/locales",
-    "resources/lang"
-  ]
+  "i18n-ally.localesPaths": ["src/locales", "resources/lang"]
 }
