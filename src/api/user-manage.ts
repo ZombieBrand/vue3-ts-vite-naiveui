@@ -27,5 +27,20 @@ export const userBatchImport = (data: TExcelData) => {
 export const getUserDetail = (id: string) => {
   return request({
     url: `/user-manage/detail/${id}`,
+    method: "get",
+  });
+};
+
+/**
+ * 修改用户角色
+ */
+export const updateRole = ({ id, roleId }: { id: string; roleId: string[] }) => {
+  return request({
+    url: "/user-manage/role/change",
+    method: "POST",
+    data: {
+      id,
+      roleId,
+    },
   });
 };

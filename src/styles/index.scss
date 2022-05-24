@@ -18,8 +18,7 @@ body {
 img,
 picture,
 video,
-canvas,
-svg {
+canvas {
   display: block;
   max-width: 100%;
 }
@@ -47,4 +46,13 @@ ol {
 }
 #app {
   height: 100%;
+}
+
+.n-drawer-footer {
+  justify-content: space-between !important;
+  flex-wrap: nowrap;
+  gap: 12px;
+  .n-button {
+    flex: 1;
+  }
 }

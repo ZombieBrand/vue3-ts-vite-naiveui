@@ -15,7 +15,7 @@ export default [
             {
               role: [
                 {
-                  id: Mock.mock("@guid"),
+                  id: "1",
                   title: "超级管理员",
                 },
               ],
@@ -29,7 +29,7 @@ export default [
             {
               role: [
                 {
-                  id: Mock.mock("@guid"),
+                  id: "2",
                   title: "管理员",
                 },
               ],
@@ -98,5 +98,13 @@ export default [
         },
         { message: "获取员工信息成功" }
       ),
+  },
+  {
+    url: "/api/user-manage/role/change",
+    method: "post",
+    statusCode: 200,
+    response: ({ body }: { body: any }) => {
+      return resultSuccess(body, { message: "修改成功!" });
+    },
   },
 ] as MockMethod[];

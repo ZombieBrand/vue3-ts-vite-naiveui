@@ -32,6 +32,7 @@
       </n-card>
     </n-space>
     <ExportToExcel v-model="showExport" :exportData="tableData" />
+    <Roles v-model:show="rolesShow" :roleData="selectRole" />
   </div>
 </template>
 
@@ -41,7 +42,7 @@ export default {
 };
 </script>
 <script setup lang="ts">
-import { ref, h, onActivated } from "vue";
+import { ref, h, onActivated} from "vue";
 import type { Ref } from "vue";
 import { getUserManageList } from "@/api/user-manage";
 import { useRequest } from "vue-request";
@@ -53,11 +54,14 @@ import { paginationOptions } from "@/components/TableData";
 import { dateFilter } from "@/filter";
 import { useRouter } from "vue-router";
 import ExportToExcel from "./components/ExportToExcel.vue";
+import Roles from "./components/Roles.vue";
 // 数据相关
 const tableData: Ref<User[] | never[]> = ref([]);
 const total = ref(0);
 const page = ref(1);
 const size = ref(10);
+const rolesShow = ref(false);
+const selectRole = ref({});
 // 获取数据方法
 const { run: userManageRun } = useRequest(
   getUserManageList({ page: page.value, size: size.value }),
@@ -146,8 +150,6 @@ const createColumns = ({
               h(
                 NButton,
                 {
-                  strong: true,
-                  tertiary: true,
                   size: "small",
                   type: "primary",
                   onClick: () => check(row),
@@ -157,8 +159,6 @@ const createColumns = ({
               h(
                 NButton,
                 {
-                  strong: true,
-                  tertiary: true,
                   size: "small",
                   type: "primary",
                   onClick: () => role(row),
@@ -168,8 +168,6 @@ const createColumns = ({
               h(
                 NButton,
                 {
-                  strong: true,
-                  tertiary: true,
                   size: "small",
                   type: "error",
                   onClick: () => remove(row, index),
@@ -194,7 +192,8 @@ const columns = createColumns({
     });
   },
   role(row) {
-    console.log(row);
+    selectRole.value = row;
+    rolesShow.value = true;
   },
   remove(row, index) {
     tableData.value.splice(index, 1);
@@ -216,6 +215,7 @@ const showExport = ref(false);
 function exportExcel() {
   showExport.value = true;
 }
+
 </script>
 
 <style lang="scss" scoped></style>

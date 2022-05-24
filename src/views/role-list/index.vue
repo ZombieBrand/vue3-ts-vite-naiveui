@@ -1,5 +1,5 @@
 <template>
-  <n-space vertical>
+  <n-space :vertical="true">
     <n-card title="功能">
       <n-space justify="end" />
     </n-card>
@@ -19,12 +19,13 @@ export default {
 };
 </script>
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, h } from "vue";
 import type { Ref } from "vue";
 import type { TRoleList } from "@/types/role-list";
 import { roleList } from "@/api/role";
 import { t } from "@/locales";
 import { paginationOptions } from "@/components/TableData";
+import { NButton, NSpace } from "naive-ui";
 const allRoles: Ref<TRoleList[]> = ref([]);
 const getRoleList = async () => {
   const { result } = await roleList();
@@ -32,7 +33,11 @@ const getRoleList = async () => {
 };
 getRoleList();
 
-const createColumns = () => {
+const createColumns = ({
+  assignPermissions,
+}: {
+  assignPermissions: (row: TRoleList) => void;
+}) => {
   return [
     {
       title: t("role.title"),
@@ -42,9 +47,32 @@ const createColumns = () => {
       title: t("role.describe"),
       key: "describe",
     },
+    {
+      title: t("global.action"),
+      key: "actions",
+      render(row: TRoleList) {
+        return h(
+          NSpace,
+          {},
+          {
+            default: () => [
+              h(
+                NButton,
+                {
+                  size: "small",
+                  type: "primary",
+                  onClick: () => assignPermissions(row),
+                },
+                { default: () => t("role.assignPermissions") }
+              ),
+            ],
+          }
+        );
+      },
+    },
   ];
 };
-const columns = createColumns();
+const columns = createColumns({ assignPermissions(row) {} });
 </script>
 
 <style lang="scss" scoped></style>

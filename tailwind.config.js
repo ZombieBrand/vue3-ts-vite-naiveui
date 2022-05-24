@@ -4,8 +4,5 @@ module.exports = {
     extend: {},
   },
   important: true,
-  corePlugins: {
-    preflight: false,
-  },
   plugins: [],
 };

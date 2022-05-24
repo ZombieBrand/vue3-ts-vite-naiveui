@@ -24,7 +24,9 @@
     "refresh": "刷新",
     "check": "查看",
     "remove": "删除",
-    "action": "操作"
+    "action": "操作",
+    "confirm": "确认",
+    "cancel": "取消"
   },
   "uploadExcel": {
     "upload": "点击上传",
@@ -44,7 +46,14 @@
   },
   "role": {
     "title": "名称",
-    "describe": "描述"
+    "describe": "描述",
+    "assignPermissions": "分配权限",
+    "assignRoles": "分配角色"
+  },
+  "permission": {
+    "name": "权限名称",
+    "tag": "权限标识",
+    "remark": "权限备注"
   },
   "placeholder": {
     "username": "@:global.pleaseEnter@:user.username",

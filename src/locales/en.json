@@ -24,7 +24,9 @@
     "refresh": "Refresh",
     "check": "Check",
     "remove": "Remove",
-    "action": "Action"
+    "action": "Action",
+    "confirm": "confirm",
+    "cancel": "cancel"
   },
   "uploadExcel": {
     "upload": "Click upload",
@@ -44,7 +46,14 @@
   },
   "role": {
     "title": "title",
-    "describe": "describe"
+    "describe": "describe",
+    "assignPermissions": "Assign Permissions",
+    "assignRoles": "Assign Roles"
+  },
+  "permission": {
+    "name": "Permission Name",
+    "tag": "Permission Identify",
+    "remark": "Remark"
   },
   "placeholder": {
     "username": "@:global.pleaseEnter@:user.username",
