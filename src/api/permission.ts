@@ -8,3 +8,22 @@ export const permissionList = () => {
     method: "get",
   });
 };
+/**
+ * 更新角色权限
+ */
+export const updateRolePermission = ({
+  roleId,
+  permissionId,
+}: {
+  roleId: string;
+  permissionId: string[];
+}) => {
+  return request({
+    url: "/permission/role/update",
+    method: "post",
+    data: {
+      roleId,
+      permissionId,
+    },
+  });
+};

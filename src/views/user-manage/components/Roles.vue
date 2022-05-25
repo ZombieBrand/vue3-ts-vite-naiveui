@@ -1,6 +1,6 @@
 <template>
   <n-drawer
-    v-model:show="show"
+    v-model:show="visible"
     v-bind="drawerOptions"
     @after-enter="drawerShow"
   >
@@ -9,6 +9,7 @@
         <n-space item-style="display: flex;">
           <n-checkbox
             v-for="item of allRoles"
+            :key="item.id"
             :value="item.id"
             :label="item.title"
           />
@@ -30,7 +31,7 @@ export default {
 };
 </script>
 <script setup lang="ts">
-import { Ref, ref } from "vue";
+import { computed, Ref, ref } from "vue";
 import drawerOptions from "@/utils/naiveui/drawer";
 import type { User } from "@/types/userManage";
 import { roleList } from "@/api/role";
@@ -40,6 +41,12 @@ const props = defineProps<{
   show: boolean;
   roleData: User;
 }>();
+const visible = computed({
+  get: () => props.show,
+  set: (val) => {
+    emit("update:show", val);
+  },
+});
 
 const emit = defineEmits(["update:show"]);
 const allRoles: Ref<TRoleList[]> = ref([]);
@@ -67,6 +74,6 @@ const drawerShow = () => {
 };
 
 // 当前用户角色
-const userRoleList: Ref<string[] | null> = ref(null);
+const userRoleList: Ref<string[]> = ref([]);
 </script>
 <style scoped></style>

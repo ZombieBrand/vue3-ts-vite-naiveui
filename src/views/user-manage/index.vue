@@ -42,7 +42,7 @@ export default {
 };
 </script>
 <script setup lang="ts">
-import { ref, h, onActivated} from "vue";
+import { ref, h, onActivated } from "vue";
 import type { Ref } from "vue";
 import { getUserManageList } from "@/api/user-manage";
 import { useRequest } from "vue-request";
@@ -61,7 +61,14 @@ const total = ref(0);
 const page = ref(1);
 const size = ref(10);
 const rolesShow = ref(false);
-const selectRole = ref({});
+const selectRole: Ref<User> = ref({
+  username: "",
+  avatar: "",
+  id: "",
+  mobile: "",
+  openTime: "",
+  role: [],
+});
 // 获取数据方法
 const { run: userManageRun } = useRequest(
   getUserManageList({ page: page.value, size: size.value }),
@@ -215,7 +222,6 @@ const showExport = ref(false);
 function exportExcel() {
   showExport.value = true;
 }
-
 </script>
 
 <style lang="scss" scoped></style>

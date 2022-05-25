@@ -45,4 +45,15 @@ export default [
       );
     },
   },
+  {
+    url: "/api/role/permission/:roleId",
+    method: "get",
+    statusCode: 200,
+    response: () => {
+      return resultSuccess(
+        ["1", "1-1", "1-2", "1-3", "2", "2-1", "3", "4", "5"],
+        { message: "获取角色权限信息成功" }
+      );
+    },
+  },
 ] as MockMethod[];

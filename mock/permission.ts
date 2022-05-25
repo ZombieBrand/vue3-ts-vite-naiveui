@@ -74,4 +74,12 @@ export default [
       );
     },
   },
+  {
+    url: "/api/permission/role/update",
+    method: "post",
+    statusCode: 200,
+    response: ({ body }: { body: any }) => {
+      return resultSuccess(body, { message: "修改成功!" });
+    },
+  },
 ] as MockMethod[];

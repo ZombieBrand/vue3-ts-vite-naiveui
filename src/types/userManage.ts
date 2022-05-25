@@ -6,8 +6,7 @@ export type User = {
   username: string;
   avatar: string;
   id: string;
-  _id: string;
-  mobile: number;
+  mobile: string;
   openTime: string;
   role: Array<Role | never>;
 };

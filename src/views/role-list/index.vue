@@ -1,16 +1,22 @@
 <template>
-  <n-space :vertical="true">
-    <n-card title="功能">
-      <n-space justify="end" />
-    </n-card>
-    <n-card>
-      <n-data-table
-        :columns="columns"
-        :data="allRoles"
-        :pagination="paginationOptions"
-      />
-    </n-card>
-  </n-space>
+  <div>
+    <n-space :vertical="true">
+      <n-card title="功能">
+        <n-space justify="end" />
+      </n-card>
+      <n-card>
+        <n-data-table
+          :columns="columns"
+          :data="allRoles"
+          :pagination="paginationOptions"
+        />
+      </n-card>
+    </n-space>
+    <DistributePermission
+      v-model:show="showPermission"
+      :roleInfo="selectRoleInfo"
+    />
+  </div>
 </template>
 
 <script lang="ts">
@@ -26,6 +32,7 @@ import { roleList } from "@/api/role";
 import { t } from "@/locales";
 import { paginationOptions } from "@/components/TableData";
 import { NButton, NSpace } from "naive-ui";
+import DistributePermission from "@/views/role-list/components/DistributePermission.vue";
 const allRoles: Ref<TRoleList[]> = ref([]);
 const getRoleList = async () => {
   const { result } = await roleList();
@@ -72,7 +79,20 @@ const createColumns = ({
     },
   ];
 };
-const columns = createColumns({ assignPermissions(row) {} });
+const columns = createColumns({
+  assignPermissions(row) {
+    showPermission.value = true;
+    console.log(row);
+    selectRoleInfo.value = row;
+  },
+});
+
+const showPermission = ref(false);
+const selectRoleInfo: Ref<TRoleList> = ref({
+  id: "",
+  title: "",
+  describe: "",
+});
 </script>
 
 <style lang="scss" scoped></style>

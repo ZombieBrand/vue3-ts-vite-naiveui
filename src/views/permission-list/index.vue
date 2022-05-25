@@ -6,7 +6,7 @@
     <n-card>
       <n-data-table
         :columns="columns"
-        :data="allRoles"
+        :data="allPermission"
         :pagination="paginationOptions"
         :row-key="rowKey"
         :remote="true"
@@ -29,10 +29,10 @@ import { t } from "@/locales";
 import { paginationOptions } from "@/components/TableData";
 import { NSpace } from "naive-ui";
 import type { DataTableColumns } from "naive-ui";
-const allRoles: Ref<TPermission[]> = ref([]);
+const allPermission: Ref<TPermission[]> = ref([]);
 const getList = async () => {
   const { result } = await permissionList();
-  allRoles.value = result;
+  allPermission.value = result;
 };
 getList();
 

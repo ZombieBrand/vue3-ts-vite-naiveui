@@ -34,7 +34,13 @@ export const getUserDetail = (id: string) => {
 /**
  * 修改用户角色
  */
-export const updateRole = ({ id, roleId }: { id: string; roleId: string[] }) => {
+export const updateRole = ({
+  id,
+  roleId,
+}: {
+  id: string;
+  roleId: string[];
+}) => {
   return request({
     url: "/user-manage/role/change",
     method: "POST",
