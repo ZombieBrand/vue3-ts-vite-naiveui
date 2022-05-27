@@ -4,19 +4,15 @@ import {
   RouteRecordRaw,
   RouterOptions,
 } from "vue-router";
+import { useUserStore } from "@/store/modules/user";
+import UserManage from "@/router/modules/UserManage";
+import RoleList from "@/router/modules/RoleList";
+import PermissionList from "@/router/modules/PermissionList";
+import Article from "@/router/modules/Article";
+import ArticleCreate from "@/router/modules/ArticleCreate";
+
 import Layout from "@/layout/index.vue";
-import {
-  BookOutline as BookIcon,
-  People,
-  PersonAdd,
-  Accessibility,
-  LockClosed,
-  InformationCircle,
-  Person,
-  PersonCircle,
-  Flame,
-  AddCircle,
-} from "@vicons/ionicons5";
+import { PersonCircle } from "@vicons/ionicons5";
 import { renderIcon } from "@/utils";
 // 扩展hidden router受到RouteRecordRaw类型约束
 export type AppRouteRecordRaw = RouteRecordRaw & {
@@ -35,7 +31,7 @@ export type AppRouteRecordRaw = RouteRecordRaw & {
  * @description 公共路由
  */
 
-const publicRoutes = [
+export const publicRoutes = [
   {
     path: "/login",
     name: "Login",
@@ -74,113 +70,32 @@ const publicRoutes = [
 /**
  * @description 私有路由表
  */
-const privateRouter = [
-  {
-    path: "/user",
-    component: Layout,
-    redirect: "/user/manage",
-    meta: {
-      title: "User",
-      icon: renderIcon(People),
-      breadcrumb: true,
-    },
-    children: [
-      {
-        path: "/user/manage",
-        name: "UserManage",
-        component: () => import("@/views/user-manage/index.vue"),
-        meta: {
-          title: "UserManage",
-          icon: renderIcon(Person),
-        },
-      },
-      {
-        path: "/user/role",
-        name: "UserRole",
-        component: () => import("@/views/role-list/index.vue"),
-        meta: {
-          title: "UserRole",
-          icon: renderIcon(Accessibility),
-        },
-      },
-      {
-        path: "/user/permission",
-        name: "UserPermission",
-        component: () => import("@/views/permission-list/index.vue"),
-        meta: {
-          title: "UserPermission",
-          icon: renderIcon(LockClosed),
-        },
-      },
-      {
-        path: "/user/info:id",
-        name: "UserInfo",
-        component: () => import("@/views/user-info/index.vue"),
-        props: true,
-        meta: {
-          title: "UserInfo",
-          icon: renderIcon(InformationCircle),
-        },
-      },
-      {
-        path: "/user/import",
-        name: "UserImport",
-        component: () => import("@/views/import/index.vue"),
-        meta: {
-          title: "UserImport",
-          icon: renderIcon(PersonAdd),
-        },
-      },
-    ],
-  },
-  {
-    path: "/article",
-    component: Layout,
-    redirect: "/article/ranking",
-    meta: {
-      title: "Article",
-      icon: renderIcon(BookIcon),
-    },
-    children: [
-      {
-        path: "/article/ranking",
-        name: "ArticleRanking",
-        component: () => import("@/views/article-ranking/index.vue"),
-        meta: {
-          title: "ArticleRanking",
-          icon: renderIcon(Flame),
-        },
-      },
-      {
-        path: "/article/:id",
-        name: "ArticleDetail",
-        component: () => import("@/views/article-detail/index.vue"),
-        meta: {
-          title: "ArticleDetail",
-        },
-      },
-      {
-        path: "/article/create",
-        name: "ArticleCreate",
-        component: () => import("@/views/article-create/index.vue"),
-        meta: {
-          title: "ArticleCreate",
-          icon: renderIcon(AddCircle),
-        },
-      },
-      {
-        path: "/article/editor/:id",
-        name: "ArticleEditor",
-        component: () => import("@/views/article-create/index.vue"),
-        meta: {
-          title: "ArticleEditor",
-        },
-      },
-    ],
-  },
+export const privateRoutes = [
+  UserManage,
+  RoleList,
+  PermissionList,
+  Article,
+  ArticleCreate,
 ];
+/**
+ * 初始化路由表
+ */
+export function resetRouter() {
+  const userStore = useUserStore();
+  if (
+    userStore.userInfo &&
+    userStore.userInfo.permission &&
+    userStore.userInfo.permission.menus
+  ) {
+    const menus = userStore.userInfo.permission.menus;
+    menus.forEach((menu) => {
+      router.removeRoute(menu);
+    });
+  }
+}
 
-export default createRouter(<RouterOptions>{
+const router = createRouter(<RouterOptions>{
   history: createWebHashHistory(),
-  routes: [...publicRoutes, ...privateRouter] as AppRouteRecordRaw[], // 扩展后的ts类型进行断言
+  routes: publicRoutes as AppRouteRecordRaw[], // 扩展后的ts类型进行断言
 });
+export default router;

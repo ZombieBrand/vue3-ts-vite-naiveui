@@ -7,6 +7,7 @@
             :strong="true"
             :secondary="true"
             type="primary"
+            v-permission="['importUser']"
             @click="importExcel"
           >
             {{ $t("userManage.importExcel") }}
@@ -42,7 +43,7 @@ export default {
 };
 </script>
 <script setup lang="ts">
-import { ref, h, onActivated } from "vue";
+import { ref, h, onActivated, withDirectives } from "vue";
 import type { Ref } from "vue";
 import { getUserManageList } from "@/api/user-manage";
 import { useRequest } from "vue-request";
@@ -55,6 +56,7 @@ import { dateFilter } from "@/filter";
 import { useRouter } from "vue-router";
 import ExportToExcel from "./components/ExportToExcel.vue";
 import Roles from "./components/Roles.vue";
+import { permissionDirective } from "@/hooks/useDirectives";
 // 数据相关
 const tableData: Ref<User[] | never[]> = ref([]);
 const total = ref(0);
@@ -163,23 +165,29 @@ const createColumns = ({
                 },
                 { default: () => t("global.check") }
               ),
-              h(
-                NButton,
-                {
-                  size: "small",
-                  type: "primary",
-                  onClick: () => role(row),
-                },
-                { default: () => t("userManage.role") }
+              withDirectives(
+                h(
+                  NButton,
+                  {
+                    size: "small",
+                    type: "primary",
+                    onClick: () => role(row),
+                  },
+                  { default: () => t("userManage.role") }
+                ),
+                [[permissionDirective(), ["distributeRole"]]]
               ),
-              h(
-                NButton,
-                {
-                  size: "small",
-                  type: "error",
-                  onClick: () => remove(row, index),
-                },
-                { default: () => t("global.remove") }
+              withDirectives(
+                h(
+                  NButton,
+                  {
+                    size: "small",
+                    type: "error",
+                    onClick: () => remove(row, index),
+                  },
+                  { default: () => t("global.remove") }
+                ),
+                [[permissionDirective(), ["removeUser"]]]
               ),
             ],
           }

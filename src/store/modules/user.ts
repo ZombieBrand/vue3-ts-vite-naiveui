@@ -4,7 +4,7 @@ import type * as T from "@/types/api/user";
 import md5 from "md5";
 import { getItem, removeAllItem, setItem } from "@/utils/storage";
 import { TOKEN } from "@/constant";
-import router from "@/router/index";
+import router, { resetRouter } from "@/router/index";
 import { setTimeStamp } from "@/utils/auth";
 
 const initUserInfo = () => ({
@@ -70,9 +70,10 @@ export const useUserStore = defineStore("user", {
       setItem(TOKEN, "");
       this.token = "";
       this.userInfo = initUserInfo();
-      removeAllItem();
       try {
         await router.push("/login");
+        removeAllItem();
+        resetRouter();
       } catch (e) {
         console.log(e);
         window.$message("error", "退出登陆失败!");

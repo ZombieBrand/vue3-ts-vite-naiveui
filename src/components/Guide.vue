@@ -13,15 +13,7 @@ export default {
 import Shepherd from "shepherd.js";
 import "shepherd.js/dist/css/shepherd.css";
 import { TrailSignOutline } from "@vicons/ionicons5";
-import { onMounted } from "vue";
-import { getItem, setItem } from "@/utils/storage";
-onMounted(() => {
-  const guideStatus = getItem("guide");
-  if (guideStatus !== "completed") {
-    tour.start();
-    setItem("guide", "completed");
-  }
-});
+
 const tour = new Shepherd.Tour({
   useModalOverlay: true,
   defaultStepOptions: {

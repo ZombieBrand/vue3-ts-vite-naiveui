@@ -1,5 +1,7 @@
 import { defineStore } from "pinia";
 import { useUserStore } from "./modules/user";
+import { useAppStore } from "./modules/app";
+import { usePermissionStore } from "./modules/permission";
 import { t } from "@/locales";
 export const useStore = defineStore("main", {
   state: () => ({
@@ -19,9 +21,19 @@ export const useStore = defineStore("main", {
      */
     hasUserInfo: () => {
       const userStore = useUserStore();
-      return JSON.stringify(userStore.userInfo) !== "{}";
+      return !!userStore.userInfo.id;
     },
-    cssVar: () => {},
+    cssVar: () => ({}),
+  },
+  actions: {
+    reset: () => {
+      const userStore = useUserStore();
+      const appStore = useAppStore()
+      const permissionStore = usePermissionStore()
+      userStore.$reset()
+      appStore.$reset()
+      permissionStore.$reset()
+    },
   },
   persist: true,
 });

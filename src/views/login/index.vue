@@ -61,6 +61,7 @@ import { reactive, ref, computed, onMounted } from "vue";
 import { useI18n } from "vue-i18n";
 import SwitchLanguage from "@/components/SwitchLanguage.vue";
 import { useUserStore } from "@/store/modules/user";
+import { useStore } from "@/store";
 import { removeAllItem } from "@/utils/storage";
 const userStore = useUserStore();
 const { t } = useI18n();
@@ -90,6 +91,8 @@ const rules = ref({
 });
 onMounted(() => {
   removeAllItem();
+  const store = useStore()
+  store.reset()
 });
 // 登录动作
 const loginSubmit = () => {

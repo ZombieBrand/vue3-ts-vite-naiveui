@@ -1,7 +1,7 @@
 // 路由过度动画效果
 .zoom-fade-enter-active,
 .zoom-fade-leave-active {
-  transition: transform 0.2s, opacity 0.3s ease-out;
+  transition: transform 0.2s, opacity 0.25s ease-out;
 }
 
 .zoom-fade-enter-from {

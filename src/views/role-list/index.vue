@@ -25,14 +25,15 @@ export default {
 };
 </script>
 <script setup lang="ts">
-import { ref, h } from "vue";
-import type { Ref } from "vue";
+import { ref, h, withDirectives } from "vue";
+import type { Ref, Directive } from "vue";
 import type { TRoleList } from "@/types/role-list";
 import { roleList } from "@/api/role";
 import { t } from "@/locales";
 import { paginationOptions } from "@/components/TableData";
 import { NButton, NSpace } from "naive-ui";
 import DistributePermission from "@/views/role-list/components/DistributePermission.vue";
+import { permissionDirective } from "@/hooks/useDirectives";
 const allRoles: Ref<TRoleList[]> = ref([]);
 const getRoleList = async () => {
   const { result } = await roleList();
@@ -63,14 +64,17 @@ const createColumns = ({
           {},
           {
             default: () => [
-              h(
-                NButton,
-                {
-                  size: "small",
-                  type: "primary",
-                  onClick: () => assignPermissions(row),
-                },
-                { default: () => t("role.assignPermissions") }
+              withDirectives(
+                h(
+                  NButton,
+                  {
+                    size: "small",
+                    type: "primary",
+                    onClick: () => assignPermissions(row),
+                  },
+                  { default: () => t("role.assignPermissions") }
+                ),
+                [[permissionDirective(), ["distributePermission"]]]
               ),
             ],
           }
@@ -82,7 +86,6 @@ const createColumns = ({
 const columns = createColumns({
   assignPermissions(row) {
     showPermission.value = true;
-    console.log(row);
     selectRoleInfo.value = row;
   },
 });
