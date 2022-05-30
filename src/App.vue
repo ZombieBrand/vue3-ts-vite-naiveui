@@ -10,6 +10,7 @@ const appStore = useAppStore();
 
 // 语言包配置
 const { locale } = useI18n();
+
 const language = computed(() => {
   return locale.value === "zh" ? zhCN : enUS;
 });

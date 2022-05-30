@@ -55,6 +55,13 @@
     "tag": "权限标识",
     "remark": "权限备注"
   },
+  "article": {
+    "ranking": "排名",
+    "title": "标题",
+    "author": "作者",
+    "publicDate": "发布日期",
+    "desc": "描述"
+  },
   "placeholder": {
     "username": "@:global.pleaseEnter@:user.username",
     "password": "@:global.pleaseEnter@:user.password",

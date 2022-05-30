@@ -55,6 +55,13 @@
     "tag": "Permission Identify",
     "remark": "Remark"
   },
+  "article": {
+    "ranking": "Ranking",
+    "title": "Title",
+    "author": "Author",
+    "publicDate": "Public Date",
+    "desc": "describe"
+  },
   "placeholder": {
     "username": "@:global.pleaseEnter@:user.username",
     "password": "@:global.pleaseEnter@:user.password",

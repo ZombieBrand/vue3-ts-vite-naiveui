@@ -26,7 +26,7 @@ export default {
 </script>
 <script setup lang="ts">
 import { ref, h, withDirectives } from "vue";
-import type { Ref, Directive } from "vue";
+import type { Ref } from "vue";
 import type { TRoleList } from "@/types/role-list";
 import { roleList } from "@/api/role";
 import { t } from "@/locales";
