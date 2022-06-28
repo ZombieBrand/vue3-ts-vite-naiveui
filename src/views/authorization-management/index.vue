@@ -260,13 +260,12 @@ const columns = createColumns({
   async download(row) {
     const { id } = row;
     try {
-      const { data: fileName } = await downloadLicense(id as string);
-      saveAs(
-        `${import.meta.env.VITE_APP_WEB_URL}/download/${fileName}`,
-        "authorization.txt"
-      );
+      const result = await downloadLicense(id as string);
+      var blob = new Blob([result.data], { type: "text/plain;charset=utf-8" });
+      saveAs(blob, "authorization.txt");
       window.$message("success", "授权文件下载成功!");
-    } catch (error) {
+    } catch (error: any) {
+      console.log(error);
       window.$message("error", "授权文件下载失败!");
     }
   },

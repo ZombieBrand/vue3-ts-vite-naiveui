@@ -5,7 +5,7 @@ declare module "*.vue" {
   const component: DefineComponent<{}, {}, any>;
   export default component;
 }
-
+declare module "file-saver";
 declare module "md5";
 declare module "chroma-js";
 declare module "path-browserify";
