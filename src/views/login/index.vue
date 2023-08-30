@@ -67,7 +67,7 @@ const { t } = useI18n();
 const formRef = ref();
 const loginData = reactive({
   username: "superAdmin",
-  password: "cyz121",
+  password: "",
 });
 const rules = ref({
   username: {

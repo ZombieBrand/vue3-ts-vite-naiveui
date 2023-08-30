@@ -95,7 +95,6 @@ function $_handleCancel() {
 function uploadFinish(options: any) {
   notification.success({
     content: "上传授权文件成功!",
-    duration: 3000,
   });
   console.log(options, "uploadFinish");
   submitLoading.value = false;
@@ -105,7 +104,6 @@ function uploadError(options: any) {
   const reponse = JSON.parse(options.event.target.response);
   notification.error({
     content: "上传授权文件失败! " + reponse.message,
-    duration: 3000,
   });
   console.log(options, "uploadError");
   submitLoading.value = false;
