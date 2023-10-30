@@ -10,11 +10,13 @@
       </n-card>
       <n-card>
         <n-data-table
+          remote
+          ref="table"
           :columns="columns"
+          :loading="loading"
+          :pagination="pagination"
+          :row-key="(rowData) => rowData.id"
           :data="tableData"
-          :pagination="paginationOptions"
-          @update:page-size="changePageSize"
-          @update:page="changePage"
         />
       </n-card>
     </n-space>
@@ -99,16 +101,29 @@ import {
 } from "@/api/license";
 import { NButton, NSpace } from "naive-ui";
 import { t } from "@/locales";
-import { paginationOptions } from "@/components/TableData";
 import { dateFilter } from "@/filter";
 import MyDrawer from "@/components/MyDrawer/index.vue";
 import CreateData from "./create-data.vue";
 import { saveAs } from "file-saver";
 // 数据相关
 const tableData: Ref<TLicense[] | never[]> = ref([]);
-const total = ref(0);
-const page = ref(1);
-const size = ref(10);
+const loading = ref(false);
+const pagination = reactive({
+  page: 1,
+  pageSize: 20,
+  showSizePicker: true,
+  pageSizes: [10, 20, 50, 100],
+  itemCount: 0,
+  onUpdatePageSize: (pageSize: number) => {
+    pagination.pageSize = pageSize;
+    pagination.page = 1;
+    getData(pagination.page);
+  },
+  onUpdatePage: (currentPage: number) => {
+    pagination.page = currentPage;
+    getData(pagination.page);
+  },
+});
 const editVisible = ref(false);
 const submitLoading = ref(false);
 const createVisible = ref(false);
@@ -122,19 +137,25 @@ const textMap: TTextMap = reactive({
 const dialogStatus: Ref<string> = ref("create");
 
 onActivated(() => {
-  getData();
+  getData(pagination.page);
 });
 // 获取数据方法
-async function getData() {
+async function getData(currentPage: number) {
+  loading.value = true;
   try {
-    const result = await getLicenseData({ page: page.value, size: size.value });
+    const result = await getLicenseData({
+      page: currentPage,
+      size: pagination.pageSize,
+    });
     const {
       data: { list, count },
     } = result;
     tableData.value = list;
-    total.value = count;
+    pagination.itemCount = count;
   } catch (error) {
     console.log(error, "getData");
+  } finally {
+    loading.value = false;
   }
 }
 // table数据
@@ -151,26 +172,32 @@ const createColumns = ({
     {
       title: t("license.company"),
       key: "company",
+      minWidth: 110,
     },
     {
       title: t("license.model"),
       key: "model",
+      minWidth: 100,
     },
     {
       title: t("license.macAddress"),
       key: "macAddress",
+      minWidth: 170,
     },
     {
       title: t("license.manageDeviceNum"),
       key: "manageDeviceNum",
+      minWidth: 110,
     },
     {
       title: t("license.CPUID"),
       key: "CPUID",
+      minWidth: 320,
     },
     {
       title: t("license.applyTime"),
       key: "applyTime",
+      minWidth: 110,
       render(row) {
         return dateFilter(row.applyTime as string);
       },
@@ -178,6 +205,7 @@ const createColumns = ({
     {
       title: t("license.deadline"),
       key: "deadline",
+      minWidth: 110,
       render(row) {
         return dateFilter(row.deadline as string);
       },
@@ -185,18 +213,22 @@ const createColumns = ({
     {
       title: "手机号码",
       key: "telphone",
+      minWidth: 120,
     },
     {
       title: "地址",
       key: "address",
+      minWidth: 110,
     },
     {
       title: "备注",
       key: "reason",
+      minWidth: 100,
     },
     {
       title: t("global.action"),
       key: "actions",
+      width: 240,
       render(row, index) {
         return h(
           NSpace,
@@ -254,7 +286,7 @@ const columns = createColumns({
       console.log(error);
       window.$message("error", "删除失败");
     } finally {
-      getData();
+      getData(pagination.page);
     }
   },
   async download(row) {
@@ -270,13 +302,6 @@ const columns = createColumns({
     }
   },
 });
-
-function changePageSize(pageSize: number) {
-  size.value = pageSize;
-}
-function changePage(pageNum: number) {
-  page.value = pageNum;
-}
 
 const formRef = ref<FormInst | null>(null);
 const formValue = ref({
@@ -341,7 +366,7 @@ function handleConfirm() {
           window.$message("success", "修改成功");
           submitLoading.value = false;
           editVisible.value = false;
-          getData();
+          getData(pagination.page);
         })
         .catch((error) => {
           console.log(error);
@@ -377,7 +402,7 @@ function formValueReset(row: TLicense | undefined = undefined) {
 }
 function createCancel() {
   createVisible.value = false;
-  getData();
+  getData(pagination.page);
 }
 </script>
 
