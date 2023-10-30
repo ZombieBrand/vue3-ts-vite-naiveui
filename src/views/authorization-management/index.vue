@@ -131,8 +131,8 @@ interface TTextMap {
   [key: string]: string;
 }
 const textMap: TTextMap = reactive({
-  update: "编辑用户",
-  create: "新增用户",
+  update: "编辑授权",
+  create: "新增授权",
 });
 const dialogStatus: Ref<string> = ref("create");
 
