@@ -226,9 +226,18 @@ const createColumns = ({
       minWidth: 100,
     },
     {
+      title: "更新时间",
+      key: "updatedAt",
+      minWidth: 160,
+      render(row) {
+        return dateFilter(row.updatedAt as string, "YYYY-MM-DD HH:mm:ss");
+      },
+    },
+    {
       title: t("global.action"),
       key: "actions",
       width: 240,
+      fixed: "right",
       render(row, index) {
         return h(
           NSpace,

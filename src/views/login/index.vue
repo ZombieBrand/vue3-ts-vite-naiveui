@@ -31,7 +31,7 @@
               >
                 <n-input
                   v-model:value="loginData.password"
-                  type="current-password"
+                  type="password"
                   :placeholder="$t('placeholder.password')"
                   @keydown.enter.prevent
                 />
